@@ -1,6 +1,7 @@
 'use strict'
 
 const bodyParser = require('body-parser')
+const {mapKeys, camelCase} = require('lodash')
 const commands = require('../src')
 
 const {loadConfig, wrapRoute} = require('../src/helpers')
@@ -22,8 +23,13 @@ module.exports = async (app, express) => {
     .use(require('morgan')('short'))
     .disable('x-powered-by')
 
+  app.use((req, res, next) => {
+    req.body = mapKeys(req.body, (value, key) => camelCase(key))
+    next()
+  })
+
   if (API_KEY) {
-    app.use('*', (req, res, next) => {
+    app.use((req, res, next) => {
       const apiKey = req.headers['x-api-key']
       return apiKey === API_KEY
         ? next()
