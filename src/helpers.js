@@ -27,7 +27,6 @@ const wrapAction = async ({fn, log, opts, onSuccess, onFail}) => {
 }
 
 const wrapRoute = fn => {
-  console.log(fn)
   const log = createLog({ keyword: fn.name })
   return async (req, res) => (
     wrapAction({
