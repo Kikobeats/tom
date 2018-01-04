@@ -1,0 +1,92 @@
+{
+  "name": "tom-microservice",
+  "description": "Tom does app things as microservice",
+  "homepage": "https://documentup.com/Kikobeats/tom-microservice",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "bin": {
+    "tom": "bin/index.js"
+  },
+  "author": {
+    "email": "josefrancisco.verdu@gmail.com",
+    "name": "Kiko Beats",
+    "url": "https://github.com/Kikobeats"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kikobeats/tom-microservice.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kikobeats/tom-microservice/issues"
+  },
+  "keywords": [
+    "microservice",
+    "payment",
+    "stripe",
+    "subscriptions"
+  ],
+  "dependencies": {
+    "acho": "~4.0.1",
+    "body-parser": "~1.18.2",
+    "clean-stack": "~1.3.0",
+    "compression": "~1.7.0",
+    "cors": "~2.8.4",
+    "deep-map": "~1.5.0",
+    "express": "~4.16.2",
+    "helmet": "~3.9.0",
+    "import-modules": "~1.1.0",
+    "jsendp": "~2.0.0",
+    "lodash": "~4.17.4",
+    "mailgen": "~2.0.2",
+    "meow": "~4.0.0",
+    "morgan": "~1.9.0",
+    "nodemailer": "~4.4.1",
+    "pupa": "~1.0.0",
+    "query-types": "~0.1.4",
+    "stripe": "~5.4.0",
+    "update-notifier": "~2.3.0"
+  },
+  "devDependencies": {
+    "coveralls": "latest",
+    "finepack": "latest",
+    "git-dirty": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "prettier-standard": "latest",
+    "standard": "latest",
+    "standard-markdown": "latest",
+    "svr": "latest"
+  },
+  "engines": {
+    "node": ">= 8"
+  },
+  "scripts": {
+    "clean": "rm -rf node_modules",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "dev": "svr src/routes",
+    "lint": "standard-markdown && standard",
+    "precommit": "lint-staged",
+    "precommit-lint": "prettier-standard",
+    "prelint": "npm run pretty",
+    "pretest": "npm run lint",
+    "pretty": "prettier-standard {core,test,bin}/**/*.js",
+    "start": "node src/server.js",
+    "test": "exit 0"
+  },
+  "license": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "precommit-lint",
+      "git add"
+    ],
+    "package.json": [
+      "finepack",
+      "git add"
+    ]
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
+  }
+}
