@@ -255,8 +255,6 @@ The email subject.
 
 ## Environment Variables
 
-### PORT
-
 ### API_KEY
 
 Type: `string` </br>
