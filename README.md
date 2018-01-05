@@ -133,7 +133,9 @@ payment:
 
 Emails will be sent using [nodemailer](https://github.com/nodemailer/nodemailer).
 
-For do that, you need to specify your `transporter`:
+Under non production scenario, you can view a preview of the email sent.
+
+First of all, you need to specify your `transporter`:
 
 ```yaml
 email:
@@ -189,9 +191,13 @@ email:
 
 ### payment
 
+![](https://i.imgur.com/lVsdsn7.png)
+
 <small>`POST /payment`</small>
 
 It handles your payment process, creating new customer and subscribe them to your pricing plans.
+
+You can connect it easily with your frontend using [Stripe Checkout](https://stripe.com/checkout).
 
 #### Data Params
   
@@ -216,6 +222,8 @@ Type: `string`
 If it is present, it will be generate a email notification as well, using the new customer information.
 
 ### email
+
+![](https://i.imgur.com/l13bRpK.png)
 
 <small>`POST /email`</small>
 
@@ -261,6 +269,8 @@ Type: `string` </br>
 Default: `undefined`
 
 When you provide it, all request to **tom** need to be authenticated using `x-api-key` header and the value provided.
+
+You can use [randomkeygen.com](https://randomkeygen.com) for that.
 
 ### PORT
 
