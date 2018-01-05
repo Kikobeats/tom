@@ -2,7 +2,7 @@
   "name": "tom-microservice",
   "description": "Tom does app things as microservice",
   "homepage": "https://documentup.com/Kikobeats/tom-microservice",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "src/index.js",
   "bin": {
     "tom": "bin/index.js"
@@ -20,11 +20,11 @@
     "url": "https://github.com/Kikobeats/tom-microservice/issues"
   },
   "keywords": [
+    "email",
     "microservice",
     "payment",
     "stripe",
-    "subscriptions",
-    "email"
+    "subscriptions"
   ],
   "dependencies": {
     "acho": "~4.0.1",
