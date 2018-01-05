@@ -1,7 +1,7 @@
 {
   "name": "tom-microservice",
   "description": "Tom does app things as microservice",
-  "homepage": "https://documentup.com/Kikobeats/tom-microservice",
+  "homepage": "https://tom.js.org",
   "version": "1.0.0",
   "main": "src/index.js",
   "bin": {
