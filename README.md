@@ -12,19 +12,7 @@
 [![NPM Status](https://img.shields.io/npm/dm/tom-microservice.svg?style=flat-square)](https://www.npmjs.org/package/tom-microservice)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/Kikobeats)
 
-> Tom does app things as microservice.
-
-When you build something, you need to do more things than you expected. 
-
-Things like:
-
-- Generate an user subscription plan for your product.
-- Associate the plan with a new customer.
-- Send welcome emails.
-- *Add your boring user case here*
-- etc
-
-**tom** helps you solve doing this actions as microservice without excuses.
+> **tom** is a tiny microservice for handle the payment process of your application.
 
 ## Install
 
