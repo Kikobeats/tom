@@ -10,7 +10,9 @@ const pkg = require('../package.json')
 const loadCommand = require('../src')
 const logo = require('./logo')
 
-require('update-notifier')({ pkg }).notify()
+const isProduction = process.env.NODE_ENV === 'production'
+
+if (!isProduction) require('update-notifier')({ pkg }).notify()
 
 const cli = require('meow')(require('./help'), {
   pkg,
