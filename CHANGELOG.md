@@ -1,3 +1,10 @@
+<a name="1.0.2"></a>
+## 1.0.2 (2018-01-05)
+
+* Avoid load update-notifier on production scenarios ([13c0e68](https://github.com/kikobeats/tom-microservice/commit/13c0e68))
+
+
+
 <a name="1.0.1"></a>
 ## 1.0.1 (2018-01-05)
 
