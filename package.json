@@ -2,7 +2,7 @@
   "name": "tom-microservice",
   "description": "Tom does app things as microservice",
   "homepage": "https://tom.js.org",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "src/index.js",
   "bin": {
     "tom": "bin/index.js"

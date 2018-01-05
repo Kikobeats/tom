@@ -1,3 +1,11 @@
+<a name="1.0.1"></a>
+## 1.0.1 (2018-01-05)
+
+* Update README.md ([b583ad5](https://github.com/kikobeats/tom-microservice/commit/b583ad5))
+* Update website ([1fdbbc0](https://github.com/kikobeats/tom-microservice/commit/1fdbbc0))
+
+
+
 <a name="1.0.0"></a>
 # 1.0.0 (2018-01-05)
 
