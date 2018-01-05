@@ -16,5 +16,5 @@ module.exports = ({ copyright = true, header, description } = {}) => {
   let str = logo
   if (header) str = str + '\n' + header
   if (description) str = str + '\n' + description
-  return str
+  return str + '\n'
 }
