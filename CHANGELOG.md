@@ -1,3 +1,10 @@
+<a name="1.0.3"></a>
+## 1.0.3 (2018-01-05)
+
+* Avoid authenticate ping requests ([ca4100e](https://github.com/kikobeats/tom-microservice/commit/ca4100e))
+
+
+
 <a name="1.0.2"></a>
 ## 1.0.2 (2018-01-05)
 
