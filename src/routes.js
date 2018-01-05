@@ -23,6 +23,11 @@ module.exports = async (app, express) => {
     .use(require('morgan')('short'))
     .disable('x-powered-by')
 
+  app.get('/', (req, res) => res.send(''))
+  app.get('/robots.txt', (req, res) => res.send(''))
+  app.get('/favicon.txt', (req, res) => res.send(''))
+  app.get('/ping', (req, res) => res.send('pong'))
+
   app.use((req, res, next) => {
     req.body = mapKeys(req.body, (value, key) => camelCase(key))
     next()
@@ -40,8 +45,6 @@ module.exports = async (app, express) => {
     })
   }
 
-  app.get('/', (req, res) => res.send(''))
-  app.get('/ping', (req, res) => res.send('pong'))
   app.post('/payment', wrapRoute(payment))
   app.post('/email', wrapRoute(email))
 
