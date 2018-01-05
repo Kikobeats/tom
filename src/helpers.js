@@ -19,7 +19,6 @@ const wrapAction = async ({fn, log, opts, onSuccess, onFail}) => {
     const info = await fn(opts)
     log.debug(info)
     onSuccess()
-    process.exit(0)
   } catch (err) {
     printError({log, err})
     onFail(err)
