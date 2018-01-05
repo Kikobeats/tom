@@ -1041,7 +1041,8 @@ body {
   color: #7f8c8d;
 }
 
-.markdown-section p code {
+.markdown-section p code,
+.markdown-section li code {
   color: var(--codebox-token-var-color);
   border: 1px solid var(--codebox-border-color);
   font-size: 0.75rem;
