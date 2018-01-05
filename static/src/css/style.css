@@ -137,7 +137,7 @@
   --secondary-color: var(--indigo9);
   --text-color: hsl(53, 81%, 4%);
   --text-bold-color: var(--indigo5);
-  --sidebar-color: #887992;
+  --sidebar-color: var(--indigo3);
   --sidebar-active-color: var(--indigo5);
   --bg-color: var(--gray0);
   --serif-font: 'Bitter', serif;
