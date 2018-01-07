@@ -22,6 +22,8 @@ $ npm install tom-microservice
 
 ## Usage
 
+**tom** creates customers, subscriptions plans & send notifications.
+
 You can consume **tom** from different ways.
 
 ## as microservice
@@ -88,6 +90,8 @@ You can define the configuration file via:
 - A `tom.config.js` file that exports an object.
 - A `tom` key in your package.json file.
 
+You can combine it with [config](https://www.npmjs.com/package/config) to get different configurations based on environments.
+
 A **tom** configuration file need to have the followings properties:
 
 ### company
@@ -152,15 +156,16 @@ email:
   templates:
     payment_success:
       subject: Welcome to {company.site}
+      from:
+        - "{company.email}"
+      bcc:
+        - "{company.email}"
       body:
         greeting: Hello
         signature: Regards
         intro:
-          - Welcome to {company.site}!
-          - We're very excited to have you on board.
-          - We are processing your API request. You will receive a new email in the next 24 hours with the API key.
-        outro:
-          - Need help, or have questions? Just reply to this email, we'd love to help.
+          - Welcome to {company.site} and thanks for signing up! We really appreciate it.
+          - We are creating your API credentials. You will receive a new email in the next 24 hours with the API key.
 
     send_api_key:
       subject: Your API Key
@@ -217,7 +222,7 @@ If it is present, it will be generate a email notification as well, using the ne
 
 It sends transactional emails based on templates.
 
-Under non production scenario, It will be generate a preview of the email sent.
+Under non production scenario, you can use [ethereal](https://ethereal.email/) as transporter and it will be generate a preview of the email sent.
 
 #### Data Params
 
@@ -231,9 +236,9 @@ The mail template to use declared on your configuration file.
 ##### from
 
 type: `string`</br>
-default: `config.company.email`
+default: `onfig.email.templates[template].from`
 
-The creator of the mail
+The creator of the mail.
   
 ##### to
 
@@ -242,12 +247,35 @@ default: `company.email`
 
 The recipients of the mail.
 
+##### cc
+
+type: `array`</br>
+default: `config.email.templates[template].cc`
+
+Carbon copy recipients of the mail.
+
+##### bcc
+
+type: `array`</br>
+default: `config.email.templates[template].cc`
+
+Blind carbon copy recipients of the mail.
+
 ##### subject
 
 type: `string`</br>
-default: `config.email.templates[template]subject`
+default: `config.email.templates[template].subject`
 
 The email subject.
+
+##### attachments
+
+type: `array`</br>
+default: `req.body.attachments`
+
+An array of attachment objects (see [nodemailer#attachments](https://nodemailer.com/message/attachments/) for details).
+
+Attachments can be used for embedding images as well.
 
 ## Environment Variables
 
