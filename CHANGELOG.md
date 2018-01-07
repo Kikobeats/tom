@@ -1,3 +1,11 @@
+<a name="1.0.4"></a>
+## 1.0.4 (2018-01-07)
+
+* Improve email support ([6912046](https://github.com/kikobeats/tom-microservice/commit/6912046))
+* Update README.md ([ed31c70](https://github.com/kikobeats/tom-microservice/commit/ed31c70))
+
+
+
 <a name="1.0.3"></a>
 ## 1.0.3 (2018-01-05)
 
