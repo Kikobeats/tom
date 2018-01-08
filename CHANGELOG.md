@@ -1,3 +1,11 @@
+<a name="1.0.5"></a>
+## 1.0.5 (2018-01-08)
+
+* Send 204 status code instead of 200 and empty content ([00b5b67](https://github.com/kikobeats/tom-microservice/commit/00b5b67))
+* Update copy ([0144477](https://github.com/kikobeats/tom-microservice/commit/0144477))
+
+
+
 <a name="1.0.4"></a>
 ## 1.0.4 (2018-01-07)
 

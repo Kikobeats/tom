@@ -2,7 +2,7 @@
   "name": "tom-microservice",
   "description": "tom is a tiny microservice for handle the payment process of your application.",
   "homepage": "https://tom.js.org",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "src/index.js",
   "bin": {
     "tom": "bin/index.js"
