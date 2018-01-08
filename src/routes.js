@@ -23,9 +23,9 @@ module.exports = async (app, express) => {
     .use(require('morgan')('short'))
     .disable('x-powered-by')
 
-  app.get('/', (req, res) => res.send(''))
-  app.get('/robots.txt', (req, res) => res.send(''))
-  app.get('/favicon.txt', (req, res) => res.send(''))
+  app.get('/', (req, res) => res.status(204).send())
+  app.get('/robots.txt', (req, res) => res.status(204).send())
+  app.get('/favicon.txt', (req, res) => res.status(204).send())
   app.get('/ping', (req, res) => res.send('pong'))
 
   app.use((req, res, next) => {
