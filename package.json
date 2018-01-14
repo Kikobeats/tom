@@ -64,7 +64,9 @@
     "prettier-standard": "latest",
     "standard": "latest",
     "standard-markdown": "latest",
-    "svr": "latest"
+    "svr": "latest",
+    "browser-sync": "latest",
+    "concurrently": "latest"
   },
   "engines": {
     "node": ">= 8"

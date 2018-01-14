@@ -1,9 +1,0 @@
-{
-  "name": "pdf-microservice",
-  "description": "Get the PDF version of a website as service",
-  "repository": "https://github.com/Kikobeats/pdf-microservice",
-  "keywords": [
-    "microservice",
-    "pdf"
-  ]
-}
