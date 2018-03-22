@@ -1,16 +1,15 @@
 'use strict'
 
 const bodyParser = require('body-parser')
-const {mapKeys, camelCase} = require('lodash')
-const commands = require('../src')
+const { forEach, mapKeys, camelCase } = require('lodash')
 
-const {loadConfig, wrapRoute} = require('../src/helpers')
+const { loadConfig, wrapRoute } = require('../src/helpers')
+const createCommands = require('../src')
 
-const {API_KEY} = process.env
+const { API_KEY } = process.env
 
 module.exports = async (app, express) => {
   const config = await loadConfig()
-  const {payment, email} = commands(config)
 
   app
     .use(require('helmet')())
@@ -45,13 +44,25 @@ module.exports = async (app, express) => {
     })
   }
 
-  app.post('/payment', wrapRoute(payment))
-  app.post('/email', wrapRoute(email))
+  const commands = createCommands(config)
 
-  app.use((req, res) => res.fail({
-    statusCode: 405,
-    message: 'HTTP Method Not Allowed'
-  }))
+  forEach(commands, (subCommands, commandName) => {
+    forEach(subCommands, (subCommandFn, subCommandName) => {
+      const route = `/${commandName}/${subCommandName}`
+      const fn = wrapRoute({
+        fn: subCommandFn,
+        keyword: `${commandName}.${subCommandName}`
+      })
+      app.post(route, fn)
+    })
+  })
+
+  app.use((req, res) =>
+    res.fail({
+      statusCode: 405,
+      message: 'HTTP Method Not Allowed'
+    })
+  )
 
   return app
 }

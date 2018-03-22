@@ -186,13 +186,17 @@ email:
 
 ![](https://i.imgur.com/lVsdsn7.png)
 
-<small>`POST /payment`</small>
+It handles all the logic related to subscription creation related to users.
+
+#### create
+
+<small>`POST /payment/create`</small>
 
 It handles your payment process, creating new customer and subscribe them to your pricing plans.
 
 You can connect it easily with your frontend using [Stripe Checkout](https://stripe.com/checkout).
 
-#### Data Params
+#### Data Parameters
   
 ##### plan
 
@@ -214,11 +218,15 @@ Type: `string`
 
 If it is present, it will be generate a email notification as well, using the new customer information.
 
-### email
+### notification
 
 ![](https://i.imgur.com/l13bRpK.png)
 
-<small>`POST /email`</small>
+It handles all the logic related with notify users
+
+#### email
+
+<small>`POST /notification/email`</small>
 
 It sends transactional emails based on templates.
 

@@ -1,8 +1,19 @@
 'use strict'
 
 const importModules = require('import-modules')
-const {mapValues} = require('lodash')
+const { mapValues } = require('lodash')
 
-const commands = importModules('./commands')
+const COMMANDS = ['notification', 'payment']
 
-module.exports = config => mapValues(commands, command => command(config))
+const loadCommand = ({ config, folderPath, commands }) =>
+  mapValues(importModules(folderPath), command => command({ commands, config }))
+
+module.exports = config =>
+  COMMANDS.reduce((acc, command) => {
+    acc[command] = loadCommand({
+      folderPath: `./commands/${command}`,
+      commands: acc,
+      config
+    })
+    return acc
+  }, {})

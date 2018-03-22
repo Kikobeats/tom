@@ -2,7 +2,7 @@
 
 'use strict'
 
-const { keys, includes } = require('lodash')
+const { get, keys, includes } = require('lodash')
 
 const { createLog, loadConfig, wrapAction } = require('../src/helpers')
 const createServer = require('./server')
@@ -60,10 +60,10 @@ const cli = require('meow')(require('./help'), {
   const config = await loadConfig(cli.flags.config)
   const commands = loadCommand(config)
 
-  if (!includes(keys(commands), command)) return cli.showHelp()
+  const fn = get(commands, command)
+  if (!fn) return cli.showHelp()
 
-  const fn = commands[command]
-  const log = createLog({ keyword: fn.name })
+  const log = createLog({ keyword: command })
 
   return wrapAction({
     fn,
