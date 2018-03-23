@@ -6,19 +6,19 @@ module.exports = ({ config, commands }) => {
   const stripe = createStripe(config.payment.stripe_key)
   const { email: sendEmail } = commands.notification
 
-  const payment = async ({ token, plan, emailTemplate: template }) => {
+  const payment = async ({ token, userId: id, emailTemplate: template }) => {
     if (!token) throw TypeError('Need to provide a valid `token`.')
-    if (!plan) throw TypeError('Need to specify a `plan` to use.')
+    if (!id) throw TypeError('Need to specify an user `id`.')
 
-    const { email, id: source } = token
-    const customer = await stripe.customers.create({ email, source })
-    const data = await stripe.subscriptions.create({
-      customer: customer.id,
-      plan
-    })
+    const { id: source } = token
+    await stripe.customers.update(id, { source })
+
+    const { email } = await stripe.customers.retrieve(id)
+    if (!email) { throw TypeError('Not found the `email` associated with the customer.') }
+
     const logEmail = template ? await sendEmail({ template, to: email }) : {}
+    const log = Object.assign({}, { email }, logEmail)
 
-    const log = Object.assign({}, { email, planId: data.plan.id }, logEmail)
     return log
   }
 

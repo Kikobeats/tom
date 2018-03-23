@@ -2,7 +2,7 @@
 
 'use strict'
 
-const { get, keys, includes } = require('lodash')
+const { get } = require('lodash')
 
 const { createLog, loadConfig, wrapAction } = require('../src/helpers')
 const createServer = require('./server')
