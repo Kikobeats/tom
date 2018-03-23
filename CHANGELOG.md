@@ -1,3 +1,13 @@
+<a name="1.1.0"></a>
+# 1.1.0 (2018-03-23)
+
+* Add update payment support ([f2b02ef](https://github.com/kikobeats/tom-microservice/commit/f2b02ef))
+* Auto generate commands based on scaffold ([1bd7bdf](https://github.com/kikobeats/tom-microservice/commit/1bd7bdf))
+* Tweaks ([eb4d684](https://github.com/kikobeats/tom-microservice/commit/eb4d684))
+* Update deps ([35c16f6](https://github.com/kikobeats/tom-microservice/commit/35c16f6))
+
+
+
 <a name="1.0.5"></a>
 ## 1.0.5 (2018-01-08)
 
