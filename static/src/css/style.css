@@ -514,6 +514,7 @@ main {
 body.sticky .sidebar,
 body.sticky .sidebar-toggle {
   position: fixed;
+  cursor: pointer;
 }
 
 .content {
