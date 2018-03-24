@@ -1,7 +1,5 @@
-# tom-microservice
-
 <p align="center">
-  <img src="https://i.imgur.com/qrr67O7.png" alt="tom">
+  <img src="/static/logo.png" alt="tom" style="width: 400px;">
   <br>
 </p>
 
@@ -12,7 +10,7 @@
 [![NPM Status](https://img.shields.io/npm/dm/tom-microservice.svg?style=flat-square)](https://www.npmjs.org/package/tom-microservice)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/Kikobeats)
 
-> **tom** is a tiny microservice for handle the payment process of your application.
+> **tom** creates customers, subscriptions plans & send notifications.
 
 ## Install
 
@@ -30,20 +28,7 @@ You can consume **tom** from different ways.
 
 Just execute `tom` and the server will be start:
 
-```bash
-$ tom
-
-    ___       ___       ___
-   /\  \     /\  \     /\__\
-   \:\  \   /::\  \   /::L_L_
-   /::\__\ /:/\:\__\ /:/L:\__\
-  /:/\/__/ \:\/:/  / \/_/:/  /
-  \/__/     \::/  /    /:/  /
-             \/__/     \/__/
-
-  tom microservice is running
-  http://localhost:3000
-```
+![](https://i.imgur.com/qrr67O7.png)  
 
 To view details for a command at any time use `tom --help`
 

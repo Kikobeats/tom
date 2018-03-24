@@ -1,5 +1,5 @@
 window.$docsify = {
-  name: 'tom microservice',
+  name: 'tom',
   repo: 'kikobeats/tom-microservice',
   maxLevel: 3,
   executeScript: true,
