@@ -26,7 +26,7 @@ $ npm install tom-microservice
 
 You can consume **tom** from different ways.
 
-## as microservice
+### as microservice
 
 Just execute `tom` and the server will be start:
 
@@ -57,7 +57,7 @@ Also declare it as part of your npm scripts:
 }
 ```
 
-## from CLI
+### from CLI
 
 You can execute `tom` as CLI to resolve the same functionality than the microservice endpoint:
 
@@ -67,7 +67,7 @@ $ tom --command=email --template=welcome --to=hello@kikobeats.com --subject='hel
 
 To view details for a command at any time use `tom --help`
 
-## from Node.js
+### from Node.js
 
 ```js
 // First of all you need to declare a configuration file.
@@ -76,7 +76,7 @@ const config = {/* See configuration section */}
 // Pass configuration file to `tom-microservice` module.
 const tom = require('tom-microservice')(config)
 
-// Now you can access `tom` modules
+// Now you can access `tom` commands
 const {payment, email} = tom
 ```
 
@@ -182,15 +182,15 @@ email:
 
 ## Commands
 
-### payment
+### /payment
 
 ![](https://i.imgur.com/lVsdsn7.png)
 
 It handles all the logic related to subscription creation related to users.
 
-#### create
+#### /payment/create
 
-<small>`POST /payment/create`</small>
+<small>`POST`</small>
 
 It handles your payment process, creating new customer and subscribe them to your pricing plans.
 
@@ -221,9 +221,9 @@ Type: `string`
 
 If it is present, it will be generate a email notification as well, using the new customer information.
 
-#### update
+#### /payment/update
 
-<small>`POST /payment/update`</small>
+<small>`POST`</small>
 
 It will associate a new card with a customer.
 
@@ -251,15 +251,15 @@ Type: `string`
 
 If it is present, it will be generate a email notification as well, using the new customer information.
 
-### notification
+### /notification
 
 ![](https://i.imgur.com/l13bRpK.png)
 
 It handles all the logic related with notify users
 
-#### email
+#### /notification/email
 
-<small>`POST /notification/email`</small>
+<small>`POST`</small>
 
 It sends transactional emails based on templates.
 
