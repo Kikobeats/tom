@@ -1019,6 +1019,7 @@ body {
 
 .markdown-section ol,
 .markdown-section ul {
+  margin: 2rem 0;
   padding-left: 1.5rem;
 }
 
