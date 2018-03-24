@@ -1,3 +1,12 @@
+<a name="1.1.1"></a>
+## 1.1.1 (2018-03-24)
+
+* Adjust doc style ([e9d6fbf](https://github.com/kikobeats/tom-microservice/commit/e9d6fbf))
+* Improve branding ([e5f6dc6](https://github.com/kikobeats/tom-microservice/commit/e5f6dc6))
+* Update README.md ([f876872](https://github.com/kikobeats/tom-microservice/commit/f876872))
+
+
+
 <a name="1.1.0"></a>
 # 1.1.0 (2018-03-23)
 
