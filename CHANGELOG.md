@@ -1,3 +1,13 @@
+<a name="1.1.2"></a>
+## 1.1.2 (2018-05-10)
+
+* Add copy clipboard button ([2183058](https://github.com/kikobeats/tom-microservice/commit/2183058))
+* Add list space ([471716f](https://github.com/kikobeats/tom-microservice/commit/471716f))
+* Update ([f64c266](https://github.com/kikobeats/tom-microservice/commit/f64c266))
+* Update deps ([220b946](https://github.com/kikobeats/tom-microservice/commit/220b946))
+
+
+
 <a name="1.1.1"></a>
 ## 1.1.1 (2018-03-24)
 
