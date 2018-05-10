@@ -38,7 +38,7 @@ const wrapRoute = ({ fn, keyword }) => {
 }
 
 const loadConfig = async (cwd = process.cwd()) => {
-  const { config } = (await cosmiconfig.load(cwd)) || {}
+  const { config } = (await cosmiconfig.search(cwd)) || {}
   return config
 }
 
