@@ -1,3 +1,10 @@
+<a name="1.1.3"></a>
+## 1.1.3 (2018-05-11)
+
+* Style tweaks ([37c9ac4](https://github.com/kikobeats/tom-microservice/commit/37c9ac4))
+
+
+
 <a name="1.1.2"></a>
 ## 1.1.2 (2018-05-10)
 
