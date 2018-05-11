@@ -15,7 +15,7 @@ module.exports = ({ config, commands }) => {
   const mailGenerator = new Mailgen({
     theme: config.email.theme,
     product: {
-      name: config.company.name,
+      name: config.company.site,
       link: config.company.link,
       logo: config.company.logo,
       copyright: config.company.copyright
@@ -27,10 +27,14 @@ module.exports = ({ config, commands }) => {
   const email = async opts => {
     const { template: templateName, to } = opts
     if (!templateName) throw TypeError('Need to specify a `template` to use.')
-    if (!to) { throw TypeError('Need to specify at least one destination as `to`.') }
+    if (!to) {
+      throw TypeError('Need to specify at least one destination as `to`.')
+    }
 
     const template = templates[templateName]
-    if (!template) { throw TypeError(`Template '${templateName}' doest not exist.`) }
+    if (!template) {
+      throw TypeError(`Template '${templateName}' doest not exist.`)
+    }
 
     const templateOpts = Object.assign({}, config, { props: opts })
     const compiledTemplate = compileTemplate(template, templateOpts)
