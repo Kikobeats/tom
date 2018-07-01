@@ -27,26 +27,26 @@
     "subscriptions"
   ],
   "dependencies": {
-    "acho": "~4.0.1",
-    "body-parser": "~1.18.2",
+    "acho": "~4.0.2",
+    "body-parser": "~1.18.3",
     "chalk": "~2.4.1",
     "clean-stack": "~1.3.0",
     "compression": "~1.7.2",
     "cors": "~2.8.4",
-    "cosmiconfig": "~5.0.2",
+    "cosmiconfig": "~5.0.5",
     "deep-map": "~1.5.0",
     "express": "~4.16.3",
-    "helmet": "~3.12.0",
+    "helmet": "~3.12.1",
     "import-modules": "~1.1.0",
     "jsendp": "~2.0.0",
     "lodash": "~4.17.10",
     "mailgen": "~2.0.5",
     "meow": "~5.0.0",
     "morgan": "~1.9.0",
-    "nodemailer": "~4.6.4",
+    "nodemailer": "~4.6.7",
     "pupa": "~1.0.0",
     "query-types": "~0.1.4",
-    "stripe": "~5.9.0",
+    "stripe": "~6.2.0",
     "update-notifier": "~2.5.0"
   },
   "devDependencies": {
@@ -62,6 +62,7 @@
     "gulp-strip-css-comments": "latest",
     "gulp-uglify": "latest",
     "husky": "latest",
+    "imagemin-lint-staged": "latest",
     "lint-staged": "latest",
     "prettier-standard": "latest",
     "standard": "latest",
@@ -97,6 +98,14 @@
     ],
     "package.json": [
       "finepack",
+      "git add"
+    ],
+    "*.md": [
+      "standard-markdown",
+      "git add"
+    ],
+    "*.{png,jpeg,jpg,gif,svg}": [
+      "imagemin-lint-staged",
       "git add"
     ]
   },

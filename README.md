@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="/static/logo.png" alt="tom" style="max-width: 400px;">
+  <svg width="152" height="181" viewBox="0 0 152 181" xmlns="http://www.w3.org/2000/svg"><g transform="translate(1)" stroke="#f8aea4" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><circle stroke-width="2" cx="67.459" cy="97.686" r="66.526"/><path d="M65.15 164.212s-4.873 1.037-4.873 8.029c0 6.991 7.182 7.65 7.182 7.65 45.4 0 82.203-36.804 82.203-82.203 0 0 1.533-9.768-7.393-9.768-8.927 0-8.286 6.567-8.286 6.567" stroke-width="2"/><path d="M86.019 148.724v-4.767s.317-11.44-13.348-11.44h-30.19c-5.72 0-21.293-1.59-21.293-15.573V94.698h24.47s14.62 0 14.62-11.44V63.872h33.686s16.843-.318 16.843 19.703v31.144s-.954 8.263-12.394 8.263c-11.441 0-10.488-11.44-10.488-11.44V85.8" stroke-width="2"/><circle stroke-width="2" cx="75.374" cy="87.918" r="2.225"/><path d="M42.48 132.516s13.984-2.224 15.255-17.639" stroke-width="2"/><path d="M19.442 76.106s8.422-31.622 43.22-33.844"/><path d="M110.807 112.07h11.972" stroke-width="2"/><circle stroke-width="2" cx="133.986" cy="6.084" r="4.21"/><path d="M133.986 94.485V12.712" stroke-width="2"/></g></svg>
+  <br>
   <br>
 </p>
 
@@ -10,7 +11,14 @@
 [![NPM Status](https://img.shields.io/npm/dm/tom-microservice.svg?style=flat-square)](https://www.npmjs.org/package/tom-microservice)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/Kikobeats)
 
-> **tom** creates customers, subscriptions plans & send notifications.
+**tom** is your side project backoffice as microservice:
+
+- It processes payment via [Stripe](https://stripe.com).
+- It creates new customers and associate your pricing plans.
+- It subscribes customers into plans.
+- It sends transactional emails.
+
+**tom** does the things you do not want to do, it's your best friend 🐶.
 
 ## Install
 
@@ -185,7 +193,7 @@ You can connect it easily with your frontend using [Stripe Checkout](https://str
 
 
 #### Data Parameters
-  
+
 ##### plan
 
 *Required*</br>
@@ -265,7 +273,7 @@ type: `string`</br>
 default: `onfig.email.templates[template].from`
 
 The creator of the mail.
-  
+
 ##### to
 
 type: `array`</br>
@@ -324,6 +332,9 @@ The port to uses for run the HTTP microservice.
 ## License
 
 **tom-microservice** © [Kiko Beats](https://kikobeats.com), Released under the [MIT](https://github.com/Kikobeats/tom-microservice/blob/master/LICENSE.md) License.<br>
+
+Spaceman logo by [Nook Fulloption](https://thenounproject.com/term/spaceman/854189) from [the Noun Project](https://thenounproject.com/search/?q=dog%20spaceman&i=854189#).
+
 Authored and maintained by Kiko Beats with help from [contributors](https://github.com/Kikobeats/tom-microservice/contributors).
 
 > [kikobeats.com](https://kikobeats.com) · GitHub [@Kiko Beats](https://github.com/Kikobeats) · Twitter [@Kikobeats](https://twitter.com/Kikobeats)
