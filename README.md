@@ -34,11 +34,11 @@ You can consume **tom** from different ways.
 
 ### as microservice
 
-Just execute `tom` and the server will be start:
+Just execute `tom` and the server will start:
 
 ![](https://i.imgur.com/qrr67O7.png)  
 
-To view details for a command at any time use `tom --help`
+To see details of a command use `tom --help`
 
 Also declare it as part of your npm scripts:
 
