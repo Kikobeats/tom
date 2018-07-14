@@ -143,7 +143,7 @@
   --serif-font: 'Bitter', serif;
   --sans-serif-font: -apple-system, BlinkMacSystemFont, sans-serif;
   --code-font: Nitti, 'Microsoft YaHei', 微软雅黑, monospace;
-  --code-color: var(--cyan6);
+  --code-color: var(--cyan7);
   --code-border-color: var(--cyan9);
   --code-token-var-color: var(--code-color);
   --code-token-string-color: var(--code-color);;
@@ -974,6 +974,32 @@ body {
 .markdown-section h5 a:hover,
 .markdown-section h6 a:hover {
   text-decoration: underline;
+  opacity: 1;
+}
+
+.markdown-section h1 a,
+.markdown-section h2 a,
+.markdown-section h3 a,
+.markdown-section h4 a,
+.markdown-section h5 a,
+.markdown-section h6 a {
+  border: 0;
+  transition: none;
+}
+
+.markdown-section a[href^="https://travis-ci.org"],
+.markdown-section a[href^="https://paypal.me"],
+.markdown-section a[href^="https://www.npmjs.org"],
+.markdown-section a[href^="https://david-dm.org"]  {
+  border: 0;
+  transition: none;
+}
+
+.markdown-section a[href^="https://travis-ci.org"]:hover,
+.markdown-section a[href^="https://paypal.me"]:hover,
+.markdown-section a[href^="https://www.npmjs.org"]:hover,
+.markdown-section a[href^="https://david-dm.org"]:hover  {
+  opacity: 1;
 }
 
 .markdown-section strong {
@@ -983,17 +1009,6 @@ body {
 }
 
 .markdown-section a {
-  text-decoration: none;
-  color: var(--text-bold-color);
-}
-
-.markdown-section a:hover {
-  text-decoration: none;
-  color: var(--text-bold-color);
-}
-
-.markdown-section p a :not(img),
-.markdown-section ul a {
   color: var(--text-bold-color);
   font-weight: 600;
   text-decoration: none;
@@ -1004,8 +1019,7 @@ body {
   opacity:1;
 }
 
-.markdown-section p a :not(img) :hover,
-.markdown-section ul a:hover {
+.markdown-section a:hover {
   opacity:.5
 }
 
@@ -1073,7 +1087,7 @@ body {
 }
 
 .markdown-section em {
-  color: #7f8c8d;
+  color: #6a6c6f;
 }
 
 .markdown-section p code,
