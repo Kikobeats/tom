@@ -143,10 +143,10 @@
   --serif-font: 'Bitter', serif;
   --sans-serif-font: -apple-system, BlinkMacSystemFont, sans-serif;
   --code-font: Nitti, 'Microsoft YaHei', 微软雅黑, monospace;
-  --codebox-border-color: var(--red4);
-  --codebox-color: var(--primary-color);
-  --codebox-token-var-color: var(--primary-color);
-  --codebox-token-string-color: var(--primary-color);
+  --code-color: var(--cyan6);
+  --code-border-color: var(--cyan9);
+  --code-token-var-color: var(--code-color);
+  --code-token-string-color: var(--code-color);;
   --primary-font-size: 18px;
   --secondary-font-size: 16px;
 }
@@ -1078,8 +1078,8 @@ body {
 
 .markdown-section p code,
 .markdown-section li code {
-  color: var(--codebox-token-var-color);
-  border: 1px solid var(--codebox-border-color);
+  color: var(--code-token-var-color);
+  border: 1px solid var(--code-border-color);
   font-size: var(--secondary-font-size);
   padding: 3px 10px;
   border-radius: 3px;
@@ -1101,7 +1101,7 @@ body {
 }
 
 .markdown-section pre {
-  border: 1px solid var(--codebox-border-color);
+  border: 1px solid var(--code-border-color);
   border-radius: 4px;
   -moz-osx-font-smoothing: initial;
   -webkit-font-smoothing: initial;
@@ -1117,7 +1117,7 @@ body {
 .token.comment,
 .token.doctype,
 .token.prolog {
-  color: #8e908c;
+  color: #6a6c6f;
 }
 
 .token.namespace {
@@ -1142,7 +1142,7 @@ body {
 }
 
 .token.string {
-  color: var(--codebox-token-string-color);
+  color: var(--code-token-string-color);
 }
 
 .token.selector {
@@ -1169,7 +1169,7 @@ body {
 }
 
 .token.keyword {
-  color: var(--codebox-token-var-color);
+  color: var(--code-token-var-color);
 }
 
 .token.atrule,
@@ -1214,7 +1214,7 @@ body {
   -webkit-font-smoothing: initial;
   background-color: var(--bg-color);
   border-radius: 2px;
-  color: var(--codebox-color);
+  color: var(--code-color);
   display: block;
   font-family: var(--code-font);
   font-size: var(--secondary-font-size);
