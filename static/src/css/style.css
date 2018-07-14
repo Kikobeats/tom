@@ -242,7 +242,6 @@ body {
   font-size: var(--primary-font-size);
   letter-spacing: 0;
   margin: 0;
-  overflow-x: hidden;
 }
 
 img {
@@ -375,7 +374,7 @@ li input[type='checkbox'] {
   right: 0;
   text-decoration: none;
   top: 0;
-  z-index: 1;
+  z-index: 5;
 }
 
 .github-corner svg {
@@ -394,7 +393,6 @@ li input[type='checkbox'] {
 main {
   display: block;
   position: relative;
-  width: 100vw;
   height: 100%;
   z-index: 0;
 }
@@ -495,7 +493,6 @@ main {
 }
 
 .sidebar-toggle {
-  background-color: transparent;
   background-color: var(--bg-color);
   border: 0;
   outline: none;
@@ -509,19 +506,25 @@ main {
   width: 30px;
   width: 284px;
   z-index: 4;
+  opacity: 1;
 }
 
-.sidebar-toggle .sidebar-toggle-button:hover {
-  opacity: 0.4;
+.sidebar-toggle-button {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+body.close .sidebar-toggle,
+.sidebar-toggle-button:hover {
+  opacity: 0.6;
 }
 
 .sidebar-toggle span {
-  background-color: #42b983;
   background-color: var(--primary-color);
   display: block;
-  margin-bottom: 4px;
-  width: 16px;
-  height: 2px;
+  margin-bottom: 5px;
+  width: 24px;
+  height: 3px;
 }
 
 body.sticky .sidebar,
@@ -694,9 +697,14 @@ body.close .content {
     transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
   }
 
+  body.close .sidebar-toggle{
+    background-color: var(--bg-color);
+  }
+
   .sidebar-toggle {
-    background-color: transparent;
-    width: auto;
+    top: 0;
+    bottom: inherit;
+    width: 100%;
   }
 
   body.close .sidebar {
@@ -705,9 +713,6 @@ body.close .content {
   }
 
   body.close .sidebar-toggle {
-    background-color: hsla(0, 0%, 100%, 0.8);
-    -webkit-transition: background-color 1s;
-    transition: background-color 1s;
     width: 284px;
   }
 
