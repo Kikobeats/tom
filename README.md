@@ -313,7 +313,16 @@ Attachments can be used for embedding images as well.
 
 ## Environment Variables
 
-### API_KEY
+### TOM_ALLOWED_ORIGIN
+
+Type: `boolean`|`string`|`regex`|`array` </br>
+Default: `'*'`
+
+It configures the `Access-Control-Allow-Origin` CORS.
+
+See [cors](https://github.com/expressjs/cors#configuration-options) for more information.
+
+### TOM_API_KEY
 
 Type: `string` </br>
 Default: `undefined`
@@ -322,7 +331,7 @@ When you provide it, all request to **tom** need to be authenticated using `x-ap
 
 You can use [randomkeygen.com](https://randomkeygen.com) for that.
 
-### PORT
+### TOM_PORT
 
 Type: `number` </br>
 Default: `3000`

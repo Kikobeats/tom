@@ -1,12 +1,12 @@
 'use strict'
 
-const bodyParser = require('body-parser')
 const { forEach, mapKeys, camelCase } = require('lodash')
+const bodyParser = require('body-parser')
 
-const { loadConfig, wrapRoute } = require('../src/helpers')
-const createCommands = require('../src')
+const { loadConfig, wrapRoute } = require('./helpers')
+const createCommands = require('.')
 
-const { API_KEY } = process.env
+const { TOM_API_KEY, TOM_ALLOWED_ORIGIN = '*' } = process.env
 
 module.exports = async (app, express) => {
   const config = await loadConfig()
@@ -15,7 +15,19 @@ module.exports = async (app, express) => {
     .use(require('helmet')())
     .use(require('jsendp')())
     .use(require('compression')())
-    .use(require('cors')())
+    .use(
+      require('cors')({
+        origin: TOM_ALLOWED_ORIGIN,
+        allowedHeaders: [
+          'content-type',
+          'x-amz-date',
+          'authorization',
+          'x-api-key',
+          'x-amz-security-token',
+          'x-csrf-token'
+        ]
+      })
+    )
     .use(require('query-types').middleware())
     .use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json())
@@ -32,10 +44,10 @@ module.exports = async (app, express) => {
     next()
   })
 
-  if (API_KEY) {
+  if (TOM_API_KEY) {
     app.use((req, res, next) => {
       const apiKey = req.headers['x-api-key']
-      return apiKey === API_KEY
+      return apiKey === TOM_API_KEY
         ? next()
         : res.fail({
           statusCode: 401,

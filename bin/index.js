@@ -21,7 +21,7 @@ const cli = require('meow')(require('./help'), {
     port: {
       type: 'number',
       alias: 'p',
-      default: process.env.PORT || 3000
+      default: process.env.TOM_PORT || 3000
     },
     silent: {
       alias: 's',
