@@ -16,8 +16,8 @@ test('notification:email', async t => {
   })
 
   const tom = createTom(config)
-  const template = 'payment_success'
+  const templateId = 'payment_success'
   const to = 'kiko@microlink.io'
 
-  await tom.notification.email({ to, template })
+  await tom.notification.email({ to, templateId })
 })

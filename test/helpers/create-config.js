@@ -13,7 +13,7 @@ const getDefaultConfig = () => ({
   },
   email: {
     theme: 'salted',
-    templates: {
+    template: {
       payment_success: {
         subject: 'Welcome to {company.site}',
         from: '{company.email}',

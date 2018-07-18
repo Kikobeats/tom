@@ -27,5 +27,5 @@ ${chalk.dim(logo({ header: 'tom microservice – https://tom.js.org' }))}
   ${chalk.dim('–')} Send a email notification from CLI
 
     $ tom ${chalk.dim(
-    "--command=notification.email --template=welcome --to=hello@kikobeats.com --subject='hello world'"
+    "--command=notification.email --templateId=welcome --to=hello@kikobeats.com --subject='hello world'"
   )}`

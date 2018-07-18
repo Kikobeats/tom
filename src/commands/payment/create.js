@@ -8,7 +8,7 @@ module.exports = ({ config, commands }) => {
   const stripe = createStripe(config.payment.stripe_key)
   const { email: sendEmail } = commands.notification
 
-  const payment = async ({ token, plan, emailTemplate: template }) => {
+  const payment = async ({ token, planId, templateId }) => {
     ward(token, { label: 'token', test: is.object })
     ward(token.id, { label: 'token.id', test: is.string.nonEmpty })
     ward(token.email, {
@@ -16,23 +16,23 @@ module.exports = ({ config, commands }) => {
       test: is.string.nonEmpty,
       message: `Need to specify an 'email' to be associated with the customer.`
     })
-    ward(plan, {
-      label: 'plan',
+    ward(planId, {
+      label: 'planId',
       test: is.string.nonEmpty,
       message: `Need to specify a 'plan' to use`
     })
 
     const { email, id: source } = token
-    const customer = await stripe.customers.create({ email, source })
+    const { id: customerId } = await stripe.customers.create({ email, source })
     const data = await stripe.subscriptions.create({
-      customer: customer.id,
-      plan
+      customer: customerId,
+      plan: planId
     })
 
-    const logEmail = template
-      ? await sendEmail({ template, to: email }, { printLog: false })
+    const logEmail = templateId
+      ? await sendEmail({ templateId, to: email }, { printLog: false })
       : {}
-    const log = { email, planId: data.plan.id, ...logEmail }
+    const log = { customerId, email, planId: data.plan.id, ...logEmail }
 
     return { log }
   }

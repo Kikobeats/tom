@@ -11,10 +11,11 @@ const { STRIPE_API_KEY } = process.env
 
 test('payment:create', async t => {
   const config = createConfig(({ config, tom }) => {
-    tom.on('payment:create', data => {
+    tom.on('payment:create', async data => {
+      await stripe.customers.del(data.customerId)
       t.is(data.email, email)
       t.is(data.to, email)
-      t.is(data.planId, plan)
+      t.is(data.planId, planId)
       t.deepEqual(data.bcc, config.company.email)
       t.deepEqual(data.from, config.company.email)
       t.is(data.subject, `Welcome to ${config.company.site}`)
@@ -26,8 +27,7 @@ test('payment:create', async t => {
 
   const stripe = createStripe(STRIPE_API_KEY)
   const email = `test_${faker.internet.exampleEmail()}`
-
-  const emailTemplate = 'payment_success'
+  const templateId = 'payment_success'
 
   const stripeToken = await stripe.tokens.create({
     card: {
@@ -39,7 +39,7 @@ test('payment:create', async t => {
   })
 
   const token = { ...stripeToken, email }
-  const plan = 'pro-1k'
+  const planId = 'pro-1k'
 
-  await tom.payment.create({ plan, token, email, emailTemplate })
+  await tom.payment.create({ planId, token, email, templateId })
 })

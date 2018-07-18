@@ -36,13 +36,13 @@ module.exports = ({ config }) => {
     }
   })
 
-  const { templates } = config.email
+  const { template } = config.email
 
   const email = async (opts, { printLog = true } = {}) => {
-    ward(opts.template, {
-      label: 'template',
-      test: is.string.is(x => !isNil(get(templates, x))),
-      message: `Need to specify a valid 'template'`
+    ward(opts.templateId, {
+      label: 'templateId',
+      test: is.string.is(x => !isNil(get(template, x))),
+      message: `Need to specify a valid 'templateId'`
     })
     ward(opts.to, {
       test: is.string,
@@ -50,9 +50,10 @@ module.exports = ({ config }) => {
       message: `Need to specify at least one destination as 'to'`
     })
 
-    const template = get(templates, opts.template)
-    const templateOpts = { ...config, props: opts }
-    const compiledTemplate = compileTemplate(template, templateOpts)
+    const compiledTemplate = compileTemplate(get(template, opts.templateId), {
+      ...config,
+      props: opts
+    })
 
     // assign props in order to replace props over config
     const mailOpts = {
