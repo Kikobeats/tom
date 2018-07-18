@@ -1,12 +1,21 @@
 'use strict'
 
-const { forEach, mapKeys, camelCase } = require('lodash')
+const { get, eq, reduce, forEach, camelCase } = require('lodash')
 const bodyParser = require('body-parser')
+const autoParse = require('auto-parse')
 
-const { loadConfig, wrapRoute } = require('./helpers')
-const createCommands = require('.')
+const withRoute = require('./interface/route')
+const loadConfig = require('./config/load')
+const createTom = require('.')
 
 const { TOM_API_KEY, TOM_ALLOWED_ORIGIN = '*' } = process.env
+
+const normalize = query =>
+  reduce(
+    query,
+    (acc, value, key) => ({ ...acc, [camelCase(key)]: autoParse(value) }),
+    {}
+  )
 
 module.exports = async (app, express) => {
   const config = await loadConfig()
@@ -17,7 +26,8 @@ module.exports = async (app, express) => {
     .use(require('compression')())
     .use(
       require('cors')({
-        origin: TOM_ALLOWED_ORIGIN,
+        methods: ['GET', 'OPTIONS', 'POST'],
+        origin: TOM_ALLOWED_ORIGIN.replace(/\s/g, '').split(','),
         allowedHeaders: [
           'content-type',
           'x-amz-date',
@@ -28,10 +38,14 @@ module.exports = async (app, express) => {
         ]
       })
     )
-    .use(require('query-types').middleware())
     .use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json())
     .use(require('morgan')('short'))
+    .use((req, res, next) => {
+      req.body = normalize(req.body)
+      req.query = normalize(req.query)
+      next()
+    })
     .disable('x-powered-by')
 
   app.get('/', (req, res) => res.status(204).send())
@@ -39,15 +53,10 @@ module.exports = async (app, express) => {
   app.get('/favicon.txt', (req, res) => res.status(204).send())
   app.get('/ping', (req, res) => res.send('pong'))
 
-  app.use((req, res, next) => {
-    req.body = mapKeys(req.body, (value, key) => camelCase(key))
-    next()
-  })
-
   if (TOM_API_KEY) {
     app.use((req, res, next) => {
-      const apiKey = req.headers['x-api-key']
-      return apiKey === TOM_API_KEY
+      const apiKey = get(req, 'headers.x-api-key')
+      return eq(apiKey, TOM_API_KEY)
         ? next()
         : res.fail({
           statusCode: 401,
@@ -56,16 +65,12 @@ module.exports = async (app, express) => {
     })
   }
 
-  const commands = createCommands(config)
+  const tom = createTom(config)
 
-  forEach(commands, (subCommands, commandName) => {
-    forEach(subCommands, (subCommandFn, subCommandName) => {
-      const route = `/${commandName}/${subCommandName}`
-      const fn = wrapRoute({
-        fn: subCommandFn,
-        keyword: `${commandName}.${subCommandName}`
-      })
-      app.post(route, fn)
+  forEach(tom, (cmd, cmdName) => {
+    forEach(cmd, (fn, actionName) => {
+      const eventName = `${cmdName}.${actionName}`
+      app.post(`/${cmdName}/${actionName}`, withRoute({ tom, fn, eventName }))
     })
   })
 

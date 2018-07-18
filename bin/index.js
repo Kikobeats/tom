@@ -4,10 +4,12 @@
 
 const { get } = require('lodash')
 
-const { createLog, loadConfig, wrapAction } = require('../src/helpers')
+const withProcess = require('../src/interface/process')
+const loadConfig = require('../src/config/load')
+
 const createServer = require('./server')
 const pkg = require('../package.json')
-const loadCommand = require('../src')
+const createTom = require('../src')
 const logo = require('./logo')
 
 const isProduction = process.env.NODE_ENV === 'production'
@@ -58,18 +60,9 @@ const cli = require('meow')(require('./help'), {
   }
 
   const config = await loadConfig(cli.flags.config)
-  const commands = loadCommand(config)
+  const tom = createTom(config)
 
-  const fn = get(commands, command)
+  const fn = get(tom, command)
   if (!fn) return cli.showHelp()
-
-  const log = createLog({ keyword: command })
-
-  return wrapAction({
-    fn,
-    log,
-    opts: cli.flags,
-    onSuccess: () => process.exit(0),
-    onFail: err => process.exit(err.code || 1)
-  })
+  return withProcess({ fn, opts: cli.flags })
 })()
