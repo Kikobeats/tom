@@ -1,11 +1,12 @@
 'use strict'
 
-const { eq, reduce, forEach, camelCase } = require('lodash')
+const { get, eq, reduce, forEach, camelCase } = require('lodash')
 const bodyParser = require('body-parser')
 const autoParse = require('auto-parse')
 
-const { loadConfig, wrapRoute } = require('./helpers')
-const createCommands = require('.')
+const withRoute = require('./interface/route')
+const loadConfig = require('./config/load')
+const createTom = require('.')
 
 const { TOM_API_KEY, TOM_ALLOWED_ORIGIN = '*' } = process.env
 
@@ -54,7 +55,7 @@ module.exports = async (app, express) => {
 
   if (TOM_API_KEY) {
     app.use((req, res, next) => {
-      const apiKey = req.headers['x-api-key']
+      const apiKey = get(req, 'headers.x-api-key')
       return eq(apiKey, TOM_API_KEY)
         ? next()
         : res.fail({
@@ -64,16 +65,12 @@ module.exports = async (app, express) => {
     })
   }
 
-  const commands = createCommands(config)
+  const tom = createTom(config)
 
-  forEach(commands, (subCommands, commandName) => {
-    forEach(subCommands, (subCommandFn, subCommandName) => {
-      const route = `/${commandName}/${subCommandName}`
-      const fn = wrapRoute({
-        fn: subCommandFn,
-        keyword: `${commandName}.${subCommandName}`
-      })
-      app.post(route, fn)
+  forEach(tom, (cmd, cmdName) => {
+    forEach(cmd, (fn, actionName) => {
+      const eventName = `${cmdName}.${actionName}`
+      app.post(`/${cmdName}/${actionName}`, withRoute({ tom, fn, eventName }))
     })
   })
 

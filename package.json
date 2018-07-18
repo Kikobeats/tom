@@ -36,6 +36,7 @@
     "cors": "~2.8.4",
     "cosmiconfig": "~5.0.5",
     "deep-map": "~1.5.0",
+    "emittery": "~0.4.1",
     "express": "~4.16.3",
     "helmet": "~3.12.1",
     "import-modules": "~1.1.0",
@@ -45,14 +46,17 @@
     "meow": "~5.0.0",
     "morgan": "~1.9.0",
     "nodemailer": "~4.6.7",
+    "ow": "~0.6.0",
     "pupa": "~1.0.0",
     "stripe": "~6.2.0",
     "update-notifier": "~2.5.0"
   },
   "devDependencies": {
+    "ava": "latest",
     "browser-sync": "latest",
     "concurrently": "latest",
     "coveralls": "latest",
+    "faker": "latest",
     "finepack": "latest",
     "git-dirty": "latest",
     "gulp": "latest",
@@ -86,9 +90,9 @@
     "precommit": "lint-staged",
     "prelint": "npm run pretty",
     "pretest": "npm run lint",
-    "pretty": "prettier-standard {core,test,bin}/**/*.js",
-    "start": "node src/server.js",
-    "test": "exit 0"
+    "pretty": "prettier-standard {src,test,bin}/**/*.js",
+    "start": "node src/server",
+    "test": "ava test --verbose"
   },
   "license": "MIT",
   "lint-staged": {
