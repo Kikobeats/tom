@@ -6,6 +6,7 @@
 
 ![Last version](https://img.shields.io/github/tag/Kikobeats/tom-microservice.svg?style=flat-square)
 [![Build Status](https://img.shields.io/travis/Kikobeats/tom-microservice/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/tom-microservice)
+[![Coverage Status](https://img.shields.io/coveralls/Kikobeats/tom-microservice.svg?style=flat-square)](https://coveralls.io/github/Kikobeats/tom-microservice)
 [![Dependency status](https://img.shields.io/david/Kikobeats/tom-microservice.svg?style=flat-square)](https://david-dm.org/Kikobeats/tom-microservice)
 [![Dev Dependencies Status](https://img.shields.io/david/dev/Kikobeats/tom-microservice.svg?style=flat-square)](https://david-dm.org/Kikobeats/tom-microservice#info=devDependencies)
 [![NPM Status](https://img.shields.io/npm/dm/tom-microservice.svg?style=flat-square)](https://www.npmjs.org/package/tom-microservice)

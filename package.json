@@ -20,8 +20,10 @@
     "url": "https://github.com/Kikobeats/tom-microservice/issues"
   },
   "keywords": [
+    "backoffice",
     "email",
     "microservice",
+    "notification",
     "payment",
     "stripe",
     "subscriptions"
@@ -68,6 +70,7 @@
     "husky": "latest",
     "imagemin-lint-staged": "latest",
     "lint-staged": "latest",
+    "nyc": "latest",
     "prettier-standard": "latest",
     "standard": "latest",
     "standard-markdown": "latest",
@@ -88,11 +91,9 @@
     "dev:docs:server": "browser-sync start --server --files \"index.html, README.md, static/**/*.(css|js)\"",
     "lint": "standard-markdown && standard",
     "precommit": "lint-staged",
-    "prelint": "npm run pretty",
     "pretest": "npm run lint",
-    "pretty": "prettier-standard {src,test,bin}/**/*.js",
     "start": "node src/server",
-    "test": "ava test --verbose"
+    "test": "NODE_ENV=test nyc ava test --verbose"
   },
   "license": "MIT",
   "lint-staged": {
