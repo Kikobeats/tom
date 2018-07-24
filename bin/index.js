@@ -61,7 +61,6 @@ const cli = require('meow')(require('./help'), {
 
   const config = await loadConfig(cli.flags.config)
   const tom = createTom(config)
-
   const fn = get(tom, command)
   if (!fn) return cli.showHelp()
   return withProcess({ fn, opts: cli.flags })
