@@ -1,9 +1,10 @@
 'use strict'
 
+const { split, first, reduce } = require('lodash')
+const pRetry = require('p-retry')
+
 const printError = require('../log/print-error')
 const createLog = require('../log/create-log')
-
-const { split, first, reduce } = require('lodash')
 
 const toObject = arr => reduce(arr, (acc, obj) => ({ ...acc, ...obj }), {})
 
@@ -14,7 +15,8 @@ module.exports = ({ eventName, fn, tom }) => {
 
   return async (params, opts) => {
     try {
-      const { log: data, printLog = true } = await fn(params, opts)
+      const run = () => fn(params, opts)
+      const { log: data, printLog = true } = await pRetry(run, { retries: 3 })
 
       const meta = await Promise.all([
         tom.emit('*', data),
