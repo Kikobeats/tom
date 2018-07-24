@@ -11,13 +11,13 @@ test('notification:telegram', async t => {
   const config = createConfig(({ config, tom }) => {
     tom.on('notification:telegram', data => {
       t.is(data.text, message)
-      t.is(data.chat.id, chat_id)
+      t.is(data.chat.id, chatId)
     })
   })
 
   const tom = createTom(config)
-  const chat_id = parseInt(TELEGRAM_TEST_CHAT_ID)
+  const chatId = parseInt(TELEGRAM_TEST_CHAT_ID)
   const message = 'Someone is running the tests 🙀'
 
-  await tom.notification.telegram({ message, chat_id })
+  await tom.notification.telegram({ message, chatId })
 })

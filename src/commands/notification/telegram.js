@@ -7,10 +7,10 @@ const { ward, is } = require('../../ward')
 module.exports = ({ config }) => {
   const bot = new TeleBot(config.telegram.token)
 
-  const telegram = async ({ message, chat_id }) => {
-    ward(chat_id, { label: 'chat_id', test: is.number })
+  const telegram = async ({ message, chatId }) => {
+    ward(chatId, { label: 'chatId', test: is.number })
 
-    const log = await bot.sendMessage(chat_id, message)
+    const log = await bot.sendMessage(chatId, message)
 
     return { log }
   }
