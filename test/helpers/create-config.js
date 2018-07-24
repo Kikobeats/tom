@@ -1,7 +1,5 @@
 'use strict'
 
-const { STRIPE_API_KEY, SMTP_AUTH_USER, SMTP_AUTH_PASSWORD } = process.env
-
 const getDefaultConfig = () => ({
   company: {
     name: 'tom',
@@ -30,15 +28,8 @@ const getDefaultConfig = () => ({
     transporter: {
       host: 'smtp.ethereal.email',
       port: 587,
-      secure: false,
-      auth: {
-        user: SMTP_AUTH_USER,
-        pass: SMTP_AUTH_PASSWORD
-      }
+      secure: false
     }
-  },
-  payment: {
-    stripe_key: STRIPE_API_KEY
   }
 })
 
