@@ -1,7 +1,22 @@
 'use strict'
 
-const { isFunction } = require('lodash')
+const { isFunction, get, set } = require('lodash')
 const Emittery = require('emittery')
+
+const { ward, is } = require('../ward')
+
+const requiredValue = (config, configKey, globalEnvKey) => {
+  set(
+    config,
+    'payment.stripe_key',
+    get(config, configKey, get(process.env, globalEnvKey))
+  )
+  ward(get(config, configKey), {
+    label: `config.${configKey}`,
+    test: is.string.nonEmpty,
+    message: `Need to specify a valid 'config.${configKey}' or environment variable '${globalEnvKey}'`
+  })
+}
 
 module.exports = fn => {
   let config
@@ -12,6 +27,10 @@ module.exports = fn => {
 
   if (isFunction(fn)) fn({ setConfig, on })
   else config = fn
+
+  requiredValue(config, 'payment.stripe_key', 'TOM_STRIPE_KEY')
+  requiredValue(config, 'email.transporter.auth.user', 'TOM_EMAIL_USER')
+  requiredValue(config, 'email.transporter.auth.password', 'TOM_EMAIL_PASSWORD')
 
   return { ...config, on, emit }
 }

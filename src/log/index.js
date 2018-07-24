@@ -1,6 +1,6 @@
 'use strict'
 
 module.exports = {
-  create: require('./create'),
-  printError: require('./printError')
+  createLog: require('./create-log'),
+  printError: require('./print-error')
 }
