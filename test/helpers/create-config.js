@@ -1,6 +1,6 @@
 'use strict'
 
-const { STRIPE_API_KEY, SMTP_AUTH_USER, SMTP_AUTH_PASSWORD } = process.env
+const { STRIPE_API_KEY, SMTP_AUTH_USER, SMTP_AUTH_PASSWORD, TELEGRAM_BOT_TOKEN } = process.env
 
 const getDefaultConfig = () => ({
   company: {
@@ -39,6 +39,9 @@ const getDefaultConfig = () => ({
   },
   payment: {
     stripe_key: STRIPE_API_KEY
+  },
+  telegram: {
+    token: TELEGRAM_BOT_TOKEN
   }
 })
 
