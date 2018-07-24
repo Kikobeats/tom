@@ -1,6 +1,6 @@
 'use strict'
 
-const fetch = require('node-fetch')
+const got = require('got')
 
 const { ward, is } = require('../../ward')
 
@@ -10,11 +10,15 @@ module.exports = ({ config }) => {
   const telegram = async ({ message, chatId }) => {
     ward(chatId, { label: 'chatId', test: is.number })
 
-    const url = encodeURI(`${baseUrl}?chat_id=${chatId}&text=${message}`)
-    const response = await fetch(url)
-    const data = await response.json()
+    const response = await got(baseUrl, {
+      json: true,
+      query: {
+        chat_id: chatId,
+        text: message
+      }
+    })
 
-    return { log: data.result }
+    return { log: response.body.result }
   }
 
   return telegram
