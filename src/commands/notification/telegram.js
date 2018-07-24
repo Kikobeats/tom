@@ -1,18 +1,20 @@
 'use strict'
 
-const TeleBot = require('telebot')
+const fetch = require('node-fetch')
 
 const { ward, is } = require('../../ward')
 
 module.exports = ({ config }) => {
-  const bot = new TeleBot(config.telegram.token)
+  const baseUrl = `https://api.telegram.org/bot${config.telegram.token}/sendMessage`
 
   const telegram = async ({ message, chatId }) => {
     ward(chatId, { label: 'chatId', test: is.number })
 
-    const log = await bot.sendMessage(chatId, message)
+    const url = encodeURI(`${baseUrl}?chat_id=${chatId}&text=${message}`)
+    const response = await fetch(url)
+    const data = await response.json()
 
-    return { log }
+    return { log: data.result }
   }
 
   return telegram
