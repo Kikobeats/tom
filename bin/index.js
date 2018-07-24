@@ -4,6 +4,7 @@
 
 const { get } = require('lodash')
 
+const { printError, createLog } = require('../src/log')
 const withProcess = require('../src/interface/process')
 const loadConfig = require('../src/config/load')
 
@@ -59,8 +60,18 @@ const cli = require('meow')(require('./help'), {
     })
   }
 
-  const config = await loadConfig(cli.flags.config)
-  const tom = createTom(config)
+  const initialize = async () => {
+    try {
+      const config = await loadConfig(cli.flags.config)
+      const tom = createTom(config)
+      return tom
+    } catch (err) {
+      printError({ log: createLog({ keyword: 'tom' }), err })
+      process.exit(err.code || 1)
+    }
+  }
+
+  const tom = await initialize()
   const fn = get(tom, command)
   if (!fn) return cli.showHelp()
   return withProcess({ fn, opts: cli.flags })

@@ -51,6 +51,8 @@ Also declare it as part of your npm scripts:
 }
 ```
 
+The microservice accepts command options in snake and camel case as body parameters.
+
 ### from CLI
 
 You can execute `tom` as CLI to resolve the same functionality than the microservice endpoint:
@@ -115,6 +117,8 @@ payment:
   stripe_key: YourStripeApiKey
 ```
 
+You can also specify it using [TOM_STRIPE_KEY](#tom_stripe_key).
+
 ### email
 
 Emails will be sent using [nodemailer](https://github.com/nodemailer/nodemailer).
@@ -133,6 +137,8 @@ email:
       user: myuser@ethereal.email
       pass: mypassword
 ```
+
+You can specify authentication credentials using [TOM_EMAIL_USER](#tom_email_user) and [TOM_EMAIL_PASSWORD](#tom_email_password) as well.
 
 In addition, we use [mailgen](https://github.com/eladnava/mailgen) for generate fancy transactional emails. You have [different themes availables](https://github.com/eladnava/mailgen#supported-themes). Need to specify one to use:
 
@@ -338,6 +344,27 @@ Type: `number` </br>
 Default: `3000`
 
 The port to uses for run the HTTP microservice.
+
+### TOM_STRIPE_KEY
+
+Type: `string` </br>
+Default: `config.payment.stripe_key`
+
+The [stripe key of your account](https://dashboard.stripe.com/account/apikeys).
+
+### TOM_EMAIL_USER
+
+Type: `string` </br>
+Default: `config.email.transporter.auth.password`
+
+Your SMTP authentication password credential.
+
+### TOM_EMAIL_PASSWORD
+
+Type: `string` </br>
+Default: `config.email.transporter.auth.user`
+
+Your SMTP authentication user credential.
 
 ## License
 

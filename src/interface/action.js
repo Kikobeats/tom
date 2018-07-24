@@ -1,7 +1,7 @@
 'use strict'
 
 const printError = require('../log/print-error')
-const createLog = require('../log/create')
+const createLog = require('../log/create-log')
 
 const { split, first, reduce } = require('lodash')
 

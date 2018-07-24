@@ -7,7 +7,7 @@ const test = require('ava')
 const createConfig = require('../../helpers/create-config')
 const createTom = require('../../../')
 
-const { STRIPE_API_KEY } = process.env
+const { TOM_STRIPE_KEY } = process.env
 
 test('payment:create', async t => {
   const config = createConfig(({ config, tom }) => {
@@ -25,7 +25,7 @@ test('payment:create', async t => {
 
   const tom = createTom(config)
 
-  const stripe = createStripe(STRIPE_API_KEY)
+  const stripe = createStripe(TOM_STRIPE_KEY)
   const email = `test_${faker.internet.exampleEmail()}`
   const templateId = 'payment_success'
 
