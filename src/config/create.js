@@ -6,8 +6,9 @@ const Emittery = require('emittery')
 const { ward, is } = require('../ward')
 
 const requiredValue = (config, configKey, globalEnvKey) => {
-  set(config, configKey, get(config, configKey, get(process.env, globalEnvKey)))
-
+  const globalEnvValue = get(process.env, globalEnvKey)
+  const configValue = get(config, configKey, globalEnvValue)
+  set(config, configKey, configValue)
   ward(get(config, configKey), {
     label: `config.${configKey}`,
     test: is.string.nonEmpty,

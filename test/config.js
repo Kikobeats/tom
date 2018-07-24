@@ -4,6 +4,12 @@ const test = require('ava')
 
 const createTom = require('..')
 
+test.before(t => {
+  delete process.env.TOM_STRIPE_KEY
+  delete process.env.TOM_EMAIL_USER
+  delete process.env.TOM_EMAIL_PASSWORD
+})
+
 test('config.payment.stripe_key is required', async t => {
   t.throws(
     () => createTom({}),
