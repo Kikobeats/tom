@@ -996,7 +996,7 @@ body {
 .markdown-section a[href^="https://paypal.me"],
 .markdown-section a[href^="https://www.npmjs.org"],
 .markdown-section a[href^="https://david-dm.org"],
-.markdown-section a[href^="https://img.shields.io"] {
+.markdown-section a[href^="https://coveralls.io"] {
   border: 0;
   transition: none;
 }
@@ -1005,7 +1005,7 @@ body {
 .markdown-section a[href^="https://paypal.me"]:hover,
 .markdown-section a[href^="https://www.npmjs.org"]:hover,
 .markdown-section a[href^="https://david-dm.org"]:hover,
-.markdown-section a[href^="https://img.shields.io"]:hover {
+.markdown-section a[href^="https://coveralls.io"]:hover {
   opacity: 1;
 }
 
