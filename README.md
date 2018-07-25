@@ -339,6 +339,27 @@ type: `string`</br>
 
 The message that will be sent.
 
+#### /notification/slack
+
+<small>`POST`</small>
+
+It sends a slack message.
+
+#### Data Params
+
+##### text
+
+*Required*</br>
+type: `string`
+
+The text of the message
+
+##### attachments
+
+type: `object`</br>
+
+The message attachments, you cand find more information in the [Slack Documentation](https://api.slack.com/docs/message-attachments#attachment_structure)
+
 ## Environment Variables
 
 ### TOM_ALLOWED_ORIGIN
@@ -386,6 +407,13 @@ Type: `string` </br>
 Default: `config.email.transporter.auth.user`
 
 Your SMTP authentication user credential.
+
+## TOM_SLACK_WEBHOOK
+
+Type: `string` </br>
+Default: `config.slack.webhook`
+
+Your Slack webhook URL.
 
 ## License
 
