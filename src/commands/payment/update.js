@@ -1,11 +1,18 @@
 'use strict'
 
 const createStripe = require('stripe')
+const { get } = require('lodash')
 
-const { ward, is } = require('../../ward')
+const { wardCredential, ward, is } = require('../../ward')
 
 module.exports = ({ config, commands }) => {
-  const stripe = createStripe(config.payment.stripe_key)
+  const errFn = wardCredential(config, {
+    key: 'payment.stripe_key',
+    env: 'TOM_STRIPE_KEY'
+  })
+  if (errFn) return errFn
+
+  const stripe = createStripe(get(config, 'payment.stripe_key'))
   const { email: sendEmail } = commands.notification
 
   const payment = async ({ token, customerId, templateId }) => {
