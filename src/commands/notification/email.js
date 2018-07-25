@@ -16,12 +16,19 @@ const TEMPLATE_PICK_PROPS = [
   'attachments'
 ]
 
-const { ward, is } = require('../../ward')
+const { wardCredential, ward, is } = require('../../ward')
 
 const compileTemplate = (template, opts) =>
   deepMap(template, str => pupa(str, opts))
 
 module.exports = ({ config }) => {
+  const errFn = wardCredential(config, [
+    { key: 'email.transporter.auth.user', env: 'TOM_EMAIL_USER' },
+    { key: 'email.transporter.auth.pass', env: 'TOM_EMAIL_PASSWORD' }
+  ])
+
+  if (errFn) return errFn
+
   const transporter = nodemailer.createTransport(
     get(config, 'email.transporter')
   )
@@ -41,9 +48,9 @@ module.exports = ({ config }) => {
   const email = async (opts, { printLog = true } = {}) => {
     ward(opts.templateId, {
       label: 'templateId',
-      test: is.string.is(x => !isNil(get(template, x))),
-      message: `Need to specify a valid 'templateId'`
+      test: is.string.is(x => !isNil(get(template, x)))
     })
+
     ward(opts.to, {
       test: is.string,
       label: 'to',

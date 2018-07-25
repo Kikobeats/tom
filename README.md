@@ -331,7 +331,7 @@ It sends a telegram message to the specified chat id.
 *Required*</br>
 type: `number`
 
-The Telegram chat id that will receive the message
+The Telegram chat id that will receive the message.
 
 ##### message
 
