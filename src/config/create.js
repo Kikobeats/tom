@@ -23,6 +23,7 @@ module.exports = fn => {
   setEnv(config, 'email.transporter.auth.user', 'TOM_EMAIL_USER')
   setEnv(config, 'email.transporter.auth.pass', 'TOM_EMAIL_PASSWORD')
   setEnv(config, 'telegram.token', 'TOM_TELEGRAM_KEY')
+  setEnv(config, 'slack.webhook', 'TOM_SLACK_WEBHOOK')
 
   return { ...config, on, emit }
 }
