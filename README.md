@@ -318,6 +318,27 @@ An array of attachment objects (see [nodemailer#attachments](https://nodemailer.
 
 Attachments can be used for embedding images as well.
 
+#### /notification/telegram
+
+<small>`POST`</small>
+
+It sends a telegram message to the specified chat id.
+
+#### Data Params
+
+##### chatId
+
+*Required*</br>
+type: `number`
+
+The Telegram chat id that will receive the message
+
+##### message
+
+type: `string`</br>
+
+The message that will be sent.
+
 ## Environment Variables
 
 ### TOM_ALLOWED_ORIGIN
