@@ -75,7 +75,9 @@ const {payment, email} = tom
 
 ## Configuration
 
-All the **tom** actions are based on a configuration file.
+!> Use [config](https://www.npmjs.com/package/config) to get different configurations based on environments.
+
+All the **tom** 🐶 actions are based on a configuration file.
 
 You can define the configuration file via:
 
@@ -83,13 +85,7 @@ You can define the configuration file via:
 - A `tom.config.js` file that exports an object.
 - A `tom` key in your package.json file.
 
-You can combine it with [config](https://www.npmjs.com/package/config) to get different configurations based on environments.
-
-A **tom** configuration file need to have the followings properties:
-
-### company
-
-It's the basic information related with your company.
+The minimal configuration necessary is related with your company
 
 ```yaml
 company:
@@ -101,91 +97,56 @@ company:
   copyright: Copyright © 2018 Microlink. All rights reserved.
 ```
 
-We use this information across **tom** commands, so declare it is important.
+This information will be used across all the commands.
 
-### payment
+## Event System
 
-Payments are processed using [Stripe](https://stripe.com).
-
-At least you need to attach your [stripe key of your account](https://dashboard.stripe.com/account/apikeys):
-
-```yaml
-payment:
-  stripe_key: YourStripeApiKey
+!> Event System is only supported with `tom.config.js` configuration file.
+ 
+Every time **tom** 🐶 execute a command successfully it will be emit an event:
+ 
+```js
+// Register stats for payment processed
+tom.on('payment:create', async data => {
+  const info = await sendAnalytics(data)
+  return info
+})
 ```
 
-You can also specify it using [TOM_STRIPE_KEY](#tom_stripe_key).
+The `data` received will be the last command execution output.
 
-### email
+The events system are designed to allow you perform async actions.
 
-Emails will be sent using [nodemailer](https://github.com/nodemailer/nodemailer).
+If you return something, then it will be added into the final payload, that will be printed at the log level.
 
-Under non production scenario, you can view a preview of the email sent.
+The events emitted are of 3 hierarchical types:
 
-First of all, you need to specify your `transporter`:
+```js
+// An event emitted for a command under a category
+tom.on('payment:create', sendAnalytics)
 
-```yaml
-email:
-  transporter:
-    host: smtp.ethereal.email
-    port: 587
-    secure: false
-    auth:
-      user: myuser@ethereal.email
-      pass: mypassword
+// An event emitted under a category
+tom.on('payment', sendAnalytics)
+
+// Any event
+tom.on('*', sendAnalytics)
 ```
 
-You can specify authentication credentials using [TOM_EMAIL_USER](#tom_email_user) and [TOM_EMAIL_PASSWORD](#tom_email_password) as well.
 
-In addition, we use [mailgen](https://github.com/eladnava/mailgen) for generate fancy transactional emails. You have [different themes availables](https://github.com/eladnava/mailgen#supported-themes). Need to specify one to use:
-
-```yaml
-email:
-  theme: default
-```
-
-Emails will be sent based on a template. Declare many templates as you want.
-
-You can reference other config properties or options inside the template:
-
-```yaml
-email:
-  template:
-    payment_success:
-      subject: Welcome to {company.site}
-      from:
-        - "{company.email}"
-      bcc:
-        - "{company.email}"
-      body:
-        greeting: Hello
-        signature: Regards
-        intro:
-          - Welcome to {company.site} and thanks for signing up! We really appreciate it.
-          - We are creating your API credentials. You will receive a new email in the next 24 hours with the API key.
-
-    send_api_key:
-      subject: Your API Key
-      body:
-        greeting: Hello
-        signature: Regards
-        intro:
-          - Your API Token is {props.apiKey}.
-          - You need to attach it as header in all your requests.
-          - See more at <a href="https://docs.microlink.io">https://docs.microlink.io</a>.
-        outro:
-          - Need help, or have questions? Just reply to this email, we'd love to help.
-```
 
 ## Commands
 
-### /payment
+The commands define what things you can do with **tom** 🐶.
 
-![](https://i.imgur.com/lVsdsn7.png)
+Every command has his own field at [configuration](#configuration).
+
+### payment
+
+![](https://i.imgur.com/yzHBpcf.png)
 
 It handles all the logic related to subscription creation related to users.
 
-#### /payment/create
+#### payment:create
 
 <small>`POST`</small>
 
@@ -196,29 +157,29 @@ The endpoint expect receive a valid Stripe token.
 You can connect it easily with your frontend using [Stripe Checkout](https://stripe.com/checkout).
 
 
-#### Data Parameters
+##### Data Parameters
 
-##### planId
+###### planId
 
 *Required*</br>
 type: `integer`
 
 Your stripe plan subscription id.
 
-##### token
+###### token
 
 *Required*</br>
 type: `object`
 
 The [token Object](https://stripe.com/docs/api#tokens) generated by Stripe.
 
-##### templateId
+###### templateId
 
 Type: `string`
 
 If it is present, it will be generate a email notification as well, using the new customer information.
 
-#### /payment/update
+#### payment:update
 
 <small>`POST`</small>
 
@@ -226,35 +187,35 @@ It will associate a new card with a customer.
 
 The endpoint expect receive a valid Stripe token.
 
-#### Data Parameters
+##### Data Parameters
 
-##### customerId
+###### customerId
 
 *Required*</br>
 type: `string`
 
 The unique identifier associated with the customer.
 
-##### token
+###### token
 
 *Required*</br>
 type: `object`
 
 The [token Object](https://stripe.com/docs/api#tokens) generated by Stripe.
 
-##### templateId
+###### templateId
 
 Type: `string`
 
 If it is present, it will be generate a email notification as well, using the new customer information.
 
-### /notification
+### notification
 
-![](https://i.imgur.com/l13bRpK.png)
+![](https://i.imgur.com/MmgFbS3.png)
 
 It handles all the logic related with notify users
 
-#### /notification/email
+#### notification:email
 
 <small>`POST`</small>
 
@@ -262,58 +223,58 @@ It sends transactional emails based on templates defined.
 
 Under non production scenario, you can use [ethereal](https://ethereal.email/) as transporter and it will be generate a preview of the email sent.
 
-#### Data Params
+##### Data Parameters
 
-##### templateId
+###### templateId
 
 type: `string`
 
 If it is present, it will be generate `text` and `html` using the template.
 
-##### text
+###### text
 
 The plain text content version of the email notification.
 
-##### html
+###### html
 
 The HTML content version of the email notification.
 
-##### from
+###### from
 
 type: `string`</br>
 default: `config.email.template[templateId].from`
 
 The creator of the mail.
 
-##### to
+###### to
 
 type: `array`</br>
 default: `company.email`
 
 The recipients of the mail.
 
-##### cc
+###### cc
 
 type: `array`</br>
 default: `config.email.template[templateId].cc`
 
 Carbon copy recipients of the mail.
 
-##### bcc
+###### bcc
 
 type: `array`</br>
 default: `config.email.template[templateId].cc`
 
 Blind carbon copy recipients of the mail.
 
-##### subject
+###### subject
 
 type: `string`</br>
 default: `config.email.template[templateId].subject`
 
 The email subject.
 
-##### attachments
+###### attachments
 
 type: `array`</br>
 default: `req.body.attachments`
@@ -322,69 +283,71 @@ An array of attachment objects (see [nodemailer#attachments](https://nodemailer.
 
 Attachments can be used for embedding images as well.
 
-#### /notification/telegram
+#### notification:telegram
 
 <small>`POST`</small>
 
 It sends a telegram message to the specified chat id.
 
-#### Data Params
+##### Data Parameters
 
-##### templateId
+###### templateId
 
 type: `string`
 
 If it is present, it will be generate `text` using the template.
 
-##### chatId
+###### chatId
 
 *Required*</br>
 type: `number`
 
 The Telegram chat id that will receive the message.
 
-##### text
+###### text
 
 *Required*</br>
 type: `string`
 
 The message that will be sent.
 
-#### /notification/slack
+#### notification:slack
 
 <small>`POST`</small>
 
 It sends a Slack message.
 
-#### Data Params
+##### Data Parameters
 
-##### webhook
+###### webhook
 
 *Required*</br>
 type: `string`
 
 The Slack webhook endpoint for sending the data.
 
-##### templateId
+###### templateId
 
 Type: `string`
 
 If it is present, it will be generate `text` using the template.
 
-##### text
+###### text
 
 *Required*</br>
 type: `string`
 
 The text of the message.
 
-##### attachments
+###### attachments
 
 type: `object`</br>
 
 The message attachments, you can find more information at [Slack Documentation](https://api.slack.com/docs/message-attachments#attachment_structure)
 
 ## Environment Variables
+
+Credentials could be provided as environment variables as well
 
 ### TOM_ALLOWED_ORIGIN
 

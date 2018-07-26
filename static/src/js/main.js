@@ -3,7 +3,7 @@
 window.$docsify = {
   name: 'tom',
   repo: 'kikobeats/tom-microservice',
-  maxLevel: 3,
+  maxLevel: 4,
   executeScript: true,
   auto2top: true,
   plugins: [
