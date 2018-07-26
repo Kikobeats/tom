@@ -13,8 +13,7 @@ module.exports = ({ config }) => {
   })
   if (errFn) return errFn
 
-  const { template } = config.telegram
-
+  const template = get(config, 'telegram.template')
   const token = get(config, 'telegram.token')
 
   const endpoint = `https://api.telegram.org/bot${token}/sendMessage`

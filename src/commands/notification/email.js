@@ -29,7 +29,7 @@ module.exports = ({ config }) => {
     }
   })
 
-  const { template } = config.email
+  const template = get(config, 'email.template')
 
   const email = async (opts, { printLog = true } = {}) => {
     opts.templateId &&

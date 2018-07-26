@@ -7,7 +7,7 @@ const { ward, is } = require('../../ward')
 const compile = require('../../compile')
 
 module.exports = ({ config }) => {
-  const { template } = config.slack
+  const template = get(config, 'slack.template')
 
   const slack = async ({ webhook, ...opts }, { printLog = true } = {}) => {
     ward(webhook, { label: 'webhook', test: is.string.nonEmpty })
