@@ -1,9 +1,10 @@
 'use strict'
 
-const { get } = require('lodash')
+const { isNil, get } = require('lodash')
 const got = require('got')
 
 const { ward, wardCredential, is } = require('../../ward')
+const compile = require('../../compile')
 
 module.exports = ({ config }) => {
   const errFn = wardCredential(config, {
@@ -14,13 +15,22 @@ module.exports = ({ config }) => {
 
   const endpoint = get(config, 'slack.webhook')
 
-  const slack = async ({ text, attachments }) => {
-    ward(text, { label: 'text', test: is.string.nonEmpty })
+  const { template } = config.slack
 
-    const body = JSON.stringify({ text, attachments })
-    const response = await got(endpoint, { body })
+  const slack = async (opts, { printLog = true } = {}) => {
+    const slackOpts = compile({
+      config,
+      opts,
+      pickProps: ['text', 'attachments'],
+      template: get(template, opts.templateId)
+    })
 
-    return { log: response.body }
+    ward(slackOpts.from, { label: 'text', test: is.string.nonEmpty })
+    const { body: log } = await got(endpoint, {
+      body: JSON.stringify(slackOpts)
+    })
+
+    return { log }
   }
 
   return slack
