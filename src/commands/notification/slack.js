@@ -25,7 +25,7 @@ module.exports = ({ config }) => {
       template: get(template, opts.templateId)
     })
 
-    ward(slackOpts.from, { label: 'text', test: is.string.nonEmpty })
+    ward(slackOpts.text, { label: 'text', test: is.string.nonEmpty })
 
     const { body: log } = await got(webhook, {
       body: JSON.stringify(slackOpts)
