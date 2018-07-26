@@ -1,25 +1,11 @@
 'use strict'
 
-const { isNil, omit, get, pick } = require('lodash')
+const { isNil, omit, get } = require('lodash')
 const nodemailer = require('nodemailer')
-const deepMap = require('deep-map')
 const Mailgen = require('mailgen')
-const pupa = require('pupa')
-
-const TEMPLATE_PICK_PROPS = [
-  'body',
-  'from',
-  'bcc',
-  'cc',
-  'to',
-  'subject',
-  'attachments'
-]
 
 const { wardCredential, ward, is } = require('../../ward')
-
-const compileTemplate = (template, opts) =>
-  deepMap(template, str => pupa(str, opts))
+const compile = require('../../compile')
 
 module.exports = ({ config }) => {
   const errFn = wardCredential(config, [
@@ -46,10 +32,11 @@ module.exports = ({ config }) => {
   const { template } = config.email
 
   const email = async (opts, { printLog = true } = {}) => {
-    ward(opts.templateId, {
-      label: 'templateId',
-      test: is.string.is(x => !isNil(get(template, x)))
-    })
+    opts.templateId &&
+      ward(opts.templateId, {
+        label: 'templateId',
+        test: is.string.is(x => !isNil(get(template, x)))
+      })
 
     ward(opts.to, {
       test: is.string,
@@ -57,24 +44,32 @@ module.exports = ({ config }) => {
       message: `Need to specify at least one destination as 'to'`
     })
 
-    const compiledTemplate = compileTemplate(get(template, opts.templateId), {
-      ...config,
-      props: opts
+    const { html, text, ...mailOpts } = compile({
+      config,
+      opts,
+      pickProps: [
+        'html',
+        'text',
+        'body',
+        'from',
+        'bcc',
+        'cc',
+        'to',
+        'subject',
+        'attachments'
+      ],
+      template: get(template, opts.templateId)
     })
 
-    // assign props in order to replace props over config
-    const mailOpts = {
-      ...pick(compiledTemplate, TEMPLATE_PICK_PROPS),
-      ...pick(opts, TEMPLATE_PICK_PROPS)
-    }
+    ward(mailOpts.from, { label: 'from', test: is.string.nonEmpty })
+    ward(mailOpts.subject, { label: 'subject', test: is.string.nonEmpty })
 
-    ward(mailOpts.from, { label: 'from', test: is.string })
-    ward(mailOpts.subject, { label: 'subject', test: is.string })
+    const info = await transporter.sendMail({
+      ...mailOpts,
+      html: html || text || mailGenerator.generate({ body: mailOpts.body }),
+      text: text || mailGenerator.generatePlaintext({ body: mailOpts.body })
+    })
 
-    const html = mailGenerator.generate({ body: mailOpts.body })
-    const text = mailGenerator.generatePlaintext({ body: mailOpts.body })
-
-    const info = await transporter.sendMail({ ...mailOpts, html, text })
     const log = {
       ...omit(mailOpts, ['body']),
       preview: nodemailer.getTestMessageUrl(info)

@@ -4,6 +4,7 @@ const { get } = require('lodash')
 const got = require('got')
 
 const { ward, wardCredential, is } = require('../../ward')
+const compile = require('../../compile')
 
 module.exports = ({ config }) => {
   const errFn = wardCredential(config, {
@@ -12,15 +13,25 @@ module.exports = ({ config }) => {
   })
   if (errFn) return errFn
 
+  const { template } = config.telegram
+
   const token = get(config, 'telegram.token')
+
   const endpoint = `https://api.telegram.org/bot${token}/sendMessage`
 
-  const telegram = async ({ message, chatId }) => {
+  const telegram = async (opts, { printLog = true } = {}) => {
+    const { chatId, text } = compile({
+      config,
+      opts,
+      pickProps: ['chatId', 'text'],
+      template: get(template, opts.templateId)
+    })
+
     ward(chatId, { label: 'chatId', test: is.number })
-    ward(message, { label: 'message', test: is.string.nonEmpty })
-    const query = { chat_id: chatId, text: message }
+    ward(text, { label: 'text', test: is.string.nonEmpty })
+    const query = { chat_id: chatId, text }
     const { body } = await got(endpoint, { json: true, query })
-    return { log: body.result }
+    return { log: body.result, printLog }
   }
 
   return telegram

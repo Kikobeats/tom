@@ -269,10 +269,17 @@ Under non production scenario, you can use [ethereal](https://ethereal.email/) a
 
 ##### templateId
 
-*Required*</br>
 type: `string`
 
-The mail template to use declared on your configuration file.
+If it is present, it will be generate `text` and `html` using the template.
+
+##### text
+
+The plain text content version of the email notification.
+
+##### html
+
+The HTML content version of the email notification.
 
 ##### from
 
@@ -326,6 +333,12 @@ It sends a telegram message to the specified chat id.
 
 #### Data Params
 
+##### templateId
+
+type: `string`
+
+If it is present, it will be generate `text` using the template.
+
 ##### chatId
 
 *Required*</br>
@@ -333,9 +346,10 @@ type: `number`
 
 The Telegram chat id that will receive the message.
 
-##### message
+##### text
 
-type: `string`</br>
+*Required*</br>
+type: `string`
 
 The message that will be sent.
 
@@ -343,22 +357,35 @@ The message that will be sent.
 
 <small>`POST`</small>
 
-It sends a slack message.
+It sends a Slack message.
 
 #### Data Params
+
+##### webhook
+
+*Required*</br>
+type: `string`
+
+The Slack webhook endpoint for sending the data.
+
+##### templateId
+
+Type: `string`
+
+If it is present, it will be generate `text` using the template.
 
 ##### text
 
 *Required*</br>
 type: `string`
 
-The text of the message
+The text of the message.
 
 ##### attachments
 
 type: `object`</br>
 
-The message attachments, you cand find more information in the [Slack Documentation](https://api.slack.com/docs/message-attachments#attachment_structure)
+The message attachments, you can find more information at [Slack Documentation](https://api.slack.com/docs/message-attachments#attachment_structure)
 
 ## Environment Variables
 
@@ -407,13 +434,6 @@ Type: `string` </br>
 Default: `config.email.transporter.auth.user`
 
 Your SMTP authentication user credential.
-
-## TOM_SLACK_WEBHOOK
-
-Type: `string` </br>
-Default: `config.slack.webhook`
-
-Your Slack webhook URL.
 
 ## License
 

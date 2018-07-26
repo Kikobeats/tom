@@ -3,21 +3,21 @@
 const { isNil, get } = require('lodash')
 const got = require('got')
 
-const { ward, wardCredential, is } = require('../../ward')
+const { ward, is } = require('../../ward')
 const compile = require('../../compile')
 
 module.exports = ({ config }) => {
-  const errFn = wardCredential(config, {
-    key: 'slack.webhook',
-    env: 'TOM_SLACK_WEBHOOK'
-  })
-  if (errFn) return errFn
-
-  const endpoint = get(config, 'slack.webhook')
-
   const { template } = config.slack
 
-  const slack = async (opts, { printLog = true } = {}) => {
+  const slack = async ({ webhook, ...opts }, { printLog = true } = {}) => {
+    ward(webhook, { label: 'webhook', test: is.string.nonEmpty })
+
+    opts.templateId &&
+      ward(opts.templateId, {
+        label: 'templateId',
+        test: is.string.is(x => !isNil(get(template, x)))
+      })
+
     const slackOpts = compile({
       config,
       opts,
@@ -26,11 +26,12 @@ module.exports = ({ config }) => {
     })
 
     ward(slackOpts.from, { label: 'text', test: is.string.nonEmpty })
-    const { body: log } = await got(endpoint, {
+
+    const { body: log } = await got(webhook, {
       body: JSON.stringify(slackOpts)
     })
 
-    return { log }
+    return { log, printLog }
   }
 
   return slack
