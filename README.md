@@ -17,7 +17,7 @@
 - It processes payment via [Stripe](https://stripe.com).
 - It creates new customers and associate your pricing plans.
 - It subscribes customers into plans.
-- It sends transactional emails.
+- It sends transactional notifications (email, slack, telegram).
 
 **tom** does the things you do not want to do, it's your best friend 🐶.
 
