@@ -1,26 +1,37 @@
 'use strict'
 
-const { get } = require('lodash')
+const { isNil, get } = require('lodash')
 const got = require('got')
 
-const { ward, wardCredential, is } = require('../../ward')
+const { ward, is } = require('../../ward')
+const compile = require('../../compile')
 
 module.exports = ({ config }) => {
-  const errFn = wardCredential(config, {
-    key: 'slack.webhook',
-    env: 'TOM_SLACK_WEBHOOK'
-  })
-  if (errFn) return errFn
+  const template = get(config, 'slack.template')
 
-  const endpoint = get(config, 'slack.webhook')
+  const slack = async ({ webhook, ...opts }, { printLog = true } = {}) => {
+    ward(webhook, { label: 'webhook', test: is.string.nonEmpty })
 
-  const slack = async ({ text, attachments }) => {
-    ward(text, { label: 'text', test: is.string.nonEmpty })
+    opts.templateId &&
+      ward(opts.templateId, {
+        label: 'templateId',
+        test: is.string.is(x => !isNil(get(template, x)))
+      })
 
-    const body = JSON.stringify({ text, attachments })
-    const response = await got(endpoint, { body })
+    const slackOpts = compile({
+      config,
+      opts,
+      pickProps: ['text', 'attachments'],
+      template: get(template, opts.templateId)
+    })
 
-    return { log: response.body }
+    ward(slackOpts.text, { label: 'text', test: is.string.nonEmpty })
+
+    const { body: log } = await got(webhook, {
+      body: JSON.stringify(slackOpts)
+    })
+
+    return { log, printLog }
   }
 
   return slack
