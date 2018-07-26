@@ -12,14 +12,12 @@
 [![NPM Status](https://img.shields.io/npm/dm/tom-microservice.svg?style=flat-square)](https://www.npmjs.org/package/tom-microservice)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/Kikobeats)
 
-**tom** is your side project backoffice as microservice:
+**tom** 🐶 is a backoffice as service oriented for do things that you want to do, like:
 
-- It processes payment via [Stripe](https://stripe.com).
-- It creates new customers and associate your pricing plans.
-- It subscribes customers into plans.
-- It sends transactional notifications (email, slack, telegram).
+- Creates/updates user via [Stripe](https://stripe.com).
+- Associates your users with a subscription plan.
+- Sends transactional notification via email, Slack or Telegram.
 
-**tom** does the things you do not want to do, it's your best friend 🐶.
 
 ## Install
 
@@ -29,9 +27,8 @@ $ npm install tom-microservice
 
 ## Usage
 
-**tom** creates customers, subscriptions plans & send notifications.
 
-You can consume **tom** from different ways.
+You can consume **tom** 🐶 from different ways.
 
 ### as microservice
 
