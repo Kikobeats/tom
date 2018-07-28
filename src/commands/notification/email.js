@@ -31,7 +31,7 @@ module.exports = ({ config }) => {
 
   const template = get(config, 'email.template')
 
-  const email = async (opts, { printLog = true } = {}) => {
+  const email = async opts => {
     opts.templateId &&
       ward(opts.templateId, {
         label: 'templateId',
@@ -75,7 +75,7 @@ module.exports = ({ config }) => {
       preview: nodemailer.getTestMessageUrl(info)
     }
 
-    return { log, printLog }
+    return log
   }
 
   return email

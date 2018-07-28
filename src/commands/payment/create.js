@@ -10,10 +10,10 @@ module.exports = ({ config, commands }) => {
     key: 'payment.stripe_key',
     env: 'TOM_STRIPE_KEY'
   })
+
   if (errFn) return errFn
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
-  const { email: sendEmail } = commands.notification
 
   const payment = async ({ token, planId, templateId }) => {
     ward(token, { label: 'token', test: is.object })
@@ -36,12 +36,7 @@ module.exports = ({ config, commands }) => {
       plan: planId
     })
 
-    const logEmail = templateId
-      ? await sendEmail({ templateId, to: email }, { printLog: false })
-      : {}
-    const log = { customerId, email, planId: data.plan.id, ...logEmail }
-
-    return { log }
+    return { customerId, email, planId: data.plan.id }
   }
 
   return payment

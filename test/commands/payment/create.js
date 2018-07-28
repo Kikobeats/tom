@@ -14,11 +14,7 @@ test('payment:create', async t => {
     tom.on('payment:create', async data => {
       await stripe.customers.del(data.customerId)
       t.is(data.email, email)
-      t.is(data.to, email)
       t.is(data.planId, planId)
-      t.deepEqual(data.bcc, config.company.email)
-      t.deepEqual(data.from, config.company.email)
-      t.is(data.subject, `Welcome to ${config.company.site}`)
       return { foo: 'bar' }
     })
   })
@@ -27,8 +23,6 @@ test('payment:create', async t => {
 
   const stripe = createStripe(TOM_STRIPE_KEY)
   const email = `test_${faker.internet.exampleEmail()}`
-  const templateId = 'payment_success'
-
   const stripeToken = await stripe.tokens.create({
     card: {
       number: '4242424242424242',
@@ -41,5 +35,5 @@ test('payment:create', async t => {
   const token = { ...stripeToken, email }
   const planId = 'pro-1k'
 
-  await tom.payment.create({ planId, token, email, templateId })
+  await tom.payment.create({ planId, token, email })
 })

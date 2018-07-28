@@ -1,21 +1,14 @@
 'use strict'
 
-const { get, eq, reduce, forEach, camelCase } = require('lodash')
+const { get, eq, forEach } = require('lodash')
 const bodyParser = require('body-parser')
-const autoParse = require('auto-parse')
 
-const withRoute = require('./interface/route')
-const loadConfig = require('./config/load')
-const createTom = require('.')
+const withRoute = require('../interface/route')
+const loadConfig = require('../config/load')
+const normalize = require('./normalize')
+const createTom = require('..')
 
 const { TOM_API_KEY, TOM_ALLOWED_ORIGIN = '*' } = process.env
-
-const normalize = query =>
-  reduce(
-    query,
-    (acc, value, key) => ({ ...acc, [camelCase(key)]: autoParse(value) }),
-    {}
-  )
 
 module.exports = async (app, express) => {
   const config = await loadConfig()
