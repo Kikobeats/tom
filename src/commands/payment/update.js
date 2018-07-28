@@ -14,7 +14,6 @@ module.exports = ({ config, commands }) => {
   if (errFn) return errFn
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
-  const { email: sendEmail } = commands.notification
 
   const payment = async ({ token, customerId, templateId }) => {
     ward(token, { label: 'token', test: is.object })
@@ -31,13 +30,7 @@ module.exports = ({ config, commands }) => {
       message: `Not found the 'email' associated with the customer.`
     })
 
-    // TODO: REFACTOR
-    const logEmail = templateId
-      ? await sendEmail({ templateId, to: email })
-      : {}
-    const log = { customerId, email, ...logEmail }
-
-    return { log }
+    return { customerId, email }
   }
 
   return payment

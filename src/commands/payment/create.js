@@ -14,7 +14,6 @@ module.exports = ({ config, commands }) => {
   if (errFn) return errFn
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
-  const { email: sendEmail } = commands.notification
 
   const payment = async ({ token, planId, templateId }) => {
     ward(token, { label: 'token', test: is.object })
@@ -37,13 +36,7 @@ module.exports = ({ config, commands }) => {
       plan: planId
     })
 
-    // TODO: REFACTOR
-    const logEmail = templateId
-      ? await sendEmail({ templateId, to: email })
-      : {}
-    const log = { customerId, email, planId: data.plan.id, ...logEmail }
-
-    return { log }
+    return { customerId, email, planId: data.plan.id }
   }
 
   return payment
