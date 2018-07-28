@@ -10,6 +10,7 @@ module.exports = ({ config, commands }) => {
     key: 'payment.stripe_key',
     env: 'TOM_STRIPE_KEY'
   })
+
   if (errFn) return errFn
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
@@ -30,8 +31,9 @@ module.exports = ({ config, commands }) => {
       message: `Not found the 'email' associated with the customer.`
     })
 
+    // TODO: REFACTOR
     const logEmail = templateId
-      ? await sendEmail({ templateId, to: email }, { printLog: false })
+      ? await sendEmail({ templateId, to: email })
       : {}
     const log = { customerId, email, ...logEmail }
 

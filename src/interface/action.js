@@ -1,7 +1,10 @@
 'use strict'
 
-const { split, first, reduce } = require('lodash')
+const { isEmpty, split, first, reduce } = require('lodash')
+const timeSpan = require('time-span')
+const prettyMs = require('pretty-ms')
 const pRetry = require('p-retry')
+const uuidv4 = require('uuid/v4')
 
 const printError = require('../log/print-error')
 const createLog = require('../log/create-log')
@@ -13,10 +16,11 @@ const eventDomain = eventName => first(split(eventName, ':'))
 module.exports = ({ eventName, fn, tom }) => {
   const log = createLog({ keyword: eventName })
 
-  return async (params, opts) => {
+  return async opts => {
     try {
-      const run = () => fn(params, opts)
-      const { log: data, printLog = true } = await pRetry(run, { retries: 3 })
+      const run = () => fn(opts)
+      let time = timeSpan()
+      const data = await pRetry(run, { retries: 3 })
 
       const meta = await Promise.all([
         tom.emit('*', data),
@@ -24,12 +28,16 @@ module.exports = ({ eventName, fn, tom }) => {
         tom.emit(eventName, data)
       ])
 
+      time = prettyMs(time())
+
       const output = reduce(
         meta,
         (acc, obj) => ({ ...acc, ...toObject(obj) }),
         data
       )
-      if (printLog) log.debug(output)
+
+      if (!isEmpty(output)) log.debug({ id: uuidv4(), ...output, time })
+
       return output
     } catch (err) {
       printError({ log, err })

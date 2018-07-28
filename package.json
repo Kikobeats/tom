@@ -51,11 +51,16 @@
     "morgan": "~1.9.0",
     "nodemailer": "~4.6.7",
     "ow": "~0.6.0",
+    "p-reflect": "~1.0.0",
     "p-retry": "~2.0.0",
+    "p-series": "~1.1.0",
+    "pretty-ms": "~3.2.0",
     "pupa": "~1.0.0",
     "stripe": "~6.2.0",
     "telebot": "~1.2.6",
-    "update-notifier": "~2.5.0"
+    "time-span": "~2.0.0",
+    "update-notifier": "~2.5.0",
+    "uuid": "~3.3.2"
   },
   "devDependencies": {
     "ava": "latest",

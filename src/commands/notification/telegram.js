@@ -18,7 +18,7 @@ module.exports = ({ config }) => {
 
   const endpoint = `https://api.telegram.org/bot${token}/sendMessage`
 
-  const telegram = async (opts, { printLog = true } = {}) => {
+  const telegram = async opts => {
     const { chatId, text } = compile({
       config,
       opts,
@@ -30,7 +30,7 @@ module.exports = ({ config }) => {
     ward(text, { label: 'text', test: is.string.nonEmpty })
     const query = { chat_id: chatId, text }
     const { body } = await got(endpoint, { json: true, query })
-    return { log: body.result, printLog }
+    return body.result
   }
 
   return telegram

@@ -9,7 +9,7 @@ const compile = require('../../compile')
 module.exports = ({ config }) => {
   const template = get(config, 'slack.template')
 
-  const slack = async ({ webhook, ...opts }, { printLog = true } = {}) => {
+  const slack = async ({ webhook, ...opts }) => {
     ward(webhook, { label: 'webhook', test: is.string.nonEmpty })
 
     opts.templateId &&
@@ -31,7 +31,7 @@ module.exports = ({ config }) => {
       body: JSON.stringify(slackOpts)
     })
 
-    return { log, printLog }
+    return log
   }
 
   return slack

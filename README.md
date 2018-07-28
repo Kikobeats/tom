@@ -144,7 +144,7 @@ Every command has his own field at [configuration](#configuration).
 
 ![](https://i.imgur.com/yzHBpcf.png)
 
-It handles all the logic related to subscription creation related to users.
+It creates customers & subscribe them to plans.
 
 #### payment:create
 
@@ -213,7 +213,7 @@ If it is present, it will be generate a email notification as well, using the ne
 
 ![](https://i.imgur.com/MmgFbS3.png)
 
-It handles all the logic related with notify users
+It sends notification using different providers and transporters.
 
 #### notification:email
 
@@ -344,6 +344,70 @@ The text of the message.
 type: `object`</br>
 
 The message attachments, you can find more information at [Slack Documentation](https://api.slack.com/docs/message-attachments#attachment_structure)
+
+### batch
+
+![](https://i.imgur.com/MmgFbS3.png)
+
+It runs more than one command in the same action.
+
+#### batch:parallel
+
+<small>`POST`</small>
+
+It runs all the commands in paralell, without waiting until the previous function has completed.
+
+If any of the commands throw an error, the rest continue running.
+
+##### Data Parameters
+
+The commands should be provided as a colleciton:
+
+```
+[
+	{ 
+		"command": "notification.email", 
+		"templateId": "welcome", 
+		"to": "hello@kikobeats.com"
+	}, { 
+		"command": "telegram", 
+		"templateId": "welcome", 
+		"to": "hello@kikobeats.com",
+		"chatId": 1234
+	}
+]
+```
+
+The field `command` determine what command should be used while the rest of parameters provided will be passed through the command.
+
+#### batch:series
+
+<small>`POST`</small>
+
+It runs all the commands in series, each one running once the previous function has completed.
+
+If any of the commands throw an error, no more functions are run.
+
+##### Data Parameters
+
+The commands should be provided as a colleciton:
+
+```
+[
+	{ 
+		"command": "notification.email", 
+		"templateId": "welcome", 
+		"to": "hello@kikobeats.com"
+	}, { 
+		"command": "telegram", 
+		"templateId": "welcome", 
+		"to": "hello@kikobeats.com",
+		"chatId": 1234
+	}
+]
+```
+
+The field `command` determine what command should be used while the rest of parameters provided will be passed through the command.
 
 ## Environment Variables
 
