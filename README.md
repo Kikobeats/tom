@@ -102,9 +102,9 @@ This information will be used across all the commands.
 ## Event System
 
 !> Event System is only supported with `tom.config.js` configuration file.
- 
+
 Every time **tom** 🐶 execute a command successfully it will be emit an event:
- 
+
 ```js
 // Register stats for payment processed
 tom.on('payment:create', async data => {
@@ -365,13 +365,13 @@ The commands should be provided as a colleciton:
 
 ```
 [
-	{ 
-		"command": "notification.email", 
-		"templateId": "welcome", 
+	{
+		"command": "notification.email",
+		"templateId": "welcome",
 		"to": "hello@kikobeats.com"
-	}, { 
-		"command": "telegram", 
-		"templateId": "welcome", 
+	}, {
+		"command": "telegram",
+		"templateId": "welcome",
 		"to": "hello@kikobeats.com",
 		"chatId": 1234
 	}
@@ -394,13 +394,13 @@ The commands should be provided as a colleciton:
 
 ```
 [
-	{ 
-		"command": "notification.email", 
-		"templateId": "welcome", 
+	{
+		"command": "notification.email",
+		"templateId": "welcome",
 		"to": "hello@kikobeats.com"
-	}, { 
-		"command": "telegram", 
-		"templateId": "welcome", 
+	}, {
+		"command": "telegram",
+		"templateId": "welcome",
 		"to": "hello@kikobeats.com",
 		"chatId": 1234
 	}
@@ -448,16 +448,16 @@ The [stripe key of your account](https://dashboard.stripe.com/account/apikeys).
 ### TOM_EMAIL_USER
 
 Type: `string` </br>
-Default: `config.email.transporter.auth.password`
+Default: `config.email.transporter.auth.user`
 
-Your SMTP authentication password credential.
+Your SMTP authentication user credential.
 
 ### TOM_EMAIL_PASSWORD
 
 Type: `string` </br>
-Default: `config.email.transporter.auth.user`
+Default: `config.email.transporter.auth.password`
 
-Your SMTP authentication user credential.
+Your SMTP authentication password credential.
 
 ## License
 
