@@ -15,9 +15,9 @@
 
 **tom** 🐶 is a backoffice as service oriented for do things that you want to do, like:
 
-- Creates/updates user via [Stripe](https://stripe.com).
+- [Creates](#paymentcreate) and [updates](#paymentupdate) users via [Stripe](#payment).
 - Associates your users with a subscription plan.
-- Sends transactional notification via email, Slack or Telegram.
+- Sends transactional notification via [email](#notificationemail), [Slack](#notificationslack) or [Telegram](#notificationtelegram).
 
 ## Install
 
