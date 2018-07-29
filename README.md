@@ -10,14 +10,14 @@
 [![Dependency status](https://img.shields.io/david/Kikobeats/tom-microservice.svg?style=flat-square)](https://david-dm.org/Kikobeats/tom-microservice)
 [![Dev Dependencies Status](https://img.shields.io/david/dev/Kikobeats/tom-microservice.svg?style=flat-square)](https://david-dm.org/Kikobeats/tom-microservice#info=devDependencies)
 [![NPM Status](https://img.shields.io/npm/dm/tom-microservice.svg?style=flat-square)](https://www.npmjs.org/package/tom-microservice)
-[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/Kikobeats)
+
+!> A fully production ready example at [tom-example](https://github.com/Kikobeats/tom-example#tom-example).
 
 **tom** 🐶 is a backoffice as service oriented for do things that you want to do, like:
 
 - Creates/updates user via [Stripe](https://stripe.com).
 - Associates your users with a subscription plan.
 - Sends transactional notification via email, Slack or Telegram.
-
 
 ## Install
 
@@ -26,7 +26,6 @@ $ npm install tom-microservice
 ```
 
 ## Usage
-
 
 You can consume **tom** 🐶 from different ways.
 
@@ -75,7 +74,7 @@ const {payment, email} = tom
 
 ## Configuration
 
-!> Use [config](https://www.npmjs.com/package/config) to get different configurations based on environments.
+!> Use [config](https://www.npmjs.com/package/config) to load different configurations based on environments.
 
 All the **tom** 🐶 actions are based on a configuration file.
 
