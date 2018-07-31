@@ -13,7 +13,7 @@
 
 !> A fully production ready example at [tom-example](https://github.com/Kikobeats/tom-example#tom-example).
 
-**tom** 🐶 is a backoffice as service oriented for do things that you want to do, like:
+**tom** 🐶 is a backoffice as service oriented to do things that you want to do, like:
 
 - [Creates](#paymentcreate) and [updates](#paymentupdate) users via [Stripe](#payment).
 - Associates your users with a subscription plan.
