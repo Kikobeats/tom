@@ -1,3 +1,14 @@
+<a name="2.1.0"></a>
+# 2.1.0 (2018-08-21)
+
+* Attach payload to response ([3f90d4c](https://github.com/kikobeats/tom-microservice/commit/3f90d4c))
+* Update ([1a3f106](https://github.com/kikobeats/tom-microservice/commit/1a3f106))
+* Update ([6001985](https://github.com/kikobeats/tom-microservice/commit/6001985))
+* Update lint ([986e37f](https://github.com/kikobeats/tom-microservice/commit/986e37f))
+* Update plan id for resting ([206de9f](https://github.com/kikobeats/tom-microservice/commit/206de9f))
+
+
+
 <a name="2.0.0"></a>
 # 2.0.0 (2018-07-29)
 
