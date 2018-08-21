@@ -96,7 +96,7 @@
     "dev": "svr src/routes",
     "dev:docs": "concurrently \"gulp\" \"npm run dev:docs:server\"",
     "dev:docs:server": "browser-sync start --server --files \"index.html, README.md, static/**/*.(css|js)\"",
-    "lint": "standard-markdown && standard",
+    "lint": "standard-markdown README.md && standard",
     "precommit": "lint-staged",
     "pretest": "npm run lint",
     "start": "node src/server",
