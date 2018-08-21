@@ -1,10 +1,17 @@
 'use strict'
 
 module.exports = ({ fn, eventType, tom }) => async (req, res) => {
+  let status
+  let payload = {}
+
   try {
-    await fn(req.body)
-    res.success(200)
+    const res = await fn(req.body)
+    payload.data = res
+    status = 200
   } catch (err) {
-    res.fail({ message: err.message || err })
+    payload.message = err.message || err
+    status = 400
   }
+
+  return res.status(status).send({ status, ...payload })
 }
