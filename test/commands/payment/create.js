@@ -33,7 +33,7 @@ test('payment:create', async t => {
   })
 
   const token = { ...stripeToken, email }
-  const planId = 'pro-1k'
+  const planId = 'pro-1k-v2'
 
   await tom.payment.create({ planId, token, email })
 })
