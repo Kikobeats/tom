@@ -10,8 +10,6 @@ const runCommands = (commands, opts) =>
   })
 
 module.exports = ({ config, commands }) => {
-  const parallel = async opts => {
-    await Promise.all(runCommands(commands, opts))
-  }
+  const parallel = async opts => Promise.all(runCommands(commands, opts))
   return parallel
 }

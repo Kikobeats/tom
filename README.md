@@ -360,7 +360,7 @@ If any of the commands throw an error, the rest continue running.
 
 ##### Data Parameters
 
-The commands should be provided as a colleciton:
+The commands should be provided as a collection:
 
 ```
 [
@@ -383,13 +383,13 @@ The field `command` determine what command should be used while the rest of para
 
 <small>`POST`</small>
 
-It runs all the commands in series, each one running once the previous function has completed.
+It runs all the commands in series, each one running once the previous function has completed, each passing its result to the next.
 
 If any of the commands throw an error, no more functions are run.
 
 ##### Data Parameters
 
-The commands should be provided as a colleciton:
+The commands should be provided as a collection:
 
 ```
 [

@@ -1,17 +1,15 @@
 'use strict'
 
 const { noop, get, map } = require('lodash')
-const pSeries = require('p-series')
+const pWaterfall = require('p-waterfall')
 
 const runCommands = (commands, opts) =>
   map(opts, ({ command, ...props }) => {
     const fn = get(commands, command, noop)
-    return () => fn(props)
+    return prevProps => fn({ ...props, ...prevProps })
   })
 
 module.exports = ({ config, commands }) => {
-  const series = async opts => {
-    await pSeries(runCommands(commands, opts))
-  }
+  const series = opts => pWaterfall(runCommands(commands, opts), {})
   return series
 }
