@@ -10,7 +10,7 @@ const { TESTING_SLACK_WEBHOOK } = process.env
 test('notification:slack', async t => {
   const config = createConfig(({ config, tom }) => {
     tom.on('notification:slack', data => {
-      t.is(data, 'ok')
+      t.is(data.status, 'ok')
     })
   })
 

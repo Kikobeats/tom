@@ -1,6 +1,6 @@
 'use strict'
 
-const { isNil, omit, get } = require('lodash')
+const { pick, isNil, get } = require('lodash')
 const nodemailer = require('nodemailer')
 const Mailgen = require('mailgen')
 
@@ -29,13 +29,13 @@ module.exports = ({ config }) => {
     }
   })
 
-  const template = get(config, 'email.template')
+  const templates = get(config, 'email.template')
 
   const email = async opts => {
     opts.templateId &&
       ward(opts.templateId, {
         label: 'templateId',
-        test: is.string.is(x => !isNil(get(template, x)))
+        test: is.string.is(x => !isNil(get(templates, x)))
       })
 
     ward(opts.to, {
@@ -44,22 +44,8 @@ module.exports = ({ config }) => {
       message: `Need to specify at least one destination as 'to'`
     })
 
-    const { html, text, ...mailOpts } = compile({
-      config,
-      opts,
-      pickProps: [
-        'html',
-        'text',
-        'body',
-        'from',
-        'bcc',
-        'cc',
-        'to',
-        'subject',
-        'attachments'
-      ],
-      template: get(template, opts.templateId)
-    })
+    const template = get(templates, opts.templateId)
+    const { html, text, ...mailOpts } = compile(template, { config, opts })
 
     ward(mailOpts.from, { label: 'from', test: is.string.nonEmpty })
     ward(mailOpts.subject, { label: 'subject', test: is.string.nonEmpty })
@@ -70,12 +56,11 @@ module.exports = ({ config }) => {
       text: text || mailGenerator.generatePlaintext({ body: mailOpts.body })
     })
 
-    const log = {
-      ...omit(mailOpts, ['body']),
+    return {
+      ...pick(mailOpts, ['from', 'bcc', 'subject']),
+      ...opts,
       preview: nodemailer.getTestMessageUrl(info)
     }
-
-    return log
   }
 
   return email

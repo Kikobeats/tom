@@ -7,7 +7,7 @@ const { ward, is } = require('../../ward')
 const compile = require('../../compile')
 
 module.exports = ({ config }) => {
-  const template = get(config, 'slack.template')
+  const templates = get(config, 'slack.template')
 
   const slack = async ({ webhook, ...opts }) => {
     ward(webhook, { label: 'webhook', test: is.string.nonEmpty })
@@ -15,23 +15,18 @@ module.exports = ({ config }) => {
     opts.templateId &&
       ward(opts.templateId, {
         label: 'templateId',
-        test: is.string.is(x => !isNil(get(template, x)))
+        test: is.string.is(x => !isNil(get(templates, x)))
       })
 
-    const slackOpts = compile({
-      config,
-      opts,
-      pickProps: ['text', 'attachments'],
-      template: get(template, opts.templateId)
-    })
+    const template = get(templates, opts.templateId)
+    const slackOpts = compile(template, { config, opts })
 
     ward(slackOpts.text, { label: 'text', test: is.string.nonEmpty })
 
-    const { body: log } = await got(webhook, {
-      body: JSON.stringify(slackOpts)
-    })
+    // non interesting response on body
+    const { body } = await got(webhook, { body: JSON.stringify(slackOpts) })
 
-    return log
+    return { ...opts, status: body }
   }
 
   return slack

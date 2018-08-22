@@ -6,7 +6,7 @@ const pWaterfall = require('p-waterfall')
 const runCommands = (commands, opts) =>
   map(opts, ({ command, ...props }) => {
     const fn = get(commands, command, noop)
-    return prevProps => fn({ ...props, ...prevProps })
+    return prevProps => fn({ ...prevProps, ...props })
   })
 
 module.exports = ({ config, commands }) => {
