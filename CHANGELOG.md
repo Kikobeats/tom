@@ -1,3 +1,11 @@
+<a name="2.1.1"></a>
+## 2.1.1 (2018-08-22)
+
+* Pass previous props in batch series ([c3faf8d](https://github.com/kikobeats/tom-microservice/commit/c3faf8d))
+* Unify notification responses ([269309f](https://github.com/kikobeats/tom-microservice/commit/269309f))
+
+
+
 <a name="2.1.0"></a>
 # 2.1.0 (2018-08-21)
 
