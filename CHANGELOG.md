@@ -1,3 +1,10 @@
+<a name="2.1.2"></a>
+## 2.1.2 (2018-08-23)
+
+* Fix default cors ([c941aa5](https://github.com/kikobeats/tom-microservice/commit/c941aa5))
+
+
+
 <a name="2.1.1"></a>
 ## 2.1.1 (2018-08-22)
 
