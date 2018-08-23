@@ -8,7 +8,7 @@ const loadConfig = require('../config/load')
 const normalize = require('./normalize')
 const createTom = require('..')
 
-const { TOM_API_KEY, TOM_ALLOWED_ORIGIN = '*' } = process.env
+const { TOM_API_KEY, TOM_ALLOWED_ORIGIN } = process.env
 
 module.exports = async (app, express) => {
   const config = await loadConfig()
@@ -20,7 +20,9 @@ module.exports = async (app, express) => {
     .use(
       require('cors')({
         methods: ['GET', 'OPTIONS', 'POST'],
-        origin: TOM_ALLOWED_ORIGIN.replace(/\s/g, '').split(','),
+        origin: TOM_ALLOWED_ORIGIN
+          ? TOM_ALLOWED_ORIGIN.replace(/\s/g, '').split(',')
+          : '*',
         allowedHeaders: [
           'content-type',
           'x-amz-date',

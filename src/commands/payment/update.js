@@ -17,7 +17,7 @@ module.exports = ({ config, commands }) => {
 
   const payment = async ({ token, customerId, templateId }) => {
     ward(token, { label: 'token', test: is.object })
-    ward(token.source, { label: 'token.source', test: is.object })
+    ward(token.id, { label: 'token.id', test: is.string.nonEmpty })
     ward(customerId, { label: 'customerId', test: is.string.nonEmpty })
 
     const { id: source } = token

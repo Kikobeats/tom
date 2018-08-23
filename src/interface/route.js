@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = ({ fn, eventType, tom }) => async (req, res) => {
+module.exports = ({ fn, tom }) => async (req, res) => {
   let status
   let payload = {}
 
