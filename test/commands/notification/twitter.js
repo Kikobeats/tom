@@ -17,7 +17,11 @@ const twit = new Twit({
 
 const getRandomTweetStatus = async () => {
   const payload = await twit.get('search/tweets', {
+<<<<<<< HEAD
     q: 'javascript,nodejs',
+=======
+    q: 'nodejs OR javascript',
+>>>>>>> Add Twitter integration
     count: 100
   })
   const { statuses } = payload.data
@@ -58,7 +62,11 @@ test('dm', async t => {
 
   await tom.notification.twitter({
     type: 'dm',
+<<<<<<< HEAD
     recipientId: '722024185644597248', // @kikobits
+=======
+    recipientId: process.env.TEST_TWITTER_USER_ID,
+>>>>>>> Add Twitter integration
     text: 'are you there'
   })
 })

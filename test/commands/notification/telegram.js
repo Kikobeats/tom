@@ -5,7 +5,7 @@ const test = require('ava')
 const createConfig = require('../../helpers/create-config')
 const createTom = require('../../../')
 
-const { TES_TELEGRAM_CHAT_ID } = process.env
+const { TEST_TELEGRAM_CHAT_ID } = process.env
 
 test('notification:telegram', async t => {
   const config = createConfig(({ config, tom }) => {
@@ -16,7 +16,7 @@ test('notification:telegram', async t => {
   })
 
   const tom = createTom(config)
-  const chatId = parseInt(TES_TELEGRAM_CHAT_ID)
+  const chatId = parseInt(TEST_TELEGRAM_CHAT_ID)
   const text = 'Someone is running the tests 🙀'
 
   await tom.notification.telegram({ text, chatId })
