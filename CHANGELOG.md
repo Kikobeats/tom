@@ -1,3 +1,12 @@
+<a name="2.2.0"></a>
+# 2.2.0 (2018-08-28)
+
+* Add Twitter integration ([4665a46](https://github.com/kikobeats/tom-microservice/commit/4665a46)), closes [#15](https://github.com/kikobeats/tom-microservice/issues/15)
+* Add Twitter integration ([1f8e9cc](https://github.com/kikobeats/tom-microservice/commit/1f8e9cc)), closes [#15](https://github.com/kikobeats/tom-microservice/issues/15)
+* Add Twitter integration ([d06cac6](https://github.com/kikobeats/tom-microservice/commit/d06cac6)), closes [#15](https://github.com/kikobeats/tom-microservice/issues/15)
+
+
+
 <a name="2.1.2"></a>
 ## 2.1.2 (2018-08-23)
 
