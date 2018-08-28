@@ -57,6 +57,7 @@
     "pupa": "~1.0.0",
     "stripe": "~6.4.0",
     "time-span": "~2.0.0",
+    "twit": "~2.2.11",
     "update-notifier": "~2.5.0",
     "uuid": "~3.3.2"
   },
