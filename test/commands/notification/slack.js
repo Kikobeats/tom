@@ -5,7 +5,7 @@ const test = require('ava')
 const createConfig = require('../../helpers/create-config')
 const createTom = require('../../../')
 
-const { TESTING_SLACK_WEBHOOK } = process.env
+const { TEST_SLACK_WEBHOOK } = process.env
 
 test('notification:slack', async t => {
   const config = createConfig(({ config, tom }) => {
@@ -16,7 +16,7 @@ test('notification:slack', async t => {
 
   const tom = createTom(config)
   const text = 'Someone is running the tests 🙀'
-  const webhook = TESTING_SLACK_WEBHOOK
+  const webhook = TEST_SLACK_WEBHOOK
 
   await tom.notification.slack({ webhook, text })
 })

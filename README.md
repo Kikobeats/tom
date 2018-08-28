@@ -282,34 +282,6 @@ An array of attachment objects (see [nodemailer#attachments](https://nodemailer.
 
 Attachments can be used for embedding images as well.
 
-#### notification:telegram
-
-<small>`POST`</small>
-
-It sends a telegram message to the specified chat id.
-
-##### Data Parameters
-
-###### templateId
-
-type: `string`
-
-If it is present, it will be generate `text` using the template.
-
-###### chatId
-
-*Required*</br>
-type: `number`
-
-The Telegram chat id that will receive the message.
-
-###### text
-
-*Required*</br>
-type: `string`
-
-The message that will be sent.
-
 #### notification:slack
 
 <small>`POST`</small>
@@ -343,6 +315,72 @@ The text of the message.
 type: `object`</br>
 
 The message attachments, you can find more information at [Slack Documentation](https://api.slack.com/docs/message-attachments#attachment_structure)
+
+#### notification:telegram
+
+<small>`POST`</small>
+
+It sends a telegram message to the specified chat id.
+
+##### Data Parameters
+
+###### templateId
+
+type: `string`
+
+If it is present, it will be generate `text` using the template.
+
+###### chatId
+
+*Required*</br>
+type: `number`
+
+The Telegram chat id that will receive the message.
+
+###### text
+
+*Required*</br>
+type: `string`
+
+The message that will be sent.
+
+#### notification:twitter
+
+<small>`POST`</small>
+
+It sends a notification using Twitter as provider.
+
+##### Data Parameters
+
+###### templateId
+
+type: `string`
+
+If it is present, it will be generate `text` using the template.
+
+###### text
+
+*Required*</br>
+type: `string`
+
+The text of the message.
+
+###### type
+
+*Required*</br>
+type: `string`
+
+Choose one of the different ways the message can be send.
+
+The types availables are `tweet` or `dm`.
+
+###### recipientId
+
+type: `string`
+
+It defines the user that will be receive the message.
+
+It is only necessary on `dm` mode.
 
 ### batch
 
