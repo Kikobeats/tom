@@ -69,7 +69,7 @@ const config = {/* See configuration section */}
 const tom = require('tom-microservice')(config)
 
 // Now you can access `tom` commands
-const {payment, email} = tom
+const { payment, email } = tom
 ```
 
 ## Configuration
