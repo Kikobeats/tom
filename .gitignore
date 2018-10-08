@@ -31,4 +31,4 @@ coverage
 ############################
 .node_history
 .tomrc
-.env
+.envrc
