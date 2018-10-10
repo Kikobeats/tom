@@ -80,7 +80,7 @@
     "lint-staged": "latest",
     "nyc": "latest",
     "prettier-standard": "latest",
-    "standard": "^12.0.1",
+    "standard": "11",
     "standard-markdown": "latest",
     "svr": "latest"
   },
