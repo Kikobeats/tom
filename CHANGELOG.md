@@ -1,3 +1,92 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="2.2.1"></a>
+## 2.2.1 (2018-10-16)
+
+
+### Bug Fixes
+
+* **package:** update ow to version 0.8.0 ([20b7f6b](https://github.com/kikobeats/tom-microservice/commit/20b7f6b))
+
+
+
+<a name="2.2.0"></a>
+# 2.2.0 (2018-08-28)
+
+
+
+<a name="2.1.2"></a>
+## 2.1.2 (2018-08-23)
+
+
+
+<a name="2.1.1"></a>
+## 2.1.1 (2018-08-22)
+
+
+
+<a name="2.1.0"></a>
+# 2.1.0 (2018-08-21)
+
+
+
+<a name="2.0.0"></a>
+# 2.0.0 (2018-07-29)
+
+
+
+<a name="1.1.3"></a>
+## 1.1.3 (2018-05-11)
+
+
+
+<a name="1.1.2"></a>
+## 1.1.2 (2018-05-10)
+
+
+
+<a name="1.1.1"></a>
+## 1.1.1 (2018-03-24)
+
+
+
+<a name="1.1.0"></a>
+# 1.1.0 (2018-03-23)
+
+
+
+<a name="1.0.5"></a>
+## 1.0.5 (2018-01-08)
+
+
+
+<a name="1.0.4"></a>
+## 1.0.4 (2018-01-07)
+
+
+
+<a name="1.0.3"></a>
+## 1.0.3 (2018-01-05)
+
+
+
+<a name="1.0.2"></a>
+## 1.0.2 (2018-01-05)
+
+
+
+<a name="1.0.1"></a>
+## 1.0.1 (2018-01-05)
+
+
+
+<a name="1.0.0"></a>
+# 1.0.0 (2018-01-05)
+
+
+
 <a name="2.2.0"></a>
 # 2.2.0 (2018-08-28)
 
@@ -174,6 +263,3 @@
 * Update logo ([c294841](https://github.com/kikobeats/tom-microservice/commit/c294841))
 * Update meta ([ad0cc38](https://github.com/kikobeats/tom-microservice/commit/ad0cc38))
 * Update README.md ([82fb0ba](https://github.com/kikobeats/tom-microservice/commit/82fb0ba))
-
-
-
