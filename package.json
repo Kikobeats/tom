@@ -46,7 +46,7 @@
     "deep-map": "~1.5.0",
     "emittery": "~0.4.1",
     "express": "~4.16.3",
-    "got": "~9.2.2",
+    "got": "~9.3.0",
     "helmet": "~3.14.0",
     "import-modules": "~1.1.0",
     "jsendp": "~2.0.0",
