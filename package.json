@@ -2,7 +2,7 @@
   "name": "tom-microservice",
   "description": "Tom creates customers, subscriptions plans & send notifications.",
   "homepage": "https://tom.js.org",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "main": "src",
   "bin": {
     "tom": "bin/index.js"
@@ -13,7 +13,8 @@
     "url": "https://github.com/Kikobeats"
   },
   "contributors": [
-    "rubenmoya <rmoyarodriguez@gmail.com>"
+    "rubenmoya <rmoyarodriguez@gmail.com>",
+    "Travis CI <travis@travis-ci.org>"
   ],
   "repository": {
     "type": "git",
