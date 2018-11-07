@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.2.5"></a>
+## [2.2.5](https://github.com/kikobeats/tom-microservice/compare/v2.2.4...v2.2.5) (2018-11-07)
+
+
+### Bug Fixes
+
+* **package:** update helmet to version 3.15.0 ([38be890](https://github.com/kikobeats/tom-microservice/commit/38be890))
+
+
+
 <a name="2.2.4"></a>
 ## [2.2.4](https://github.com/kikobeats/tom-microservice/compare/v2.2.3...v2.2.4) (2018-10-30)
 
