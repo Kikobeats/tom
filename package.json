@@ -45,7 +45,7 @@
     "emittery": "~0.4.1",
     "express": "~4.16.3",
     "got": "~9.3.0",
-    "helmet": "~3.14.0",
+    "helmet": "~3.15.0",
     "import-modules": "~1.1.0",
     "jsendp": "~2.0.0",
     "lodash": "~4.17.10",
