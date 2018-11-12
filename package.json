@@ -13,7 +13,10 @@
     "url": "https://github.com/Kikobeats"
   },
   "contributors": [
-    "rubenmoya <rmoyarodriguez@gmail.com>"
+    {
+      "name": "rubenmoya",
+      "email": "rmoyarodriguez@gmail.com"
+    }
   ],
   "repository": {
     "type": "git",
@@ -92,7 +95,8 @@
     "standard": "11",
     "standard-markdown": "latest",
     "standard-version": "latest",
-    "svr": "latest"
+    "svr": "latest",
+    "test-listen": "latest"
   },
   "engines": {
     "node": ">= 8"

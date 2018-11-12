@@ -131,8 +131,6 @@ tom.on('payment', sendAnalytics)
 tom.on('*', sendAnalytics)
 ```
 
-
-
 ## Commands
 
 The commands define what things you can do with **tom** 🐶.
