@@ -26,7 +26,7 @@ module.exports = ({ config, commands }) => {
     ward(planId, {
       label: 'planId',
       test: is.string.nonEmpty,
-      message: `Need to specify a 'plan' to use`
+      message: `Need to specify a 'planId' to use`
     })
 
     const { email, id: source } = token
