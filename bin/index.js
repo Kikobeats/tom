@@ -75,7 +75,7 @@ const main = async () => {
   return withProcess({ fn, opts: cli.flags })
 }
 
-main.catch(err => {
+main().catch(err => {
   printError({ log: createLog({ keyword: 'tom' }), err })
   process.exit(err.code || 1)
 })
