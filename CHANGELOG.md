@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.2.9"></a>
+## [2.2.9](https://github.com/kikobeats/tom-microservice/compare/v2.2.8...v2.2.9) (2018-11-12)
+
+
+### Bug Fixes
+
+* **package:** update stripe to version 6.15.0 ([7fc8e39](https://github.com/kikobeats/tom-microservice/commit/7fc8e39))
+
+
+
 <a name="2.2.8"></a>
 ## [2.2.8](https://github.com/kikobeats/tom-microservice/compare/v2.2.7...v2.2.8) (2018-11-12)
 
