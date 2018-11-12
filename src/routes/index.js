@@ -8,7 +8,9 @@ const loadConfig = require('../config/load')
 const normalize = require('./normalize')
 const createTom = require('..')
 
-const { TOM_API_KEY, TOM_ALLOWED_ORIGIN } = process.env
+const { TOM_API_KEY, TOM_ALLOWED_ORIGIN, NODE_ENV } = process.env
+
+const isTest = NODE_ENV === 'test'
 
 module.exports = async (app, express) => {
   const config = await loadConfig()
@@ -35,7 +37,6 @@ module.exports = async (app, express) => {
     )
     .use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json())
-    .use(require('morgan')('short'))
     .use((req, res, next) => {
       req.body = normalize(req.body)
       req.query = normalize(req.query)
@@ -43,9 +44,11 @@ module.exports = async (app, express) => {
     })
     .disable('x-powered-by')
 
+  if (!isTest) app.use(require('morgan')('short'))
+
   app.get('/', (req, res) => res.status(204).send())
   app.get('/robots.txt', (req, res) => res.status(204).send())
-  app.get('/favicon.txt', (req, res) => res.status(204).send())
+  app.get('/favicon.ico', (req, res) => res.status(204).send())
   app.get('/ping', (req, res) => res.send('pong'))
 
   if (TOM_API_KEY) {

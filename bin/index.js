@@ -44,11 +44,20 @@ const cli = require('meow')(require('./help'), {
     }
   }
 })
-;(async () => {
+
+const initialize = async () => {
+  const config = await loadConfig(cli.flags.config)
+  const tom = createTom(config)
+  return tom
+}
+
+const main = async () => {
   const { silent, command } = cli.flags
 
   if (!command) {
-    return createServer(cli.flags, port => {
+    const { port } = cli.flags
+    const app = await createServer()
+    return app.listen(port, () => {
       if (!silent) {
         console.log(
           logo({
@@ -60,19 +69,13 @@ const cli = require('meow')(require('./help'), {
     })
   }
 
-  const initialize = async () => {
-    try {
-      const config = await loadConfig(cli.flags.config)
-      const tom = createTom(config)
-      return tom
-    } catch (err) {
-      printError({ log: createLog({ keyword: 'tom' }), err })
-      process.exit(err.code || 1)
-    }
-  }
-
   const tom = await initialize()
   const fn = get(tom, command)
   if (!fn) return cli.showHelp()
   return withProcess({ fn, opts: cli.flags })
-})()
+}
+
+main.catch(err => {
+  printError({ log: createLog({ keyword: 'tom' }), err })
+  process.exit(err.code || 1)
+})
