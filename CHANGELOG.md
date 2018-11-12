@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.2.8"></a>
+## [2.2.8](https://github.com/kikobeats/tom-microservice/compare/v2.2.7...v2.2.8) (2018-11-12)
+
+
+### Bug Fixes
+
+* error message ([8aa2392](https://github.com/kikobeats/tom-microservice/commit/8aa2392))
+
+
+
 <a name="2.2.7"></a>
 ## [2.2.7](https://github.com/kikobeats/tom-microservice/compare/v2.2.6...v2.2.7) (2018-11-12)
 
