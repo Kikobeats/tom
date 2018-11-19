@@ -51,7 +51,7 @@
     "mailgen": "~2.0.5",
     "meow": "~5.0.0",
     "morgan": "~1.9.0",
-    "nodemailer": "~4.6.7",
+    "nodemailer": "~4.7.0",
     "ow": "~0.8.0",
     "p-reflect": "~1.0.0",
     "p-retry": "~2.0.0",
