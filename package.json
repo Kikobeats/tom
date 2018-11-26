@@ -13,7 +13,10 @@
     "url": "https://github.com/Kikobeats"
   },
   "contributors": [
-    "rubenmoya <rmoyarodriguez@gmail.com>"
+    {
+      "name": "rubenmoya",
+      "email": "rmoyarodriguez@gmail.com"
+    }
   ],
   "repository": {
     "type": "git",
@@ -34,9 +37,9 @@
   "dependencies": {
     "acho": "~4.0.2",
     "auto-parse": "~1.5.1",
+    "beauty-error": "~1.1.0",
     "body-parser": "~1.18.3",
     "chalk": "~2.4.1",
-    "clean-stack": "~2.0.0",
     "compression": "~1.7.3",
     "cors": "~2.8.4",
     "cosmiconfig": "~5.0.5",

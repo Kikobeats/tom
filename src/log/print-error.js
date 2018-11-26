@@ -1,9 +1,10 @@
 'use strict'
 
-const cleanStack = require('clean-stack')
+const { beautyError, cleanError, getError } = require('beauty-error')
+
+const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = ({ log, err }) => {
-  const { message, stack } = err
-  if (stack) log.error(cleanStack(stack))
-  else log.error(message)
+  const error = cleanError(getError(err))
+  log.error(isProduction ? error : `\n${beautyError(error)}`)
 }
