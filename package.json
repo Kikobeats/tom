@@ -33,7 +33,7 @@
   ],
   "dependencies": {
     "acho": "~4.0.2",
-    "auto-parse": "~1.5.1",
+    "auto-parse": "~1.6.0",
     "beauty-error": "~1.1.0",
     "body-parser": "~1.18.3",
     "chalk": "~2.4.1",
