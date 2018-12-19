@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.3.6"></a>
+## [2.3.6](https://github.com/kikobeats/tom-microservice/compare/v2.3.5...v2.3.6) (2018-12-19)
+
+
+### Bug Fixes
+
+* **package:** update jsendp to version 2.1.0 ([93ec870](https://github.com/kikobeats/tom-microservice/commit/93ec870))
+
+
+
 <a name="2.3.5"></a>
 ## [2.3.5](https://github.com/kikobeats/tom-microservice/compare/v2.3.4...v2.3.5) (2018-12-19)
 
