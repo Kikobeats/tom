@@ -13,7 +13,10 @@
     "url": "https://github.com/Kikobeats"
   },
   "contributors": [
-    "rubenmoya <rmoyarodriguez@gmail.com>"
+    {
+      "name": "rubenmoya",
+      "email": "rmoyarodriguez@gmail.com"
+    }
   ],
   "repository": {
     "type": "git",
@@ -32,29 +35,29 @@
     "subscriptions"
   ],
   "dependencies": {
-    "acho": "~4.0.2",
+    "acho": "~4.0.4",
     "auto-parse": "~1.6.0",
-    "beauty-error": "~1.1.0",
+    "beauty-error": "~1.1.2",
     "body-parser": "~1.18.3",
-    "chalk": "~2.4.1",
+    "chalk": "~2.4.2",
     "compression": "~1.7.3",
-    "cors": "~2.8.4",
-    "cosmiconfig": "~5.0.5",
-    "deep-map": "~1.5.0",
+    "cors": "~2.8.5",
+    "cosmiconfig": "~5.1.0",
+    "deep-map": "~2.0.0",
     "emittery": "~0.4.1",
-    "express": "~4.16.3",
+    "express": "~4.16.4",
     "got": "~9.6.0",
-    "helmet": "~3.15.0",
+    "helmet": "~3.15.1",
     "import-modules": "~1.1.0",
     "jsendp": "~2.1.0",
-    "lodash": "~4.17.10",
-    "mailgen": "~2.0.5",
+    "lodash": "~4.17.11",
+    "mailgen": "~2.0.7",
     "meow": "~5.0.0",
-    "morgan": "~1.9.0",
-    "nodemailer": "~5.1.0",
-    "ow": "~0.10.0",
+    "morgan": "~1.9.1",
+    "nodemailer": "~5.1.1",
+    "ow": "~0.12.0",
     "p-reflect": "~1.0.0",
-    "p-retry": "~3.0.0",
+    "p-retry": "~3.0.1",
     "p-waterfall": "~1.0.0",
     "pretty-ms": "~4.0.0",
     "pupa": "~1.0.0",
@@ -89,7 +92,7 @@
     "npm-check-updates": "latest",
     "nyc": "latest",
     "prettier-standard": "latest",
-    "standard": "11",
+    "standard": "latest",
     "standard-markdown": "latest",
     "standard-version": "latest",
     "svr": "latest",
@@ -103,6 +106,7 @@
     "src"
   ],
   "scripts": {
+    "build:docs": "gulp build",
     "clean": "rm -rf node_modules",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "dev": "svr src/routes",
@@ -139,7 +143,7 @@
         "finepack",
         "git add"
       ],
-      "*.js": [
+      "*.js,!*.min.js": [
         "prettier-standard",
         "git add"
       ],

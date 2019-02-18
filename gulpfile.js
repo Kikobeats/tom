@@ -20,7 +20,7 @@ const dist = {
   }
 }
 
-gulp.task('css', () => {
+const css = () =>
   gulp
     .src(src.css)
     .pipe(concat(`${dist.name.css}.min.css`))
@@ -28,20 +28,23 @@ gulp.task('css', () => {
     .pipe(strip({ all: true }))
     .pipe(cssnano())
     .pipe(gulp.dest(dist.path))
-})
 
-gulp.task('js', () => {
+const js = () =>
   gulp
     .src(src.js)
     .pipe(concat(`${dist.name.js}.min.js`))
     .pipe(uglify())
     .pipe(gulp.dest(dist.path))
-})
 
-gulp.task('build', ['css', 'js'])
+const build = gulp.parallel(css, js)
 
-gulp.task('default', () => {
-  gulp.start(['build'])
-  gulp.watch(src.css, ['css'])
-  gulp.watch(src.js, ['js'])
-})
+const watch = () => {
+  gulp.watch(src.css, css)
+  gulp.watch(src.js, js)
+}
+
+exports.build = build
+exports.css = css
+exports.js = js
+exports.watch = watch
+exports.default = gulp.series(build, watch)
