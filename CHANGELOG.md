@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.3.12"></a>
+## [2.3.12](https://github.com/kikobeats/tom-microservice/compare/v2.3.11...v2.3.12) (2019-03-08)
+
+
+### Bug Fixes
+
+* **package:** update time-span to version 3.0.0 ([b9d191d](https://github.com/kikobeats/tom-microservice/commit/b9d191d))
+
+
+
 <a name="2.3.11"></a>
 ## [2.3.11](https://github.com/kikobeats/tom-microservice/compare/v2.3.10...v2.3.11) (2019-02-18)
 
