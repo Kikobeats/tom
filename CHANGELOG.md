@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.3.14"></a>
+## [2.3.14](https://github.com/kikobeats/tom-microservice/compare/v2.3.13...v2.3.14) (2019-03-11)
+
+
+### Bug Fixes
+
+* **package:** update p-retry to version 4.0.0 ([4bd66df](https://github.com/kikobeats/tom-microservice/commit/4bd66df))
+
+
+
 <a name="2.3.13"></a>
 ## [2.3.13](https://github.com/kikobeats/tom-microservice/compare/v2.3.12...v2.3.13) (2019-03-10)
 
