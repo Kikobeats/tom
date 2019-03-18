@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.3.15"></a>
+## [2.3.15](https://github.com/kikobeats/tom-microservice/compare/v2.3.14...v2.3.15) (2019-03-18)
+
+
+### Bug Fixes
+
+* **package:** update p-reflect to version 2.0.0 ([e968244](https://github.com/kikobeats/tom-microservice/commit/e968244))
+* **package:** update p-waterfall to version 2.0.0 ([111931f](https://github.com/kikobeats/tom-microservice/commit/111931f))
+
+
+
 <a name="2.3.14"></a>
 ## [2.3.14](https://github.com/kikobeats/tom-microservice/compare/v2.3.13...v2.3.14) (2019-03-11)
 
