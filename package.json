@@ -56,7 +56,7 @@
     "morgan": "~1.9.1",
     "nodemailer": "~5.1.1",
     "ow": "~0.12.0",
-    "p-reflect": "~1.0.0",
+    "p-reflect": "~2.0.0",
     "p-retry": "~4.0.0",
     "p-waterfall": "~1.0.0",
     "pretty-ms": "~4.0.0",
