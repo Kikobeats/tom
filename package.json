@@ -42,7 +42,7 @@
     "chalk": "~2.4.2",
     "compression": "~1.7.3",
     "cors": "~2.8.5",
-    "cosmiconfig": "~5.1.0",
+    "cosmiconfig": "~5.2.0",
     "deep-map": "~2.0.0",
     "emittery": "~0.4.1",
     "express": "~4.16.4",
