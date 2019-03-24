@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.3.16"></a>
+## [2.3.16](https://github.com/kikobeats/tom-microservice/compare/v2.3.14...v2.3.16) (2019-03-24)
+
+
+### Bug Fixes
+
+* **package:** update cosmiconfig to version 5.2.0 ([af15009](https://github.com/kikobeats/tom-microservice/commit/af15009))
+* **package:** update p-reflect to version 2.0.0 ([e968244](https://github.com/kikobeats/tom-microservice/commit/e968244))
+* **package:** update p-waterfall to version 2.0.0 ([111931f](https://github.com/kikobeats/tom-microservice/commit/111931f))
+
+
+
 <a name="2.3.15"></a>
 ## [2.3.15](https://github.com/kikobeats/tom-microservice/compare/v2.3.14...v2.3.15) (2019-03-18)
 
