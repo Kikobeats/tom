@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.3.17"></a>
+## [2.3.17](https://github.com/kikobeats/tom-microservice/compare/v2.3.16...v2.3.17) (2019-03-25)
+
+
+### Bug Fixes
+
+* **package:** update nodemailer to version 6.0.0 ([1008729](https://github.com/kikobeats/tom-microservice/commit/1008729))
+
+
+
 <a name="2.3.16"></a>
 ## [2.3.16](https://github.com/kikobeats/tom-microservice/compare/v2.3.14...v2.3.16) (2019-03-24)
 
