@@ -57,7 +57,7 @@
     "nodemailer": "~6.0.0",
     "ow": "~0.12.0",
     "p-reflect": "~2.0.0",
-    "p-retry": "~4.0.0",
+    "p-retry": "~4.1.0",
     "p-waterfall": "~2.0.0",
     "pretty-ms": "~4.0.0",
     "pupa": "~1.0.0",
