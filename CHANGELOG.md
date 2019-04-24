@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.22](https://github.com/kikobeats/tom-microservice/compare/v2.3.21...v2.3.22) (2019-04-24)
+
+
+### Bug Fixes
+
+* **package:** update auto-parse to version 1.7.0 ([c68539a](https://github.com/kikobeats/tom-microservice/commit/c68539a))
+* **package:** update pretty-ms to version 5.0.0 ([f952899](https://github.com/kikobeats/tom-microservice/commit/f952899))
+
+
+
 ## [2.3.21](https://github.com/kikobeats/tom-microservice/compare/v2.3.20...v2.3.21) (2019-04-18)
 
 
