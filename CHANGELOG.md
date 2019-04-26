@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.23](https://github.com/kikobeats/tom-microservice/compare/v2.3.22...v2.3.23) (2019-04-26)
+
+
+### Bug Fixes
+
+* **package:** update body-parser to version 1.19.0 ([6720974](https://github.com/kikobeats/tom-microservice/commit/6720974))
+
+
+
 ## [2.3.22](https://github.com/kikobeats/tom-microservice/compare/v2.3.21...v2.3.22) (2019-04-24)
 
 
