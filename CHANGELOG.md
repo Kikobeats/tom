@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.24](https://github.com/kikobeats/tom-microservice/compare/v2.3.23...v2.3.24) (2019-04-30)
+
+
+### Bug Fixes
+
+* **package:** update pupa to version 2.0.0 ([6e0ac0b](https://github.com/kikobeats/tom-microservice/commit/6e0ac0b))
+
+
+
 ## [2.3.23](https://github.com/kikobeats/tom-microservice/compare/v2.3.22...v2.3.23) (2019-04-26)
 
 
