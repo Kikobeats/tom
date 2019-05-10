@@ -61,7 +61,7 @@
     "stripe": "6",
     "time-span": "~3.1.0",
     "twit": "~2.2.11",
-    "update-notifier": "~2.5.0",
+    "update-notifier": "~2.6.0",
     "uuid": "~3.3.2"
   },
   "devDependencies": {
