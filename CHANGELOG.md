@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.28](https://github.com/kikobeats/tom-microservice/compare/v2.3.26...v2.3.28) (2019-05-12)
+
+
+### Bug Fixes
+
+* **package:** update update-notifier to version 2.6.0 ([008e246](https://github.com/kikobeats/tom-microservice/commit/008e246))
+* linter ([4876baf](https://github.com/kikobeats/tom-microservice/commit/4876baf))
+
+
+### Build System
+
+* update dependencies ([252c026](https://github.com/kikobeats/tom-microservice/commit/252c026))
+
+
+
 ### [2.3.27](https://github.com/kikobeats/tom-microservice/compare/v2.3.26...v2.3.27) (2019-05-12)
 
 
