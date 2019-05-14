@@ -61,7 +61,7 @@
     "p-waterfall": "~2.1.0",
     "pretty-ms": "~5.0.0",
     "pupa": "~2.0.0",
-    "stripe": "6",
+    "stripe": "^7.0.0",
     "time-span": "~3.1.0",
     "twit": "~2.2.11",
     "update-notifier": "~3.0.0",
