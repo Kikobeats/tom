@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.30](https://github.com/kikobeats/tom-microservice/compare/v2.3.29...v2.3.30) (2019-05-17)
+
+
+### Bug Fixes
+
+* **package:** update express to version 4.17.0 ([d7e0715](https://github.com/kikobeats/tom-microservice/commit/d7e0715))
+
+
+
 ### [2.3.29](https://github.com/kikobeats/tom-microservice/compare/v2.3.28...v2.3.29) (2019-05-15)
 
 
