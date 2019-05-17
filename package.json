@@ -45,7 +45,7 @@
     "cosmiconfig": "~5.2.0",
     "deep-map": "~2.0.0",
     "emittery": "~0.4.1",
-    "express": "~4.16.4",
+    "express": "~4.17.0",
     "got": "~9.6.0",
     "helmet": "~3.18.0",
     "import-modules": "~1.1.0",
