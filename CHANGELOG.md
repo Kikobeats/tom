@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.33](https://github.com/kikobeats/tom-microservice/compare/v2.3.32...v2.3.33) (2019-05-23)
+
+
+### Bug Fixes
+
+* **package:** update to-query to version 1.1.0 ([05f10a0](https://github.com/kikobeats/tom-microservice/commit/05f10a0))
+
+
+
 ### [2.3.32](https://github.com/kikobeats/tom-microservice/compare/v2.3.31...v2.3.32) (2019-05-23)
 
 
