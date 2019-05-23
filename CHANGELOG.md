@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.32](https://github.com/kikobeats/tom-microservice/compare/v2.3.31...v2.3.32) (2019-05-23)
+
+
+### Build System
+
+* update dependencies ([a59ae1f](https://github.com/kikobeats/tom-microservice/commit/a59ae1f))
+* use to-query dependency ([3943f38](https://github.com/kikobeats/tom-microservice/commit/3943f38))
+
+
+
 ### [2.3.31](https://github.com/kikobeats/tom-microservice/compare/v2.3.30...v2.3.31) (2019-05-20)
 
 
