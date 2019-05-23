@@ -36,7 +36,6 @@
   ],
   "dependencies": {
     "acho": "~4.0.4",
-    "auto-parse": "~1.7.0",
     "beauty-error": "~1.1.3",
     "body-parser": "~1.19.0",
     "chalk": "~2.4.2",
@@ -63,6 +62,7 @@
     "pupa": "~2.0.0",
     "stripe": "^7.0.0",
     "time-span": "~3.1.0",
+    "to-query": "~1.0.0",
     "twit": "~2.2.11",
     "update-notifier": "~3.0.0",
     "uuid": "~3.3.2"

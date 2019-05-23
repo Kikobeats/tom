@@ -2,10 +2,10 @@
 
 const { get, eq, forEach } = require('lodash')
 const bodyParser = require('body-parser')
+const toQuery = require('to-query')()
 
 const withRoute = require('../interface/route')
 const loadConfig = require('../config/load')
-const normalize = require('./normalize')
 const createTom = require('..')
 
 const { TOM_API_KEY, TOM_ALLOWED_ORIGIN, NODE_ENV } = process.env
@@ -38,8 +38,7 @@ module.exports = async (app, express) => {
     .use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json())
     .use((req, res, next) => {
-      req.body = normalize(req.body)
-      req.query = normalize(req.query)
+      req.query = toQuery(req.url)
       next()
     })
     .disable('x-powered-by')
