@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.37](https://github.com/kikobeats/tom-microservice/compare/v2.3.36...v2.3.37) (2019-05-28)
+
+
+### Bug Fixes
+
+* **package:** update beauty-error to version 1.2.0 ([77d0b47](https://github.com/kikobeats/tom-microservice/commit/77d0b47))
+
+
+
 ### [2.3.36](https://github.com/kikobeats/tom-microservice/compare/v2.3.35...v2.3.36) (2019-05-26)
 
 
