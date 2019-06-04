@@ -1,11 +1,10 @@
 'use strict'
 
+const mapValuesDeep = require('map-values-deep')
 const { isNil } = require('lodash')
-const deepMap = require('deep-map')
-
 const pupa = require('pupa')
 
-const compile = (template, opts) => deepMap(template, str => pupa(str, opts))
+const compile = (template, opts) => mapValuesDeep(template, str => pupa(str, opts))
 
 module.exports = (template, { config, opts }) => {
   const tpl = isNil(template)
