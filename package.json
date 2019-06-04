@@ -62,7 +62,7 @@
     "pupa": "~2.0.0",
     "stripe": "^7.1.0",
     "time-span": "~3.1.0",
-    "to-query": "~1.4.0",
+    "to-query": "~1.5.0",
     "twit": "~2.2.11",
     "update-notifier": "~3.0.0",
     "uuid": "~3.3.2"
