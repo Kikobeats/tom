@@ -3,7 +3,7 @@
 const test = require('ava')
 const { chain } = require('lodash')
 
-const createConfig = require('../../helpers/create-config')
+const createConfig = require('../../_create-config')
 const createTom = require('../../../')
 
 const Twit = require('twit')
