@@ -70,7 +70,7 @@
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-    "ava": "1",
+    "ava": "^2.1.0",
     "browser-sync": "latest",
     "ci-publish": "latest",
     "concurrently": "latest",
