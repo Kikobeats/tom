@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/kikobeats/tom-microservice/compare/v2.3.37...v2.5.0) (2019-06-19)
+
+
+### Bug Fixes
+
+* typo ([de0c2d3](https://github.com/kikobeats/tom-microservice/commit/de0c2d3))
+
+
+### Build System
+
+* update dependencies ([cbdadf9](https://github.com/kikobeats/tom-microservice/commit/cbdadf9))
+* update dependencies ([c81ede2](https://github.com/kikobeats/tom-microservice/commit/c81ede2))
+* update travis ([4a5eac4](https://github.com/kikobeats/tom-microservice/commit/4a5eac4))
+
+
+### Features
+
+* remove deep-map dependency ([15b6ab9](https://github.com/kikobeats/tom-microservice/commit/15b6ab9))
+
+
+### Tests
+
+* rename helper ([9c0fbfc](https://github.com/kikobeats/tom-microservice/commit/9c0fbfc))
+
+
+
 ## [2.4.0](https://github.com/kikobeats/tom-microservice/compare/v2.3.37...v2.4.0) (2019-06-04)
 
 
