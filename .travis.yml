@@ -19,7 +19,6 @@ jobs:
       before_deploy:
         - git config user.email ${GITHUB_EMAIL:-"travis@travis-ci.org"}
         - git config user.name ${GITHUB_USER:-"Travis CI"}
-        - git config user.name "Travis CI"
         - git remote set-url origin https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
       deploy:
         skip_cleanup: true
