@@ -2,7 +2,7 @@
 
 module.exports = ({ fn, tom }) => async (req, res) => {
   let status
-  let payload = {}
+  const payload = {}
 
   try {
     const res = await fn(req.body)

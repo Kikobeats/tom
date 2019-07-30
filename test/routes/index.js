@@ -2,10 +2,10 @@
 
 const { reduce, forEach } = require('lodash')
 const listen = require('test-listen')
+const { URL } = require('url')
 const http = require('http')
 const test = require('ava')
 const got = require('got')
-const url = require('url')
 
 const createServer = require('../../bin/server')
 
@@ -26,18 +26,18 @@ const allRoutes = reduce(
   },
   []
 )
-;['/', '/robots.txt', '/favicon.ico'].forEach(route => {
-  test(route, async t => {
+;['/', '/robots.txt', '/favicon.ico'].forEach(pathname => {
+  test(pathname, async t => {
     const apiUrl = await getApiUrl()
-    const { statusCode } = await got(url.resolve(apiUrl, route))
+    const { statusCode } = await got(new URL(pathname, apiUrl))
     t.is(statusCode, 204)
   })
 })
 
-allRoutes.forEach(route => {
-  test(`OPTIONS ${route}`, async t => {
+allRoutes.forEach(pathname => {
+  test(`OPTIONS ${pathname}`, async t => {
     const apiUrl = await getApiUrl()
-    const { statusCode } = await got(url.resolve(apiUrl, route), {
+    const { statusCode } = await got(new URL(pathname, apiUrl), {
       method: 'OPTIONS'
     })
     t.is(statusCode, 204)
