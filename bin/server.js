@@ -3,6 +3,8 @@
 'use strict'
 
 const express = require('express')
-const createRoutes = require('../src/routes')
+const router = require('../src/router')
 
-module.exports = () => createRoutes(express(), express)
+module.exports = express()
+  .use(router)
+  .disable('x-powered-by')
