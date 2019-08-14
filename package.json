@@ -60,7 +60,7 @@
     "p-waterfall": "~2.1.0",
     "pretty-ms": "~5.0.0",
     "pupa": "~2.0.1",
-    "stripe": "^7.7.0",
+    "stripe": "^7.8.0",
     "time-span": "~3.1.0",
     "to-query": "~1.5.3",
     "twit": "~2.2.11",
