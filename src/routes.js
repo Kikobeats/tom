@@ -5,9 +5,9 @@ const bodyParser = require('body-parser')
 const toQuery = require('to-query')()
 const express = require('express')
 
-const withRoute = require('../interface/route')
-const loadConfig = require('../config/load')
-const createTom = require('..')
+const withRoute = require('./interface/route')
+const loadConfig = require('./config/load')
+const createTom = require('.')
 
 const { TOM_API_KEY, TOM_ALLOWED_ORIGIN, NODE_ENV } = process.env
 

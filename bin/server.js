@@ -3,8 +3,11 @@
 'use strict'
 
 const express = require('express')
-const router = require('../src/router')
+const createRoutes = require('../src/routes')
 
-module.exports = express()
-  .use(router)
-  .disable('x-powered-by')
+module.exports = async () => {
+  const routes = await createRoutes()
+  return express()
+    .use(routes)
+    .disable('x-powered-by')
+}
