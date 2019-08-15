@@ -120,7 +120,7 @@
     "release": "git-authors-cli && git add package.json && standard-version -a",
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin HEAD:master",
-    "start": "node src/server",
+    "start": "tom",
     "test": "NODE_ENV=test nyc ava --verbose",
     "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"
