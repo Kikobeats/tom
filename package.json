@@ -97,6 +97,7 @@
     "standard-version": "latest",
     "svr": "latest",
     "test-listen": "latest"
+    "untracked": "latest"
   },
   "engines": {
     "node": ">= 8"
@@ -106,7 +107,7 @@
     "src"
   ],
   "scripts": {
-    "build": "gulp build",
+    "build": "gulp build && untracked > .nowignore",
     "clean": "rm -rf node_modules",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "dev": "svr src/router",
