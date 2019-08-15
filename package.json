@@ -96,7 +96,7 @@
     "standard-markdown": "latest",
     "standard-version": "latest",
     "svr": "latest",
-    "test-listen": "latest"
+    "test-listen": "latest",
     "untracked": "latest"
   },
   "engines": {
