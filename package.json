@@ -65,7 +65,7 @@
     "to-query": "~1.5.3",
     "twit": "~2.2.11",
     "update-notifier": "~3.0.1",
-    "uuid": "~3.3.2"
+    "uuid": "~3.3.3"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
