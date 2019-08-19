@@ -3,7 +3,7 @@
 const faker = require('faker')
 const test = require('ava')
 
-const createConfig = require('../../_create-config')
+const createConfig = require('../../helpers/create-config')
 const createTom = require('../../../')
 
 test('batch:series', async t => {

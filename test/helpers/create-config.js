@@ -1,6 +1,8 @@
 'use strict'
 
-const getDefaultConfig = () => ({
+const { noop } = require('lodash')
+
+const create = () => ({
   company: {
     name: 'tom',
     site: 'tom.js.org',
@@ -33,8 +35,11 @@ const getDefaultConfig = () => ({
   }
 })
 
-module.exports = fn => tom => {
-  const config = getDefaultConfig()
+module.exports = (decorate = noop) => tom => {
+  const config = create()
   tom.setConfig(config)
-  fn({ config, tom })
+  decorate({ config, tom })
+  return config
 }
+
+module.exports.create = create

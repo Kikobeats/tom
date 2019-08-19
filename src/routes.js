@@ -66,7 +66,7 @@ const createRouter = () => {
   return router
 }
 
-module.exports = async tomConfig => {
+module.exports = tomConfig => {
   if (!tomConfig) throw TypeError('You need to provide tom configuration file.')
 
   const router = createRouter()

@@ -4,7 +4,7 @@ const createStripe = require('stripe')
 const faker = require('faker')
 const test = require('ava')
 
-const createConfig = require('../../_create-config')
+const createConfig = require('../../helpers/create-config')
 const createTom = require('../../../')
 
 const { TOM_STRIPE_KEY } = process.env

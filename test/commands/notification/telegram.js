@@ -2,7 +2,7 @@
 
 const test = require('ava')
 
-const createConfig = require('../../_create-config')
+const createConfig = require('../../helpers/create-config')
 const createTom = require('../../../')
 
 const { TEST_TELEGRAM_CHAT_ID } = process.env

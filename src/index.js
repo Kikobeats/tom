@@ -23,7 +23,6 @@ const loadCommand = (cmdName, { config, commands }) => {
 
 module.exports = rawConfig => {
   const config = createConfig(rawConfig)
-
   return reduce(
     COMMANDS,
     (acc, cmdName) => {
@@ -35,3 +34,4 @@ module.exports = rawConfig => {
 }
 
 module.exports.listen = require('../bin/listen')
+module.exports.createConfig = createConfig

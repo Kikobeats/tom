@@ -16,7 +16,7 @@ const createServer = routes =>
     .disable('x-powered-by')
 
 module.exports = async (tomConfig, { port = PORT } = {}) => {
-  const routes = await createRoutes(tomConfig)
+  const routes = createRoutes(tomConfig)
 
   createServer(routes).listen(port, () => {
     console.log(
