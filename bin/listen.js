@@ -10,14 +10,15 @@ const logo = require('./logo')
 const PORT =
   process.env.PORT || process.env.port || process.env.TOM_PORT || 3000
 
-module.exports = async (tomConfig, { port = PORT } = {}) => {
-  const routes = await createRoutes(tomConfig)
-
-  const app = express()
+const createServer = routes =>
+  express()
     .use(routes)
     .disable('x-powered-by')
 
-  return app.listen(port, () => {
+module.exports = async (tomConfig, { port = PORT } = {}) => {
+  const routes = await createRoutes(tomConfig)
+
+  createServer(routes).listen(port, () => {
     console.log(
       logo({
         header: `tom is running`,
@@ -26,3 +27,5 @@ module.exports = async (tomConfig, { port = PORT } = {}) => {
     )
   })
 }
+
+module.exports.createServer = createServer
