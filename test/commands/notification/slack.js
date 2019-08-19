@@ -2,7 +2,7 @@
 
 const test = require('ava')
 
-const createConfig = require('../../helpers/create-config')
+const { createConfig } = require('../../helpers')
 const createTom = require('../../../')
 
 const { TEST_SLACK_WEBHOOK } = process.env

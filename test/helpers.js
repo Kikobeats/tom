@@ -35,7 +35,7 @@ const create = () => ({
   }
 })
 
-module.exports = (decorate = noop) => tom => {
+module.exports.createConfig = (decorate = noop) => tom => {
   const config = create()
   tom.setConfig(config)
   decorate({ config, tom })

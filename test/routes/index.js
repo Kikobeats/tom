@@ -7,14 +7,14 @@ const http = require('http')
 const test = require('ava')
 const got = require('got')
 
-const { create: mockConfig } = require('../helpers/create-config')
+const { createConfig: createMockConfig } = require('../helpers')
 const { createServer } = require('../../bin/listen')
 const createRoutes = require('../../src/routes')
 const createTom = require('../..')
 
 const { createConfig } = createTom
 
-const config = createConfig(mockConfig())
+const config = createConfig(createMockConfig())
 const routes = createRoutes(config)
 
 const getApiUrl = async () => {

@@ -121,11 +121,16 @@
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin HEAD:master",
     "start": "tom",
-    "test": "NODE_ENV=test nyc ava --verbose",
+    "test": "NODE_ENV=test nyc ava",
     "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"
   },
   "license": "MIT",
+  "ava": {
+    "helpers": [
+      "test/helpers.js"
+    ]
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
