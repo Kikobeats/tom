@@ -33,3 +33,5 @@ module.exports = rawConfig => {
     {}
   )
 }
+
+module.exports.listen = require('../bin/listen')

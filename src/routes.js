@@ -67,10 +67,11 @@ const createRouter = () => {
   return router
 }
 
-module.exports = async () => {
+module.exports = async tomConfig => {
+  if (!tomConfig) throw TypeError('You need to provide tom configuration file.')
+
   const router = createRouter()
-  const config = await loadConfig()
-  const tom = createTom(config)
+  const tom = createTom(tomConfig)
 
   forEach(tom, (cmd, cmdName) => {
     forEach(cmd, (fn, actionName) => {

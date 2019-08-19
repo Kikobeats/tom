@@ -15,7 +15,6 @@ ${chalk.dim(logo({ header: 'tom microservice – https://tom.js.org' }))}
     -c, --config        Specify a configuration file path
     -h, --help          Show this usage information
     -p, --port <n>      Port to listen on (defaults to 3000)
-    -s, --silent        Disable logging
     -v, --version       Output the version number
 
   ${chalk.dim('Examples')}

@@ -8,10 +8,9 @@ const { printError, createLog } = require('../src/log')
 const withProcess = require('../src/interface/process')
 const loadConfig = require('../src/config/load')
 
-const createServer = require('./server')
+const listen = require('./listen')
 const pkg = require('../package.json')
 const createTom = require('../src')
-const logo = require('./logo')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -23,13 +22,7 @@ const cli = require('meow')(require('./help'), {
   flags: {
     port: {
       type: 'number',
-      alias: 'p',
-      default: process.env.TOM_PORT || 3000
-    },
-    silent: {
-      alias: 's',
-      type: 'boolean',
-      default: false
+      alias: 'p'
     },
     config: {
       alias: 'c',
@@ -45,31 +38,12 @@ const cli = require('meow')(require('./help'), {
   }
 })
 
-const initialize = async () => {
-  const config = await loadConfig(cli.flags.config)
-  const tom = createTom(config)
-  return tom
-}
-
 const main = async () => {
-  const { silent, command } = cli.flags
+  const { command } = cli.flags
+  const tomConfig = await loadConfig(cli.flags.config)
+  if (!command) return listen(tomConfig, cli.flags)
 
-  if (!command) {
-    const { port } = cli.flags
-    const app = await createServer()
-    return app.listen(port, () => {
-      if (!silent) {
-        console.log(
-          logo({
-            header: `tom microservice is running`,
-            description: `http://localhost:${port}`
-          })
-        )
-      }
-    })
-  }
-
-  const tom = await initialize()
+  const tom = createTom(tomConfig)
   const fn = get(tom, command)
   if (!fn) return cli.showHelp()
   return withProcess({ fn, opts: cli.flags })
