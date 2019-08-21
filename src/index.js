@@ -34,4 +34,6 @@ module.exports = rawConfig => {
 }
 
 module.exports.listen = require('../bin/listen')
+module.exports.createServer = require('../bin/listen').createServer
+module.exports.createRoutes = require('./routes')
 module.exports.createConfig = createConfig
