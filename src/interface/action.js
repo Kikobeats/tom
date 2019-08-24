@@ -20,7 +20,7 @@ module.exports = ({ eventName, fn, tom }) => {
     try {
       const run = () => fn(opts)
       let time = timeSpan()
-      const data = await pRetry(run, { retries: 3 })
+      const data = await pRetry(run, { retries: 2 })
 
       const meta = await Promise.all([
         tom.emit('*', data),
