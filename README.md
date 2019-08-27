@@ -147,7 +147,9 @@ It creates customers & subscribe them to plans.
 
 <small>`POST`</small>
 
-It handles your payment process, creating new customer and subscribe them to your pricing plans.
+It handles your payment process, creating new a customer and subscribe it a previous created billing product.
+
+Additionally, **tom** will fill useful metadata associated with the customer IP address used for the payment, such as country, region, VAT rate, currency code, etc.
 
 The endpoint expect receive a valid Stripe token.
 
