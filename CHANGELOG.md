@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/kikobeats/tom-microservice/compare/v2.5.9...v2.6.0) (2019-08-27)
+
+
+### Features
+
+* fill customer metadata ([#80](https://github.com/kikobeats/tom-microservice/issues/80)) ([2c16a4c](https://github.com/kikobeats/tom-microservice/commit/2c16a4c))
+* fill user metadata ([bfdf997](https://github.com/kikobeats/tom-microservice/commit/bfdf997))
+
 ### [2.5.9](https://github.com/kikobeats/tom-microservice/compare/v2.5.8...v2.5.9) (2019-08-27)
 
 ### [2.5.8](https://github.com/kikobeats/tom-microservice/compare/v2.5.7...v2.5.8) (2019-08-24)
