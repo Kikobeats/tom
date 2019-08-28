@@ -72,7 +72,7 @@ module.exports = ({ config, commands }) => {
 
     const data = await stripe.subscriptions.create({
       customer: customerId,
-      plan: planId,
+      items: [{ plan: planId }],
       metadata
     })
 
