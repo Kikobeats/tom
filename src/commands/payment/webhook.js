@@ -36,7 +36,7 @@ module.exports = ({ config, commands }) => {
         ? await stripe.customers.retrieve(customerId)
         : { email: null }
 
-      const planId = get(session, 'display_items[0].plan', null)
+      const planId = get(session, 'display_items[0].plan.id', null)
 
       return {
         customerId,
