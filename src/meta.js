@@ -29,6 +29,8 @@ module.exports = async ipAddress => {
       eeaMember: body.eea_member
     })
   } catch (err) {
-    return {}
+    return {
+      ipAddress
+    }
   }
 }

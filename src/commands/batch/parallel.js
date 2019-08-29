@@ -3,10 +3,10 @@
 const { noop, get, map } = require('lodash')
 const pReflect = require('p-reflect')
 
-const runCommands = (commands, opts) =>
-  map(opts, ({ command, ...props }) => {
+const runCommands = (commands, { commandNames, ...opts }) =>
+  map(commandNames, ({ command, ...props }) => {
     const fn = get(commands, command, noop)
-    return pReflect(fn(props))
+    return pReflect(fn({ ...opts, ...props }))
   })
 
 module.exports = ({ config, commands }) => {

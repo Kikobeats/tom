@@ -2,6 +2,7 @@
 
 const { get, eq, forEach } = require('lodash')
 const bodyParser = require('body-parser')
+const requestIp = require('request-ip')
 const toQuery = require('to-query')()
 const express = require('express')
 
@@ -17,6 +18,7 @@ const { Router } = express
 const jsonBodyParser = bodyParser.json()
 const urlEncodedBodyParser = bodyParser.urlencoded({ extended: true })
 const rawBodyParser = bodyParser.raw({ type: 'application/json' })
+const isWebhook = req => req.path.endsWith('webhook')
 
 const createRouter = () => {
   const router = Router()
@@ -41,13 +43,21 @@ const createRouter = () => {
     })
   )
 
-  router.use((req, res, next) => {
-    if (req.path.endsWith('webhook')) return rawBodyParser(req, res, next)
-    return jsonBodyParser(urlEncodedBodyParser(req, res, next))
-  })
+  router.use((req, res, next) =>
+    isWebhook(req) ? rawBodyParser(req, res, next) : next()
+  )
+
+  router.use((req, res, next) =>
+    isWebhook(req) ? next() : urlEncodedBodyParser(req, res, next)
+  )
+
+  router.use((req, res, next) =>
+    isWebhook(req) ? next() : jsonBodyParser(req, res, next)
+  )
 
   router.use((req, res, next) => {
     req.query = toQuery(req.url)
+    req.ipAddress = requestIp.getClientIp(req)
     next()
   })
 

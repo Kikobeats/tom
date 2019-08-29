@@ -3,10 +3,10 @@
 const { noop, get, map } = require('lodash')
 const pWaterfall = require('p-waterfall')
 
-const runCommands = (commands, opts) =>
-  map(opts, ({ command, ...props }) => {
+const runCommands = (commands, { commandNames, ...opts }) =>
+  map(commandNames, ({ command, ...props }) => {
     const fn = get(commands, command, noop)
-    return prevProps => fn({ ...prevProps, ...props })
+    return prevProps => fn({ ...opts, ...prevProps, ...props })
   })
 
 module.exports = ({ config, commands }) => {

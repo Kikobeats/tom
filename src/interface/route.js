@@ -1,5 +1,6 @@
 'use strict'
 
+const { isArray, pick } = require('lodash')
 const isBuffer = require('is-buffer')
 
 module.exports = ({ fn, tom }) => async (req, res) => {
@@ -7,9 +8,13 @@ module.exports = ({ fn, tom }) => async (req, res) => {
   const payload = {}
 
   try {
-    const opts = isBuffer(req.body)
-      ? { body: req.body, headers: req.headers }
-      : { ...req.body, headers: req.headers }
+    const body = isBuffer(req.body) ? { body: req.body } : req.body
+    const props = pick(req, ['ipAddress', 'headers'])
+
+    const opts = isArray(body)
+      ? { commandNames: body, ...props }
+      : { ...body, ...props }
+
     const res = await fn(opts)
     payload.data = res
     status = 200
