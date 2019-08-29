@@ -14,6 +14,10 @@ const isTest = NODE_ENV === 'test'
 
 const { Router } = express
 
+const jsonBodyParser = bodyParser.json()
+const urlEncodedBodyParser = bodyParser.urlencoded({ extended: true })
+const rawBodyParser = bodyParser.raw({ type: 'application/json' })
+
 const createRouter = () => {
   const router = Router()
 
@@ -37,8 +41,11 @@ const createRouter = () => {
     })
   )
 
-  router.use(bodyParser.urlencoded({ extended: true }))
-  router.use(bodyParser.json())
+  router.use((req, res, next) => {
+    if (req.path.endsWith('webhook')) return rawBodyParser(req, res, next)
+    return jsonBodyParser(urlEncodedBodyParser(req, res, next))
+  })
+
   router.use((req, res, next) => {
     req.query = toQuery(req.url)
     next()
@@ -53,6 +60,7 @@ const createRouter = () => {
 
   if (TOM_API_KEY) {
     router.use((req, res, next) => {
+      if (req.path.endsWith('webhook')) return next()
       const apiKey = get(req, 'headers.x-api-key')
       return eq(apiKey, TOM_API_KEY)
         ? next()

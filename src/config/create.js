@@ -20,6 +20,7 @@ module.exports = fn => {
   else config = fn
 
   setEnv(config, 'payment.stripe_key', 'TOM_STRIPE_KEY')
+  setEnv(config, 'payment.stripe_webhook_secret', 'TOM_STRIPE_WEBHOOK_SECRET')
   setEnv(config, 'email.transporter.auth.user', 'TOM_EMAIL_USER')
   setEnv(config, 'email.transporter.auth.pass', 'TOM_EMAIL_PASSWORD')
   setEnv(config, 'telegram.token', 'TOM_TELEGRAM_KEY')
