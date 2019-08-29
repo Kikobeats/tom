@@ -17,17 +17,21 @@ module.exports = ({ config, commands }) => {
   const stripe = createStripe(get(config, 'payment.stripe_key'))
 
   const payment = async ({ token, planId, templateId }) => {
-    ward(token, { label: 'token', test: is.object })
-    ward(token.id, { label: 'token.id', test: is.string.nonEmpty })
+    ward(token, {
+      label: 'token',
+      test: is.object.is(token => !!token.id),
+      message: `Need to provide a Stripe token object: https://stripe.com/docs/api/tokens/object.`
+    })
+
     ward(token.email, {
       label: 'token.email',
       test: is.string.nonEmpty,
-      message: `Need to specify an 'email' to be associated with the customer.`
+      message: `Need to specify an \`email\` to be associated with the customer.`
     })
     ward(planId, {
       label: 'planId',
       test: is.string.nonEmpty,
-      message: `Need to specify a 'planId' to use`
+      message: `Need to specify \`planId\` previous declared.`
     })
 
     const { email, id: source, client_ip: clientIp } = token
