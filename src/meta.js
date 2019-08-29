@@ -24,7 +24,8 @@ module.exports = async ipAddress => {
       country: body.name,
       vatRate: body.vat_rates.standard,
       currencyCode: body.currency_code,
-      geo: body.geo,
+      latitude: body.geo.latitude,
+      longitude: body.geo.longitude,
       euMember: body.eu_member,
       eeaMember: body.eea_member
     })
