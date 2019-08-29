@@ -4,6 +4,7 @@ const createStripe = require('stripe')
 const { get } = require('lodash')
 
 const { wardCredential, ward, is } = require('../../ward')
+const meta = require('../../meta')
 
 module.exports = ({ config, commands }) => {
   const errFn = wardCredential(config, {
@@ -24,8 +25,12 @@ module.exports = ({ config, commands }) => {
 
     ward(customerId, { label: 'customerId', test: is.string.nonEmpty })
 
-    const { id: source } = token
-    await stripe.customers.update(customerId, { source })
+    const { id: source, client_ip: clientIp } = token
+    const metadata = clientIp ? await meta(clientIp) : undefined
+    await stripe.customers.update(customerId, {
+      metadata,
+      source
+    })
 
     const { email } = await stripe.customers.retrieve(customerId)
 
