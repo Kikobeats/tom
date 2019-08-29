@@ -1,6 +1,7 @@
 'use strict'
 
 const createStripe = require('stripe')
+const pReflect = require('p-reflect')
 const { get } = require('lodash')
 
 const { wardCredential } = require('../../ward')
@@ -19,30 +20,27 @@ module.exports = ({ config, commands }) => {
   const webhook = async ({ headers, body }) => {
     const signature = headers['stripe-signature']
 
-    let event
+    const event = await pReflect(
+      stripe.webhooks.constructEvent(body, signature, webhookEndpoint)
+    )
 
-    try {
-      event = stripe.webhooks.constructEvent(body, signature, webhookEndpoint)
-    } catch (err) {
-      throw new Error(`Webhook Error: ${err.message}`)
-    }
+    if (event.isRejected) throw new Error(event.reason.message)
+    if (event.value.type === 'checkout.session.completed') return {}
 
-    if (event.type === 'checkout.session.completed') {
-      // https://stripe.com/docs/api/checkout/sessions/object
-      const { object: session } = event.data
-      const { customer: customerId = null } = session
+    // https://stripe.com/docs/api/checkout/sessions/object
+    const { object: session } = event.data
+    const { customer: customerId = null } = session
 
-      const customer = customerId
-        ? await stripe.customers.retrieve(customerId)
-        : { email: null }
+    const customer = customerId
+      ? await stripe.customers.retrieve(customerId)
+      : { email: null }
 
-      const planId = get(session, 'display_items[0].plan.id', null)
+    const planId = get(session, 'display_items[0].plan.id', null)
 
-      return {
-        customerId,
-        email: customer.email,
-        planId: planId
-      }
+    return {
+      customerId,
+      email: customer.email,
+      planId: planId
     }
   }
 
