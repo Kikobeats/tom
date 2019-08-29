@@ -1,6 +1,6 @@
 'use strict'
 
-const { isEmpty, split, first, reduce } = require('lodash')
+const { omit, isEmpty, split, first, reduce } = require('lodash')
 const timeSpan = require('time-span')
 const prettyMs = require('pretty-ms')
 const pRetry = require('p-retry')
@@ -36,7 +36,9 @@ module.exports = ({ eventName, fn, tom }) => {
         data
       )
 
-      if (!isEmpty(output)) log.debug({ id: uuidv4(), ...output, time })
+      if (!isEmpty(output)) {
+        log.debug({ id: uuidv4(), ...omit(output, ['headers']), time })
+      }
 
       return output
     } catch (err) {
