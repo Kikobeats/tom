@@ -1,8 +1,8 @@
 /* global codecopy */
 
 window.$docsify = {
-  name: 'tom',
-  repo: 'kikobeats/tom-microservice',
+  name: '🐶',
+  repo: 'kikobeats/tom',
   maxLevel: 4,
   executeScript: true,
   auto2top: true,
