@@ -12,11 +12,13 @@ module.exports = ({ config }) => {
   const slack = async ({ webhook, ...opts }) => {
     ward(webhook, { label: 'webhook', test: is.string.nonEmpty })
 
-    ward(opts.templateId, {
-      label: 'templateId',
-      test: is.string.nonEmpty.is(x => !isNil(get(templates, x))),
-      message: `Template '${opts.templateId}' not previously declared.`
-    })
+    if (opts.templateId) {
+      ward(opts.templateId, {
+        label: 'templateId',
+        test: is.string.is(x => !isNil(get(templates, x))),
+        message: `Template '${opts.templateId}' not previously declared.`
+      })
+    }
 
     const template = get(templates, opts.templateId)
     const slackOpts = compile(template, { config, opts })

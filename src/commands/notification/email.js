@@ -32,11 +32,13 @@ module.exports = ({ config }) => {
   const templates = get(config, 'email.template')
 
   const email = async ({ headers, ipAddress, ...opts }) => {
-    ward(opts.templateId, {
-      label: 'templateId',
-      test: is.string.nonEmpty.is(x => !isNil(get(templates, x))),
-      message: `Template '${opts.templateId}' not previously declared.`
-    })
+    if (opts.templateId) {
+      ward(opts.templateId, {
+        label: 'templateId',
+        test: is.string.is(x => !isNil(get(templates, x))),
+        message: `Template '${opts.templateId}' not previously declared.`
+      })
+    }
 
     ward(opts.to, {
       test: is.string.nonEmpty,
