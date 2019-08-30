@@ -20,27 +20,30 @@ module.exports = ({ config }) => {
   const webhook = async ({ headers, body }) => {
     const signature = headers['stripe-signature']
 
-    const event = await pReflect(
+    const { value: event, isRejected, reason } = await pReflect(
       stripe.webhooks.constructEvent(body, signature, webhookEndpoint)
     )
 
-    if (event.isRejected) throw new Error(event.reason.message)
-    if (event.value.type === 'checkout.session.completed') return {}
+    if (isRejected) throw new Error(reason.message)
 
-    // https://stripe.com/docs/api/checkout/sessions/object
-    const { object: session } = event.data
-    const { customer: customerId = null } = session
+    switch (event.type) {
+      case 'checkout.session.completed':
+        const { object: session } = event.data
+        const { customer: customerId = null } = session
 
-    const customer = customerId
-      ? await stripe.customers.retrieve(customerId)
-      : { email: null }
+        const customer = customerId
+          ? await stripe.customers.retrieve(customerId)
+          : { email: null }
 
-    const planId = get(session, 'display_items[0].plan.id', null)
+        const planId = get(session, 'display_items[0].plan.id', null)
 
-    return {
-      customerId,
-      email: customer.email,
-      planId: planId
+        return {
+          customerId,
+          email: customer.email,
+          planId: planId
+        }
+      default:
+        return {}
     }
   }
 
