@@ -3,10 +3,10 @@
 const createStripe = require('stripe')
 const { get } = require('lodash')
 
-const { wardCredential } = require('../../ward')
+const { wardCredential, ward, is } = require('../../ward')
 const meta = require('../../meta')
 
-module.exports = ({ config, commands }) => {
+module.exports = ({ config }) => {
   const errFn = wardCredential(config, [
     { key: 'payment.stripe_key', env: 'TOM_STRIPE_KEY' }
   ])
@@ -16,6 +16,11 @@ module.exports = ({ config, commands }) => {
   const stripe = createStripe(get(config, 'payment.stripe_key'))
 
   const session = async ({ ipAddress, sessionId }) => {
+    ward(sessionId, {
+      label: 'sessionId',
+      test: is.string.nonEmpty
+    })
+
     const session = await stripe.checkout.sessions.retrieve(sessionId)
     const { customer: customerId } = session
 

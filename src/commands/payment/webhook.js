@@ -6,7 +6,7 @@ const { get } = require('lodash')
 
 const { wardCredential } = require('../../ward')
 
-module.exports = ({ config, commands }) => {
+module.exports = ({ config }) => {
   const errFn = wardCredential(config, [
     { key: 'payment.stripe_key', env: 'TOM_STRIPE_KEY' },
     { key: 'payment.stripe_webhook_secret', env: 'TOM_STRIPE_WEBHOOK_SECRET' }

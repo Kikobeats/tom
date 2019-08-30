@@ -9,7 +9,7 @@ const runCommands = (cmd, commands, opts) =>
     return prevProps => fn({ ...opts, ...prevProps, ...props })
   })
 
-module.exports = ({ config, commands: cmd }) => {
+module.exports = ({ commands: cmd }) => {
   const series = (commands, opts) => {
     if (commands.commands) {
       const { commands: _commands, ..._opts } = commands

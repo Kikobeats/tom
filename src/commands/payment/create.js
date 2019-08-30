@@ -6,7 +6,7 @@ const { get } = require('lodash')
 const { wardCredential, ward, is } = require('../../ward')
 const meta = require('../../meta')
 
-module.exports = ({ config, commands }) => {
+module.exports = ({ config }) => {
   const errFn = wardCredential(config, {
     key: 'payment.stripe_key',
     env: 'TOM_STRIPE_KEY'
@@ -16,7 +16,7 @@ module.exports = ({ config, commands }) => {
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
 
-  const payment = async ({ token, planId, templateId }) => {
+  const payment = async ({ token, planId }) => {
     ward(token, {
       label: 'token',
       test: is.object.is(token => !!token.id),

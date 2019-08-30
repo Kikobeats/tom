@@ -9,7 +9,7 @@ const runCommands = (cmd, commands, opts) =>
     return pReflect(fn({ ...opts, ...props }))
   })
 
-module.exports = ({ config, commands: cmd }) => {
+module.exports = ({ commands: cmd }) => {
   const parallel = (commands, opts) => {
     if (commands.commands) {
       const { commands: _commands, ..._opts } = commands
