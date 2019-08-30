@@ -1,6 +1,6 @@
 'use strict'
 
-const { isEmpty, split, first, reduce } = require('lodash')
+const { omit, isEmpty, split, first, reduce } = require('lodash')
 const timeSpan = require('time-span')
 const prettyMs = require('pretty-ms')
 const pRetry = require('p-retry')
@@ -11,7 +11,7 @@ const createLog = require('../log/create-log')
 
 const toObject = arr => reduce(arr, (acc, obj) => ({ ...acc, ...obj }), {})
 
-const eventDomain = eventName => first(split(eventName, ':'))
+const eventNamespace = eventName => first(split(eventName, ':'))
 
 module.exports = ({ eventName, fn, tom }) => {
   const log = createLog({ keyword: eventName })
@@ -24,7 +24,7 @@ module.exports = ({ eventName, fn, tom }) => {
 
       const meta = await Promise.all([
         tom.emit('*', data),
-        tom.emit(eventDomain(eventName), data),
+        tom.emit(eventNamespace(eventName), data),
         tom.emit(eventName, data)
       ])
 
@@ -36,7 +36,9 @@ module.exports = ({ eventName, fn, tom }) => {
         data
       )
 
-      if (!isEmpty(output)) log.debug({ id: uuidv4(), ...output, time })
+      if (!isEmpty(output)) {
+        log.debug({ id: uuidv4(), ...omit(output, ['headers']), time })
+      }
 
       return output
     } catch (err) {

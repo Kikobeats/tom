@@ -3,13 +3,20 @@
 const { noop, get, map } = require('lodash')
 const pWaterfall = require('p-waterfall')
 
-const runCommands = (commands, opts) =>
-  map(opts, ({ command, ...props }) => {
-    const fn = get(commands, command, noop)
-    return prevProps => fn({ ...prevProps, ...props })
+const runCommands = (cmd, commands, opts) =>
+  map(commands, ({ command, ...props }) => {
+    const fn = get(cmd, command, noop)
+    return prevProps => fn({ ...opts, ...prevProps, ...props })
   })
 
-module.exports = ({ config, commands }) => {
-  const series = opts => pWaterfall(runCommands(commands, opts), {})
+module.exports = ({ commands: cmd }) => {
+  const series = (commands, opts) => {
+    if (commands.commands) {
+      const { commands: _commands, ..._opts } = commands
+      commands = _commands
+      opts = _opts
+    }
+    return pWaterfall(runCommands(cmd, commands, opts), {})
+  }
   return series
 }

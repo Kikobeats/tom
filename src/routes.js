@@ -2,6 +2,7 @@
 
 const { get, eq, forEach } = require('lodash')
 const bodyParser = require('body-parser')
+const requestIp = require('request-ip')
 const toQuery = require('to-query')()
 const express = require('express')
 
@@ -13,6 +14,11 @@ const { TOM_API_KEY, TOM_ALLOWED_ORIGIN, NODE_ENV } = process.env
 const isTest = NODE_ENV === 'test'
 
 const { Router } = express
+
+const jsonBodyParser = bodyParser.json()
+const urlEncodedBodyParser = bodyParser.urlencoded({ extended: true })
+const rawBodyParser = bodyParser.raw({ type: 'application/json' })
+const isWebhook = req => req.path.endsWith('webhook')
 
 const createRouter = () => {
   const router = Router()
@@ -37,10 +43,21 @@ const createRouter = () => {
     })
   )
 
-  router.use(bodyParser.urlencoded({ extended: true }))
-  router.use(bodyParser.json())
+  router.use((req, res, next) =>
+    isWebhook(req) ? rawBodyParser(req, res, next) : next()
+  )
+
+  router.use((req, res, next) =>
+    isWebhook(req) ? next() : urlEncodedBodyParser(req, res, next)
+  )
+
+  router.use((req, res, next) =>
+    isWebhook(req) ? next() : jsonBodyParser(req, res, next)
+  )
+
   router.use((req, res, next) => {
     req.query = toQuery(req.url)
+    req.ipAddress = requestIp.getClientIp(req)
     next()
   })
 
@@ -53,6 +70,7 @@ const createRouter = () => {
 
   if (TOM_API_KEY) {
     router.use((req, res, next) => {
+      if (req.path.endsWith('webhook')) return next()
       const apiKey = get(req, 'headers.x-api-key')
       return eq(apiKey, TOM_API_KEY)
         ? next()

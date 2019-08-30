@@ -57,11 +57,13 @@ module.exports = ({ config }) => {
       test: is.string.is(x => includes(['tweet', 'dm'], x))
     })
 
-    opts.templateId &&
+    if (opts.templateId) {
       ward(opts.templateId, {
         label: 'templateId',
-        test: is.string.is(x => !isNil(get(templates, x)))
+        test: is.string.is(x => !isNil(get(templates, x))),
+        message: `Template '${opts.templateId}' not previously declared.`
       })
+    }
 
     const template = get(templates, opts.templateId)
     const { type, ...props } = compile(template, { config, opts })

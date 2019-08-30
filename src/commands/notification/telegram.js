@@ -19,11 +19,13 @@ module.exports = ({ config }) => {
   const endpoint = `https://api.telegram.org/bot${token}/sendMessage`
 
   const telegram = async opts => {
-    opts.templateId &&
+    if (opts.templateId) {
       ward(opts.templateId, {
         label: 'templateId',
-        test: is.string.is(x => !isNil(get(templates, x)))
+        test: is.string.is(x => !isNil(get(templates, x))),
+        message: `Template '${opts.templateId}' not previously declared.`
       })
+    }
 
     const template = get(templates, opts.templateId)
     const { chatId, text } = compile(template, { config, opts })
