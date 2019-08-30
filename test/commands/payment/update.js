@@ -11,18 +11,19 @@ const { TOM_STRIPE_KEY } = process.env
 
 test('payment:create', async t => {
   const config = createConfig(({ config, tom }) => {
-    tom.on('payment:create', async data => {
+    tom.on('payment:update', async data => {
       await stripe.customers.del(data.customerId)
       t.is(data.email, email)
-      t.is(data.planId, planId)
+      t.is(data.customerId, customerId)
     })
   })
 
   const tom = createTom(config)
-
   const stripe = createStripe(TOM_STRIPE_KEY)
   const email = `test_${faker.internet.exampleEmail()}`
-  const stripeToken = await stripe.tokens.create({
+  const { id: customerId } = await stripe.customers.create({ email })
+
+  const token = await stripe.tokens.create({
     card: {
       number: '4242424242424242',
       exp_month: 12,
@@ -31,8 +32,5 @@ test('payment:create', async t => {
     }
   })
 
-  const token = { ...stripeToken, email }
-  const planId = 'pro-1k-v2'
-
-  await tom.payment.create({ planId, token, email })
+  await tom.payment.update({ customerId, token })
 })
