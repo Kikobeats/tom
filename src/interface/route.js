@@ -12,7 +12,7 @@ module.exports = ({ fn, tom }) => async (req, res) => {
     const props = pick(req, ['ipAddress', 'headers'])
 
     const opts = isArray(body)
-      ? { commandNames: body, ...props }
+      ? { commands: body, ...props }
       : { ...body, ...props }
 
     const res = await fn(opts)
