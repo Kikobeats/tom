@@ -551,7 +551,7 @@ Your access token from [Twitter authentication credentials](https://developer.tw
 
 #### TOM_TELEGRAM_KEY
 
-![](https://i.imgur.com/mgofpzG.png)
+![](https://i.imgur.com/xRAqBs6.png)
 
 Type: `string` </br>
 Default: `config.telegram.token`
