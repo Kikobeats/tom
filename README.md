@@ -309,7 +309,7 @@ It sends a Slack message.
 *Required*</br>
 type: `string`
 
-The Slack webhook endpoint for sending the data.
+The [Incoming Webhook for Slack](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack) for sending the data.
 
 ###### templateId
 
@@ -460,9 +460,11 @@ The field `command` determine what command should be used while the rest of para
 
 ## Environment Variables
 
-Credentials could be provided as environment variables as well
+Some credentials could be provided as environment variables as well
 
-### TOM_ALLOWED_ORIGIN
+### general 
+
+#### TOM_ALLOWED_ORIGIN
 
 Type: `boolean`|`string`|`regex`|`array` </br>
 Default: `'*'`
@@ -471,7 +473,7 @@ It configures the `Access-Control-Allow-Origin` CORS.
 
 See [cors](https://github.com/expressjs/cors#configuration-options) for more information.
 
-### TOM_API_KEY
+#### TOM_API_KEY
 
 Type: `string` </br>
 Default: `undefined`
@@ -480,33 +482,81 @@ When you provide it, all request to **tom** 🐶 needs to be authenticated using
 
 You can use [randomkeygen.com](https://randomkeygen.com) for that.
 
-### TOM_PORT
+#### TOM_PORT
 
 Type: `number` </br>
 Default: `3000`
 
 The port to uses for run the HTTP microservice.
 
-### TOM_STRIPE_KEY
+### payment
+
+#### TOM_STRIPE_KEY
 
 Type: `string` </br>
 Default: `config.payment.stripe_key`
 
-The [stripe key of your account](https://dashboard.stripe.com/account/apikeys).
+The [Stripe key](https://dashboard.stripe.com/account/apikeys) associated with your account.
 
-### TOM_EMAIL_USER
+#### TOM_STRIPE_WEBHOOK_SECRET
+
+Type: `string` </br>
+Default: `config.payment.stripe_webhook_secret`
+
+The [Stripe Webhook signature](https://stripe.com/docs/webhooks/signatures) for verifying events were sent by Stripe.
+
+### notification
+
+#### TOM_EMAIL_USER
 
 Type: `string` </br>
 Default: `config.email.transporter.auth.user`
 
 Your SMTP authentication user credential.
 
-### TOM_EMAIL_PASSWORD
+#### TOM_EMAIL_PASSWORD
 
 Type: `string` </br>
 Default: `config.email.transporter.auth.password`
 
 Your SMTP authentication password credential.
+
+#### TOM_TWITTER_CONSUMER_KEY
+
+Type: `string` </br>
+Default: `config.twitter.consumer_key`
+
+Your consumer secret key from [Twitter authentication credentials](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html).
+
+#### TOM_TWITTER_CONSUMER_SECRET
+
+Type: `string` </br>
+Default: `config.twitter.consumer_secret`
+
+Your consumer secret [Twitter authentication credentials](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html).
+
+#### TOM_TWITTER_ACCESS_TOKEN_SECRET
+
+Type: `string` </br>
+Default: `config.twitter.access_token_secret`
+
+Your access token secret from [Twitter authentication credentials](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html).
+
+#### TOM_TWITTER_ACCESS_TOKEN
+
+Type: `string` </br>
+Default: `config.twitter.access_token`
+
+Your access token from [Twitter authentication credentials](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html).
+
+#### TOM_TELEGRAM_KEY
+
+![](https://i.imgur.com/mgofpzG.png)
+
+Type: `string` </br>
+Default: `config.telegram.token`
+
+Yout [Telegram @BotFather token](https://core.telegram.org/bots#3-how-do-i-create-a-bot).
 
 ## License
 
