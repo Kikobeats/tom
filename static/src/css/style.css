@@ -1323,3 +1323,7 @@ body .codecopy .codecopy-btn-icon {
 .sidebar-nav>ul>ul>ul>li {
   margin-left: 45px;
 }
+
+.app-name-link img {
+  width: 48px;
+}

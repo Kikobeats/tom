@@ -1,7 +1,8 @@
 /* global codecopy */
 
 window.$docsify = {
-  name: '🐶',
+  name: 'tom',
+  logo: 'https://tom.js.org/static/logo-color.png',
   repo: 'kikobeats/tom',
   maxLevel: 4,
   executeScript: true,
