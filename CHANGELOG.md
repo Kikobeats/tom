@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/kikobeats/tom-microservice/compare/v2.6.0...v2.7.0) (2019-08-31)
+
+
+### Bug Fixes
+
+* access plan id ([22da53e](https://github.com/kikobeats/tom-microservice/commit/22da53e))
+* better adapter interface ([31163c1](https://github.com/kikobeats/tom-microservice/commit/31163c1))
+* simple key/value ([54db2c0](https://github.com/kikobeats/tom-microservice/commit/54db2c0))
+* template should be optional ([fd06efc](https://github.com/kikobeats/tom-microservice/commit/fd06efc))
+
+
+### Features
+
+* add payment/session endpoint ([ee7ef2f](https://github.com/kikobeats/tom-microservice/commit/ee7ef2f))
+* add stripe webhook support ([cbd7942](https://github.com/kikobeats/tom-microservice/commit/cbd7942))
+
 ## [2.6.0](https://github.com/kikobeats/tom-microservice/compare/v2.5.9...v2.6.0) (2019-08-27)
 
 
