@@ -22,7 +22,7 @@ test('payment:create', async t => {
   const tom = createTom(config)
   const stripe = createStripe(TOM_STRIPE_KEY)
   const email = `test_${faker.internet.exampleEmail()}`
-  const planId = `pro-1k-v2`
+  const planId = 'pro-1k-v2'
   const { id: customerId } = await stripe.customers.create({ email })
   const { id: sessionId } = await stripe.checkout.sessions.create({
     customer: customerId,

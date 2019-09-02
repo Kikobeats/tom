@@ -43,7 +43,7 @@ module.exports = ({ config }) => {
     ward(opts.to, {
       test: is.string.nonEmpty,
       label: 'to',
-      message: `Need to specify at least a destination as 'to'.`
+      message: 'Need to specify at least a destination as \'to\'.'
     })
 
     const template = get(templates, opts.templateId)

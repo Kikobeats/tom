@@ -28,7 +28,7 @@ test('passing message', async t => {
       ward(undefined, {
         label: 'plan',
         test: is.string.nonEmpty,
-        message: `Need to specify a 'plan' to use`
+        message: 'Need to specify a \'plan\' to use'
       }),
     "Need to specify a 'plan' to use, got 'undefined'"
   )

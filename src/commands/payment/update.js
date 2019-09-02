@@ -20,7 +20,7 @@ module.exports = ({ config }) => {
     ward(token, {
       label: 'token',
       test: is.object.is(token => !!token.id),
-      message: `Need to provide a Stripe token object: https://stripe.com/docs/api/tokens/object.`
+      message: 'Need to provide a Stripe token object: https://stripe.com/docs/api/tokens/object.'
     })
 
     ward(customerId, { label: 'customerId', test: is.string.nonEmpty })

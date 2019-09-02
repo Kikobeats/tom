@@ -21,7 +21,7 @@ module.exports = async (tomConfig, { port = PORT } = {}) => {
   createServer(routes).listen(port, () => {
     console.log(
       logo({
-        header: `tom is running`,
+        header: 'tom is running',
         description: `http://localhost:${port}`
       })
     )

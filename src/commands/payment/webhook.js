@@ -27,7 +27,7 @@ module.exports = ({ config }) => {
     if (isRejected) throw new Error(reason.message)
 
     switch (event.type) {
-      case 'checkout.session.completed':
+      case 'checkout.session.completed': {
         const { object: session } = event.data
         const { customer: customerId = null } = session
 
@@ -42,6 +42,7 @@ module.exports = ({ config }) => {
           email: customer.email,
           planId: planId
         }
+      }
       default:
         return {}
     }

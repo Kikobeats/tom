@@ -20,18 +20,18 @@ module.exports = ({ config }) => {
     ward(token, {
       label: 'token',
       test: is.object.is(token => !!token.id),
-      message: `Need to provide a Stripe token object: https://stripe.com/docs/api/tokens/object.`
+      message: 'Need to provide a Stripe token object: https://stripe.com/docs/api/tokens/object.'
     })
 
     ward(token.email, {
       label: 'token.email',
       test: is.string.nonEmpty,
-      message: `Need to specify an \`email\` to be associated with the customer.`
+      message: 'Need to specify an `email` to be associated with the customer.'
     })
     ward(planId, {
       label: 'planId',
       test: is.string.nonEmpty,
-      message: `Need to specify \`planId\` previous declared.`
+      message: 'Need to specify `planId` previous declared.'
     })
 
     const { email, id: source, client_ip: clientIp } = token
