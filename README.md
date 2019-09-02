@@ -556,7 +556,7 @@ Your access token from [Twitter authentication credentials](https://developer.tw
 Type: `string` </br>
 Default: `config.telegram.token`
 
-Yout [Telegram @BotFather token](https://core.telegram.org/bots#3-how-do-i-create-a-bot).
+Your [Telegram @BotFather token](https://core.telegram.org/bots#3-how-do-i-create-a-bot).
 
 ## License
 
