@@ -27,7 +27,6 @@ test('notification:slack', async t => {
   })
 
   const tom = createTom(config)
-  const text = 'Someone is running the tests 🙀'
   const webhook = TEST_SLACK_WEBHOOK
 
   const blocks = [
@@ -49,6 +48,9 @@ test('notification:slack', async t => {
         image_url: 'https://tom.js.org/static/logo-color.png',
         alt_text: 'tom logo'
       }
+    },
+    {
+      type: 'divider'
     },
     {
       type: 'context',
@@ -76,5 +78,9 @@ test('notification:slack', async t => {
     }
   ]
 
-  if (event === 'push') await tom.notification.slack({ webhook, text, blocks })
+  const attachments = [{ blocks, color: 'good' }]
+
+  if (event === 'push') {
+    await tom.notification.slack({ webhook, attachments })
+  }
 })

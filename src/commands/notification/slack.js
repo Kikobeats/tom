@@ -1,6 +1,6 @@
 'use strict'
 
-const { isEmpty, isNil, get } = require('lodash')
+const { has, isNil, get } = require('lodash')
 const got = require('got')
 
 const { ward, is } = require('../../ward')
@@ -23,7 +23,7 @@ module.exports = ({ config }) => {
     const template = get(templates, opts.templateId)
     const slackOpts = compile(template, { config, opts })
 
-    if (isEmpty(slackOpts.blocks)) {
+    if (!has(slackOpts, 'blocks') && !has(slackOpts, 'attachments')) {
       ward(slackOpts.text, { label: 'text', test: is.string.nonEmpty })
     }
 
