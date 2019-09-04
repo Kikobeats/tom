@@ -4,7 +4,7 @@ const test = require('ava')
 const {
   repo,
   sha,
-  event,
+  event = 'push',
   commit_message: commitMessage = 'Running slack from tests',
   pull_request_number: pullRequestNumber,
   branch,
@@ -42,7 +42,7 @@ test('notification:slack', async t => {
       type: 'section',
       text: {
         type: 'mrkdwn',
-        text: `*repo:* ${repo}\n*sha:* ${sha}\n*event:* ${event}\n`
+        text: `*repo:* ${repo}\n*branch:* ${branch}\n*event:* ${event}\n`
       },
       accessory: {
         type: 'image',
@@ -55,7 +55,7 @@ test('notification:slack', async t => {
       elements: [
         {
           type: 'mrkdwn',
-          text: `From https://github.com/Kikobeats/tom/pull/${pullRequestNumber} as '${branch}'`
+          text: `${sha}`
         }
       ]
     },
@@ -76,5 +76,5 @@ test('notification:slack', async t => {
     }
   ]
 
-  await tom.notification.slack({ webhook, text, blocks })
+  if (event === 'push') await tom.notification.slack({ webhook, text, blocks })
 })
