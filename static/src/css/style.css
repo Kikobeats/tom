@@ -612,6 +612,7 @@ body.sticky .sidebar-toggle {
 body .markdown-section p.tip:before {
   background-color: var(--code-token-var-color);
   color: #121e36;
+  content: "?";
 }
 
 .markdown-section p.tip code {

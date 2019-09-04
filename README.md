@@ -74,7 +74,9 @@ const { payment, email } = tom
 
 ## Configuration
 
-!> Use [config](https://www.npmjs.com/package/config) to load different configurations based on environments.
+### Loading your configuration
+
+!> Combine with [config](https://www.npmjs.com/package/config) for loading different settings based on environment.
 
 All the **tom** 🐶 actions are based on a configuration file.
 
@@ -84,7 +86,13 @@ You can define the configuration file via:
 - A `tom.config.js` file that exports an object.
 - A `tom` key in your package.json file.
 
-The minimal configuration necessary is related with your company
+Just put your configuration in one of these places, **tom** 🐶 will automatically load it.
+
+### Required configuration fields
+
+!> Get a free email domain alias using [improvmx.com](https://improvmx.com) or [forwardemail.net](https://forwardemail.net/#/).
+
+The minimal configuration necessary is related with your company.
 
 ```yaml
 company:
@@ -96,7 +104,7 @@ company:
   copyright: Copyright © 2018 Microlink. All rights reserved.
 ```
 
-This information will be used across all the commands.
+For the rest, **tom** 🐶 will notify you on execution time if any specific configuration value is missing.
 
 ## Event System
 
