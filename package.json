@@ -13,7 +13,10 @@
     "url": "https://github.com/Kikobeats"
   },
   "contributors": [
-    "Rubén Moya <ruben@acidtango.com>"
+    {
+      "name": "Rubén Moya",
+      "email": "ruben@acidtango.com"
+    }
   ],
   "repository": {
     "type": "git",
@@ -71,6 +74,7 @@
     "@commitlint/config-conventional": "latest",
     "ava": "latest",
     "browser-sync": "latest",
+    "ci-env": "latest",
     "ci-publish": "latest",
     "concurrently": "latest",
     "conventional-github-releaser": "latest",
