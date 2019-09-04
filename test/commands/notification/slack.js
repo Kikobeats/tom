@@ -9,9 +9,10 @@ const {
   pull_request_number: pullRequestNumber,
   branch,
   jobUrl,
-  buildUrl,
   ci = 'local'
 } = require('ci-env')
+
+const { capitalize } = require('lodash')
 
 const { createConfig } = require('../../helpers')
 const createTom = require('../../../')
@@ -54,7 +55,7 @@ test('notification:slack', async t => {
       elements: [
         {
           type: 'mrkdwn',
-          text: `From ${pullRequestNumber} at ${branch} via ${ci}`
+          text: `From https://github.com/Kikobeats/tom/pull/${pullRequestNumber} as '${branch}'`
         }
       ]
     },
@@ -66,19 +67,10 @@ test('notification:slack', async t => {
           text: {
             type: 'plain_text',
             emoji: true,
-            text: 'See Job'
+            text: `See on ${capitalize(ci)}`
           },
           style: 'primary',
           url: jobUrl
-        },
-        {
-          type: 'button',
-          text: {
-            type: 'plain_text',
-            emoji: true,
-            text: 'See Build'
-          },
-          url: buildUrl
         }
       ]
     }
