@@ -224,13 +224,13 @@ The [webhook signature](https://stripe.com/docs/webhooks/signatures) will be che
 
 ### notification
 
-![](https://i.imgur.com/MmgFbS3.png)
-
 It sends notification using different providers and transporters.
 
 #### notification:email
 
 <small>`POST`</small>
+
+![](https://i.imgur.com/MmgFbS3.png)
 
 It sends transactional emails based on templates defined.
 
@@ -299,6 +299,8 @@ Attachments can be used for embedding images as well.
 #### notification:slack
 
 <small>`POST`</small>
+
+![](https://i.imgur.com/cy3KAJ3.png)
 
 It sends a Slack message.
 
