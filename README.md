@@ -309,7 +309,7 @@ It sends a Slack message.
 *Required*</br>
 type: `string`
 
-The [Incoming Webhook for Slack](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack) for sending the data.
+The [Incoming Webhook for Slack](https://api.slack.com/incoming-webhooks) for sending the data.
 
 ###### templateId
 
