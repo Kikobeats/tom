@@ -1,6 +1,6 @@
 'use strict'
 
-const { isNil, get } = require('lodash')
+const { isEmpty, isNil, get } = require('lodash')
 const got = require('got')
 
 const { ward, is } = require('../../ward')
@@ -23,9 +23,11 @@ module.exports = ({ config }) => {
     const template = get(templates, opts.templateId)
     const slackOpts = compile(template, { config, opts })
 
-    ward(slackOpts.text, { label: 'text', test: is.string.nonEmpty })
+    if (isEmpty(slackOpts.blocks)) {
+      ward(slackOpts.text, { label: 'text', test: is.string.nonEmpty })
+    }
 
-    // non interesting response on body
+    // body is returning http status as text
     const { body } = await got(webhook, { body: JSON.stringify(slackOpts) })
 
     return { ...opts, status: body }

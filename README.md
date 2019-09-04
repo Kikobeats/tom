@@ -309,26 +309,29 @@ It sends a Slack message.
 *Required*</br>
 type: `string`
 
-The [Incoming Webhook for Slack](https://api.slack.com/incoming-webhooks) for sending the data.
+The [Incoming Webhook for Slack](https://api.slack.com/incoming-webhooks) used for sending the data.
 
 ###### templateId
 
 Type: `string`
 
-If it is present, it will be generate `text` using the template.
+If it is present, it load a previous declared template.
 
 ###### text
 
-*Required*</br>
 type: `string`
 
-The text of the message.
+The text of the message. 
 
-###### attachments
+It supports some specific formatting things, see [formatting text in messages](https://api.slack.com/messaging/composing/formatting).
+
+###### blocks
 
 type: `object`</br>
 
-The message attachments, you can find more information at [Slack Documentation](https://api.slack.com/docs/message-attachments#attachment_structure)
+The [block structure](https://api.slack.com/reference/messaging/blocks) for creating rich messages, see [message layouts](https://api.slack.com/messaging/composing/layouts).
+
+You can compose blocks structures quickly using [Slack Block Kit Builder](https://api.slack.com/tools/block-kit-builder).
 
 #### notification:telegram
 
