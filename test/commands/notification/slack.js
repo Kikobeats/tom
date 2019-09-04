@@ -50,9 +50,6 @@ event === 'push' &&
         }
       },
       {
-        type: 'divider'
-      },
-      {
         type: 'context',
         elements: [
           {
@@ -78,6 +75,6 @@ event === 'push' &&
       }
     ]
 
-    const attachments = [{ blocks, color: 'good' }]
+    const attachments = [{ blocks, color: '#2eb886' }]
     await tom.notification.slack({ webhook, attachments })
   })
