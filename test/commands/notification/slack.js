@@ -41,7 +41,7 @@ event === 'push' &&
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: `*repo:* ${repo}\n*branch:* ${branch}\n*event:* ${event}\n`
+          text: `*repo:* ${repo}\n*branch:* ${branch}\n*event:* ${event}`
         },
         accessory: {
           type: 'image',
