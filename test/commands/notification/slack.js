@@ -54,7 +54,7 @@ event === 'push' &&
         elements: [
           {
             type: 'mrkdwn',
-            text: `${sha}`
+            text: `sha: ${sha}`
           }
         ]
       },
