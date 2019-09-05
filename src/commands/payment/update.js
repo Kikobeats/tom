@@ -16,17 +16,18 @@ module.exports = ({ config }) => {
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
 
-  const payment = async ({ token, customerId }) => {
+  const payment = async ({ token, customerId, ipAddress }) => {
     ward(token, {
       label: 'token',
       test: is.object.is(token => !!token.id),
-      message: 'Need to provide a Stripe token object: https://stripe.com/docs/api/tokens/object.'
+      message:
+        'Need to provide a Stripe token object: https://stripe.com/docs/api/tokens/object.'
     })
 
     ward(customerId, { label: 'customerId', test: is.string.nonEmpty })
 
     const { id: source, client_ip: clientIp } = token
-    const metadata = clientIp ? await meta(clientIp) : undefined
+    const metadata = await meta(clientIp || ipAddress)
     await stripe.customers.update(customerId, {
       metadata,
       source

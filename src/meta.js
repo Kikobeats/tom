@@ -2,6 +2,8 @@ const got = require('got')
 const { pickBy } = require('lodash')
 
 module.exports = async ipAddress => {
+  if (!ipAddress) return
+
   try {
     const { body } = await got(
       `https://api.ipgeolocationapi.com/geolocate/${ipAddress}`,
