@@ -26,25 +26,20 @@ module.exports = ({ config }) => {
 
     if (isRejected) throw new Error(reason.message)
 
-    switch (event.type) {
-      case 'checkout.session.completed': {
-        const { object: session } = event.data
-        const { customer: customerId = null } = session
+    const { object: session } = event.data
+    const { customer: customerId = null } = session
 
-        const customer = customerId
-          ? await stripe.customers.retrieve(customerId)
-          : { email: null }
+    const customer = customerId
+      ? await stripe.customers.retrieve(customerId)
+      : { email: null }
 
-        const planId = get(session, 'display_items[0].plan.id', null)
+    const planId = get(session, 'display_items[0].plan.id', null)
 
-        return {
-          customerId,
-          email: customer.email,
-          planId: planId
-        }
-      }
-      default:
-        return {}
+    return {
+      event,
+      customerId,
+      email: customer.email,
+      planId: planId
     }
   }
 
