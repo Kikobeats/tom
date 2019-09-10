@@ -27,6 +27,8 @@ $ npm install tom-microservice
 
 ## Usage
 
+!> You can see a fully production ready example at [tom-example](https://github.com/Kikobeats/tom-example).
+
 You can consume **tom** 🐶 from different ways.
 
 ### as microservice
