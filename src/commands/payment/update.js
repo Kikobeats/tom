@@ -16,7 +16,7 @@ module.exports = ({ config }) => {
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
 
-  const payment = async ({ token, customerId, ipAddress }) => {
+  const update = async ({ token, customerId, ipAddress }) => {
     ward(token, {
       label: 'token',
       test: is.object.is(token => !!token.id),
@@ -44,5 +44,5 @@ module.exports = ({ config }) => {
     return { customerId, email }
   }
 
-  return payment
+  return update
 }
