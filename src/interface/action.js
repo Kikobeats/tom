@@ -1,10 +1,10 @@
 'use strict'
 
 const { omit, isEmpty, split, first, reduce } = require('lodash')
+const nanoid = require('nanoid/async')
 const timeSpan = require('time-span')
 const prettyMs = require('pretty-ms')
 const pRetry = require('p-retry')
-const uuidv4 = require('uuid/v4')
 
 const printError = require('../log/print-error')
 const createLog = require('../log/create-log')
@@ -22,22 +22,14 @@ module.exports = ({ eventName, fn, tom }) => {
       let time = timeSpan()
       const data = await pRetry(run, { retries: 2 })
 
-      const meta = await Promise.all([
-        tom.emit('*', data),
-        tom.emit(eventNamespace(eventName), data),
-        tom.emit(eventName, data)
-      ])
+      const meta = await Promise.all([tom.emit('*', data), tom.emit(eventNamespace(eventName), data), tom.emit(eventName, data)])
 
       time = prettyMs(time())
 
-      const output = reduce(
-        meta,
-        (acc, obj) => ({ ...acc, ...toObject(obj) }),
-        data
-      )
+      const output = reduce(meta, (acc, obj) => ({ ...acc, ...toObject(obj) }), data)
 
       if (!isEmpty(output)) {
-        log.debug({ id: uuidv4(), ...omit(output, ['headers']), time })
+        log.debug({ id: await nanoid(), ...omit(output, ['headers']), time })
       }
 
       return output
