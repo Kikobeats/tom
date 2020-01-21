@@ -67,8 +67,7 @@
     "time-span": "~3.1.0",
     "to-query": "~1.5.4",
     "twit": "~2.2.11",
-    "update-notifier": "~4.0.0",
-    "uuid": "~3.4.0"
+    "update-notifier": "~4.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
@@ -131,8 +130,9 @@
   },
   "license": "MIT",
   "ava": {
-    "helpers": [
-      "test/helpers.js"
+    "files": [
+      "!test/helpers.js",
+      "test/**/*.js"
     ]
   },
   "commitlint": {
