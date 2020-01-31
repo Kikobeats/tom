@@ -32,8 +32,11 @@ module.exports = ({ config }) => {
 
     ward(chatId, { label: 'chatId', test: is.number })
     ward(text, { label: 'text', test: is.string.nonEmpty })
-    const query = { chat_id: chatId, text }
-    const { body } = await got(endpoint, { json: true, query })
+
+    const { body } = await got(endpoint, {
+      responseType: 'json',
+      searchParams: { chat_id: chatId, text }
+    })
 
     return { ...opts, ...body.result }
   }

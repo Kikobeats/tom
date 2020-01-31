@@ -28,7 +28,7 @@ module.exports = ({ config }) => {
     }
 
     // body is returning http status as text
-    const { body } = await got(webhook, { body: JSON.stringify(slackOpts) })
+    const { body } = await got.post(webhook, { json: slackOpts })
 
     return { ...opts, status: body }
   }
