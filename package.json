@@ -2,7 +2,7 @@
   "name": "tom-microservice",
   "description": "Tom creates customers, subscriptions plans & send notifications.",
   "homepage": "https://tom.js.org",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "main": "src",
   "bin": {
     "tom": "bin/index.js"
@@ -13,14 +13,7 @@
     "url": "https://github.com/Kikobeats"
   },
   "contributors": [
-    {
-      "name": "rubenmoya",
-      "email": "rmoyarodriguez@gmail.com"
-    },
-    {
-      "name": "Rubén Moya",
-      "email": "ruben@acidtango.com"
-    }
+    "Rubén Moya <ruben@acidtango.com>"
   ],
   "repository": {
     "type": "git",
