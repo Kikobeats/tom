@@ -57,7 +57,7 @@
     "p-reflect": "~2.1.0",
     "p-retry": "~4.2.0",
     "p-waterfall": "~2.1.0",
-    "pretty-ms": "~5.1.0",
+    "pretty-ms": "~6.0.0",
     "pupa": "~2.0.1",
     "request-ip": "~2.1.3",
     "stripe": "^8.11.0",
