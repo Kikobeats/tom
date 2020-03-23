@@ -57,7 +57,7 @@
     "mailgen": "~2.0.10",
     "map-values-deep": "~1.0.2",
     "meow": "~6.1.0",
-    "morgan": "~1.9.1",
+    "morgan": "~1.10.0",
     "nanoid": "~2.1.11",
     "nodemailer": "~6.4.2",
     "ow": "~0.17.0",
