@@ -1,7 +1,7 @@
 'use strict'
 
 const { omit, isEmpty, split, first, reduce } = require('lodash')
-const nanoid = require('nanoid/async')
+const { nanoid } = require('nanoid/async')
 const timeSpan = require('time-span')
 const prettyMs = require('pretty-ms')
 const pRetry = require('p-retry')
