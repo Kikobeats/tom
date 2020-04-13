@@ -39,7 +39,7 @@
     "subscriptions"
   ],
   "dependencies": {
-    "acho": "~4.0.5",
+    "acho": "~4.0.6",
     "beauty-error": "~1.2.3",
     "body-parser": "~1.19.0",
     "chalk": "~4.0.0",
@@ -67,7 +67,7 @@
     "pretty-ms": "~6.0.1",
     "pupa": "~2.0.1",
     "request-ip": "~2.1.3",
-    "stripe": "^8.37.0",
+    "stripe": "^8.39.2",
     "time-span": "~4.0.0",
     "to-query": "~1.6.0",
     "twit": "~2.2.11",
