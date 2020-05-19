@@ -78,7 +78,7 @@ const { payment, email } = tom
 
 ### Loading your configuration
 
-!> Combine with [config](https://www.npmjs.com/package/config) for loading different settings based on environment.
+!> Combine with [miconfig](https://www.npmjs.com/package/miconfig) for loading different settings based on environment.
 
 All the **tom** 🐶 actions are based on a configuration file.
 
