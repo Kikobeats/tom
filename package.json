@@ -48,7 +48,7 @@
     "cosmiconfig": "~6.0.0",
     "emittery": "~0.7.0",
     "express": "~4.17.1",
-    "got": "~11.3.0",
+    "got": "~11.4.0",
     "helmet": "~3.23.0",
     "import-modules": "~2.0.0",
     "is-buffer": "~2.0.4",
