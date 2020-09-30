@@ -21,11 +21,10 @@ module.exports = ({ config }) => {
       test: is.string.nonEmpty
     })
 
-    const session = await stripe.checkout.sessions.retrieve(sessionId)
+    const session = await stripe.checkout.sessions.retrieve(sessionId, { expand: ['line_items'] })
     const { customer: customerId } = session
-
     const { email } = await stripe.customers.retrieve(customerId)
-    const planId = get(session, 'display_items[0].plan.id', null)
+    const planId = get(session, 'line_items.data[0].price.id', null)
 
     if (ipAddress) {
       await stripe.customers.update(customerId, {

@@ -11,6 +11,8 @@
 [![Dev Dependencies Status](https://img.shields.io/david/dev/Kikobeats/tom-microservice.svg?style=flat-square)](https://david-dm.org/Kikobeats/tom-microservice#info=devDependencies)
 [![NPM Status](https://img.shields.io/npm/dm/tom-microservice.svg?style=flat-square)](https://www.npmjs.org/package/tom-microservice)
 
+> Stripe API version: [2020-08-27](https://stripe.com/docs/upgrades#2020-08-27)
+
 **tom** 🐶 is a backoffice for your projects, oriented for doing things like:
 
 - Handle [payments](#payment) workflow (  create customers, subscribe to plans) using Stripe.
