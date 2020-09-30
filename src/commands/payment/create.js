@@ -45,7 +45,7 @@ module.exports = ({ config }) => {
     const data = await stripe.subscriptions.create({
       customer: customerId,
       items: [{ plan: planId }],
-      tax_rates: [taxRate.id],
+      tax_rates: taxRate ? [taxRate.id] : undefined,
       metadata
     })
 
