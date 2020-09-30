@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.11.0](https://github.com/kikobeats/tom-microservice/compare/v2.10.0...v2.11.0) (2020-09-30)
+
+
+### Features
+
+* associate a tax rate with subscriptions ([0c04eff](https://github.com/kikobeats/tom-microservice/commit/0c04eff7509ac191c5b8d96035c0a16b96e79b9a))
+
+
+### Bug Fixes
+
+* apply tax rate if is possible ([e600bad](https://github.com/kikobeats/tom-microservice/commit/e600bad606be0061c026783cd3d2277f8a5655a0))
+
 ## [2.10.0](https://github.com/kikobeats/tom-microservice/compare/v2.9.37...v2.10.0) (2020-09-30)
 
 
