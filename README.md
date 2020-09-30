@@ -155,6 +155,8 @@ Every command has his own field at [configuration](#configuration).
 
 It creates new customer and subcribe them to previous declared product plans, using Stripe.
 
+Also, when is necessary, the subscription will be associated applying a tax rate based on the customer geolocation detected.
+
 In addition, **tom** 🐶 will fill useful customer metadata inforomation whetever is possible (such ass IP Address, country, region, VAT rate, currency code, etc.)
 
 #### payment:create

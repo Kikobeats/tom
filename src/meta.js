@@ -1,3 +1,5 @@
+'use strict'
+
 const { get, pickBy } = require('lodash')
 const got = require('got')
 
