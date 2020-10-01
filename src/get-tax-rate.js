@@ -10,10 +10,15 @@ module.exports = stripe => {
       inclusive: false
     })
 
-  return async meta => {
+  return async (meta = {}) => {
     if (!meta.eeaMember) return
     const { data: taxRates } = await stripe.taxRates.list({ limit: 100 })
-    const taxRate = taxRates.find(taxRate => !taxRate.inclusive && taxRate.display_name === 'VAT' && taxRate.jurisdiction === meta.alpha2)
+    const taxRate = taxRates.find(
+      taxRate =>
+        !taxRate.inclusive &&
+        taxRate.display_name === 'VAT' &&
+        taxRate.jurisdiction === meta.alpha2
+    )
     return taxRate || createTaxRate(meta)
   }
 }

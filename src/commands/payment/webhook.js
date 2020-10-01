@@ -18,34 +18,27 @@ module.exports = ({ config }) => {
   const webhookEndpoint = get(config, 'payment.stripe_webhook_secret')
 
   const getCustomer = async customerId => {
-    if (!customerId) return { email: null }
+    if (!customerId) return {}
     const { isRejected, value } = await pReflect(
       stripe.customers.retrieve(customerId)
     )
-    if (isRejected) return { email: null }
+    if (isRejected) return {}
     return value
   }
 
   const webhook = async ({ headers, body }) => {
     const signature = headers['stripe-signature']
-
     const { value: event, isRejected, reason } = await pReflect(
       stripe.webhooks.constructEvent(body, signature, webhookEndpoint)
     )
-
     if (isRejected) throw new Error(reason.message)
 
     const { object: session } = event.data
     const { customer: customerId = null } = session
-    const customer = await getCustomer(customerId)
-    const planId = get(session, 'display_items[0].plan.id', null)
+    const { email } = await getCustomer(customerId)
+    const planId = get(session, 'display_items[0].plan.id')
 
-    return {
-      event,
-      customerId,
-      email: customer.email,
-      planId: planId
-    }
+    return { event, customerId, email, planId }
   }
 
   return webhook

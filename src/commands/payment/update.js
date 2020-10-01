@@ -4,7 +4,7 @@ const createStripe = require('stripe')
 const { get } = require('lodash')
 
 const { wardCredential, ward, is } = require('../../ward')
-const meta = require('../../meta')
+const getMetadata = require('../../get-metadata')
 
 module.exports = ({ config }) => {
   const errFn = wardCredential(config, {
@@ -20,19 +20,24 @@ module.exports = ({ config }) => {
     ward(token, {
       label: 'token',
       test: is.object.is(token => !!token.id),
-      message: 'Need to provide a Stripe token object: https://stripe.com/docs/api/tokens/object.'
+      message:
+        'Need to provide a Stripe token object: https://stripe.com/docs/api/tokens/object.'
     })
 
     ward(customerId, { label: 'customerId', test: is.string.nonEmpty })
 
     const { id: source, client_ip: clientIp } = token
-    const metadata = await meta(clientIp || ipAddress)
-    await stripe.customers.update(customerId, {
-      metadata,
-      source
-    })
 
-    const { email } = await stripe.customers.retrieve(customerId)
+    const [metadata] = await Promise.all([
+      getMetadata(clientIp || ipAddress),
+      stripe.customers.update(customerId, { source })
+    ])
+
+    const [{ email }] = await Promise.all([
+      stripe.customers.retrieve(customerId),
+      metadata &&
+        stripe.customers.updateSource(customerId, token.card.id, { metadata })
+    ])
 
     ward(email, {
       label: 'email',
