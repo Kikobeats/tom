@@ -8,7 +8,9 @@ const createGetTaxRate = require('../../get-tax-rate')
 const getMetadata = require('../../get-metadata')
 
 module.exports = ({ config }) => {
-  const errFn = wardCredential(config, [{ key: 'payment.stripe_key', env: 'TOM_STRIPE_KEY' }])
+  const errFn = wardCredential(config, [
+    { key: 'payment.stripe_key', env: 'TOM_STRIPE_KEY' }
+  ])
 
   if (errFn) return errFn
 

@@ -19,14 +19,18 @@ module.exports = ({ config }) => {
 
   const getCustomer = async customerId => {
     if (!customerId) return {}
-    const { isRejected, value } = await pReflect(stripe.customers.retrieve(customerId))
+    const { isRejected, value } = await pReflect(
+      stripe.customers.retrieve(customerId)
+    )
     if (isRejected) return {}
     return value
   }
 
   const webhook = async ({ headers, body }) => {
     const signature = headers['stripe-signature']
-    const { value: event, isRejected, reason } = await pReflect(stripe.webhooks.constructEvent(body, signature, webhookEndpoint))
+    const { value: event, isRejected, reason } = await pReflect(
+      stripe.webhooks.constructEvent(body, signature, webhookEndpoint)
+    )
     if (isRejected) throw new Error(reason.message)
 
     const { object: session } = event.data
