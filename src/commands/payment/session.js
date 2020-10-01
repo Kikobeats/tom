@@ -4,7 +4,8 @@ const createStripe = require('stripe')
 const { get } = require('lodash')
 
 const { wardCredential, ward, is } = require('../../ward')
-const meta = require('../../meta')
+const createGetTaxRate = require('../../get-tax-rate')
+const getMetadata = require('../../get-metadata')
 
 module.exports = ({ config }) => {
   const errFn = wardCredential(config, [{ key: 'payment.stripe_key', env: 'TOM_STRIPE_KEY' }])
@@ -12,25 +13,33 @@ module.exports = ({ config }) => {
   if (errFn) return errFn
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
+  const getTaxRate = createGetTaxRate(stripe)
 
-  const session = async ({ ipAddress, sessionId }) => {
-    ward(sessionId, {
+  const session = async ({ ipAddress, planId, successUrl, cancelUrl }) => {
+    ward(planId, {
       label: 'sessionId',
       test: is.string.nonEmpty
     })
 
-    const session = await stripe.checkout.sessions.retrieve(sessionId, { expand: ['line_items'] })
-    const { customer: customerId } = session
-    const { email } = await stripe.customers.retrieve(customerId)
-    const planId = get(session, 'line_items.data[0].price.id', null)
+    const metadata = await getMetadata(ipAddress)
+    const taxRate = await getTaxRate(metadata)
 
-    if (ipAddress) {
-      await stripe.customers.update(customerId, {
-        metadata: await meta(ipAddress)
-      })
-    }
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price: planId,
+          quantity: 1,
+          tax_rates: taxRate ? [taxRate.id] : undefined
+        }
+      ],
+      mode: 'subscription',
+      success_url: successUrl,
+      cancel_url: cancelUrl,
+      metadata
+    })
 
-    return { customerId, email, planId }
+    return { sessionId: session.id }
   }
 
   return session
