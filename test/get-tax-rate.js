@@ -7,7 +7,7 @@ const { TOM_STRIPE_KEY } = process.env
 
 const stripe = createStripe(TOM_STRIPE_KEY)
 
-const getTaxRate = require('../src/tax-rate')(stripe)
+const getTaxRate = require('../src/get-tax-rate')(stripe)
 
 test('exclude countries out of the European Economic Area (EEA)', async t => {
   const taxRate = await getTaxRate({})
