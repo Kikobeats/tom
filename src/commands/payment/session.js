@@ -19,7 +19,7 @@ module.exports = ({ config }) => {
 
   const session = async ({ ipAddress, planId, successUrl, cancelUrl }) => {
     ward(planId, {
-      label: 'sessionId',
+      label: 'planId',
       test: is.string.nonEmpty
     })
 
