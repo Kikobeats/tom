@@ -36,7 +36,12 @@ module.exports = ({ config }) => {
     const { object: session } = event.data
     const { customer: customerId = null } = session
     const { email } = await getCustomer(customerId)
-    const planId = get(session, 'display_items[0].plan.id')
+
+    const planId =
+      get(session, 'display_items[0].plan.id') ||
+      get(session, 'metadata.planId')
+
+    if (!planId) throw new Error('plan id not detected.')
 
     return { event, customerId, email, planId }
   }

@@ -38,7 +38,7 @@ module.exports = ({ config }) => {
       mode: 'subscription',
       success_url: successUrl,
       cancel_url: cancelUrl,
-      metadata
+      metadata: { ...metadata, planId }
     })
 
     return { sessionId: session.id }
