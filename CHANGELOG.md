@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/kikobeats/tom-microservice/compare/v3.0.0...v3.0.1) (2020-10-03)
+
+
+### Bug Fixes
+
+* ensure to collect plan id from session ([614ff4c](https://github.com/kikobeats/tom-microservice/commit/614ff4cee7725d640d0182acfd150b60ed24bf88))
+
 ## [3.0.0](https://github.com/kikobeats/tom-microservice/compare/v2.11.0...v3.0.0) (2020-10-01)
 
 ## [2.11.0](https://github.com/kikobeats/tom-microservice/compare/v2.10.0...v2.11.0) (2020-09-30)
