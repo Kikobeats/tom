@@ -15,7 +15,7 @@ module.exports = ({ config }) => {
   if (errFn) return errFn
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
-  const getTaxRate = createGetTaxRate(stripe)
+  const getTaxRate = createGetTaxRate({ config, stripe })
 
   const session = async ({ ipAddress, planId, successUrl, cancelUrl }) => {
     ward(planId, {
