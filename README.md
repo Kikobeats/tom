@@ -78,8 +78,6 @@ const { payment, email } = tom
 
 ## Configuration
 
-### Loading your configuration
-
 !> Combine with [miconfig](https://www.npmjs.com/package/miconfig) for loading different settings based on environment.
 
 All the **tom** 🐶 actions are based on a configuration file.
@@ -92,7 +90,7 @@ You can define the configuration file via:
 
 Just put your configuration in one of these places, **tom** 🐶 will automatically load it.
 
-### Required configuration fields
+### Basic
 
 !> Get a free email domain alias using [improvmx.com](https://improvmx.com) or [forwardemail.net](https://forwardemail.net/#/).
 
@@ -105,10 +103,31 @@ company:
   link: https://microlink.io
   logo: https://microlink.io/logo.png
   email: hello@microlink.io
-  copyright: Copyright © 2018 Microlink. All rights reserved.
+  copyright: Copyright © 2020 Microlink. All rights reserved.
 ```
 
 For the rest, **tom** 🐶 will notify you on execution time if any specific configuration value is missing.
+
+### Advanced
+
+Additionally, you can setup some extra company fields to unlock certain **tom** workflows.
+
+#### Tax Rates
+
+!> Open an issue for requesting more tax rates strategies!
+
+If you define `country` and `tax_type` in your company configuration, then customers bills will generated considering the company tax rate declared
+
+```yaml
+company:
+  # ... rest of company configuration
+  country: es
+  tax_type: vatmoss
+```
+
+Current strategies supported are:
+
+- `vatmos`: Use [VATMOSS](https://support.quaderno.io/article/15-eu-vat-compliance-for-digital-products#vatmoss) EU VAT Compliance for Digital Products.
 
 ## Event System
 
