@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/kikobeats/tom-microservice/compare/v3.0.1...v3.1.0) (2020-10-09)
+
+
+### Features
+
+* support taxes strategies ([231e2c9](https://github.com/kikobeats/tom-microservice/commit/231e2c966e7507654733b8de01342336385a62f1))
+
 ### [3.0.1](https://github.com/kikobeats/tom-microservice/compare/v3.0.0...v3.0.1) (2020-10-03)
 
 
