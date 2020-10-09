@@ -7,9 +7,12 @@ module.exports = async ipAddress => {
   if (!ipAddress) return
 
   try {
-    const { body } = await got(`https://api.ipgeolocationapi.com/geolocate/${ipAddress}`, {
-      responseType: 'json'
-    })
+    const { body } = await got(
+      `https://api.ipgeolocationapi.com/geolocate/${ipAddress}`,
+      {
+        responseType: 'json'
+      }
+    )
 
     return pickBy({
       ipAddress,
