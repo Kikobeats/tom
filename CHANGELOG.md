@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2](https://github.com/kikobeats/tom-microservice/compare/v3.1.1...v3.1.2) (2020-10-22)
+
+
+### Bug Fixes
+
+* remove condition ([cdf23fe](https://github.com/kikobeats/tom-microservice/commit/cdf23fedb69c5f1450f692cd249f4d479cf418ce))
+
 ### [3.1.1](https://github.com/kikobeats/tom-microservice/compare/v3.1.0...v3.1.1) (2020-10-21)
 
 ## [3.1.0](https://github.com/kikobeats/tom-microservice/compare/v3.0.1...v3.1.0) (2020-10-09)
