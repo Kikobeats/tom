@@ -41,8 +41,6 @@ module.exports = ({ config }) => {
       get(session, 'display_items[0].plan.id') ||
       get(session, 'metadata.planId')
 
-    if (!planId) throw new Error('plan id not detected.')
-
     return { event, customerId, email, planId }
   }
 
