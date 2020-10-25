@@ -1,10 +1,14 @@
 'use strict'
 
 const mapValuesDeep = require('map-values-deep')
-const { isNil } = require('lodash')
-const pupa = require('pupa')
+const { template: compileTemplate, isNil } = require('lodash')
 
-const compile = (template, opts) => mapValuesDeep(template, str => pupa(str, opts))
+const REGEX_HANDLEBARS_INTERPOLATE = /{([\s\S]+?)}/g
+
+const compile = (template, opts) =>
+  mapValuesDeep(template, str =>
+    compileTemplate(str, { interpolate: REGEX_HANDLEBARS_INTERPOLATE })(opts)
+  )
 
 module.exports = (template, { config, opts }) => {
   const tpl = isNil(template)
