@@ -1,7 +1,7 @@
 'use strict'
 
-const mapValuesDeep = require('map-values-deep')
 const { template: compileTemplate, isNil } = require('lodash')
+const mapValuesDeep = require('map-values-deep')
 
 const REGEX_HANDLEBARS_INTERPOLATE = /{([\s\S]+?)}/g
 
