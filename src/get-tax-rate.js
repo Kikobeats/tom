@@ -1,17 +1,17 @@
 'use strict'
 
 const { get, noop } = require('lodash')
-const pMemoize = require('p-memoize')
 const got = require('got')
 
 const MAX_TAX_RATES_LIMIT = 100
+const CACHE = new Map()
 
-const getCountryTaxRate = pMemoize(async countryCode =>
+const getCountryTaxRate = async countryCode =>
   got(`https://api.ipgeolocationapi.com/countries/${countryCode}`, {
+    cache: CACHE,
     responseType: 'json',
     resolveBodyOnly: true
   })
-)
 
 const vatmoss = ({ config, stripe, getCountryTaxRate }) => {
   const createTaxRate = countryTaxRate =>
