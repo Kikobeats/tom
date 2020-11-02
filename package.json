@@ -2,7 +2,7 @@
   "name": "tom-microservice",
   "description": "Tom creates customers, subscriptions plans & send notifications.",
   "homepage": "https://tom.js.org",
-  "version": "3.1.7",
+  "version": "3.1.8",
   "main": "src",
   "bin": {
     "tom": "bin/index.js"
