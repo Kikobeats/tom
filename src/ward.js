@@ -1,8 +1,7 @@
 'use strict'
 
-const ow = require('ow')
-
 const { concat, get, isNil, find } = require('lodash')
+const { default: ow } = require('ow')
 
 const ward = (input, { test, label, message }) => {
   if (!ow.isValid(input, test)) {
