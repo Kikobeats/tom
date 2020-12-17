@@ -27,6 +27,7 @@ module.exports = ({ config }) => {
     const taxRate = await getTaxRate(metadata)
 
     const session = await stripe.checkout.sessions.create({
+      mode: 'subscription',
       payment_method_types: ['card'],
       line_items: [
         {
@@ -35,7 +36,9 @@ module.exports = ({ config }) => {
           tax_rates: taxRate ? [taxRate.id] : undefined
         }
       ],
-      mode: 'subscription',
+      subscription_data: {
+        default_tax_rates: taxRate ? [taxRate.id] : undefined
+      },
       success_url: successUrl,
       cancel_url: cancelUrl,
       metadata: { ...metadata, planId }
