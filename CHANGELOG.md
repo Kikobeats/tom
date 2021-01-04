@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.17](https://github.com/kikobeats/tom-microservice/compare/v3.1.16...v3.1.17) (2021-01-04)
+
+
+### Bug Fixes
+
+* ensure to set the new credit card as default ([122ad3c](https://github.com/kikobeats/tom-microservice/commit/122ad3c58ae6cdadec7abc1bd0eceb757d3aaff0))
+
 ### [3.1.16](https://github.com/kikobeats/tom-microservice/compare/v3.1.15...v3.1.16) (2021-01-04)
 
 ### [3.1.15](https://github.com/kikobeats/tom-microservice/compare/v3.1.14...v3.1.15) (2020-12-30)
