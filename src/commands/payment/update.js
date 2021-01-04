@@ -28,16 +28,21 @@ module.exports = ({ config }) => {
 
     const { id: source, client_ip: clientIp } = token
 
-    const [metadata] = await Promise.all([
+    const [newMetadata, { metadata: oldMetadata, email }] = await Promise.all([
       getMetadata(clientIp || ipAddress),
-      stripe.customers.update(customerId, { source })
+      stripe.customers.retrieve(customerId)
     ])
 
-    const [{ email }] = await Promise.all([
-      stripe.customers.retrieve(customerId),
-      metadata &&
-        stripe.customers.updateSource(customerId, token.card.id, { metadata })
-    ])
+    await stripe.customers.update(customerId, {
+      source,
+      metadata: { ...oldMetadata, ...newMetadata }
+    })
+
+    await stripe.customers.update(customerId, {
+      invoice_settings: {
+        default_payment_method: token.card.id
+      }
+    })
 
     ward(email, {
       label: 'email',
