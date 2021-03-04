@@ -16,7 +16,7 @@ module.exports = ({ config }) => {
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
 
-  const update = async ({ token, customerId, ipAddress }) => {
+  const update = async ({ token, customerId, ipAddress, headers }) => {
     ward(token, {
       label: 'token',
       test: is.object.is(token => !!token.id),
@@ -29,7 +29,7 @@ module.exports = ({ config }) => {
     const { id: source, client_ip: clientIp } = token
 
     const [newMetadata, { metadata: oldMetadata, email }] = await Promise.all([
-      getMetadata(clientIp || ipAddress),
+      getMetadata({ ipAddress: clientIp || ipAddress, headers }),
       stripe.customers.retrieve(customerId)
     ])
 

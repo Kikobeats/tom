@@ -17,13 +17,19 @@ module.exports = ({ config }) => {
   const stripe = createStripe(get(config, 'payment.stripe_key'))
   const getTaxRate = createGetTaxRate({ config, stripe })
 
-  const session = async ({ ipAddress, planId, successUrl, cancelUrl }) => {
+  const session = async ({
+    ipAddress,
+    headers,
+    planId,
+    successUrl,
+    cancelUrl
+  }) => {
     ward(planId, {
       label: 'planId',
       test: is.string.nonEmpty
     })
 
-    const metadata = await getMetadata(ipAddress)
+    const metadata = await getMetadata({ ipAddress, headers })
     const taxRate = await getTaxRate(metadata)
 
     const session = await stripe.checkout.sessions.create({
