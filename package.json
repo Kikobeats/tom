@@ -89,7 +89,7 @@
     "gulp-cssnano": "latest",
     "gulp-strip-css-comments": "latest",
     "gulp-uglify": "latest",
-    "husky": "latest",
+    "simple-git-hooks": "latest",
     "imagemin-lint-staged": "latest",
     "lint-staged": "latest",
     "npm-check-updates": "latest",
@@ -140,11 +140,9 @@
       "@commitlint/config-conventional"
     ]
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
+  "simple-git-hooks": {
+    "commit-msg": "npx commitlint --edit",
+    "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
     "package.json": [
