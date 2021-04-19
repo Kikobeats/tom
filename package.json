@@ -44,7 +44,7 @@
     "emittery": "~0.8.1",
     "express": "~4.17.1",
     "got": "~11.8.2",
-    "helmet": "~4.4.1",
+    "helmet": "~4.5.0",
     "import-modules": "~2.1.0",
     "is-buffer": "~2.0.5",
     "is-european": "~1.0.3",
