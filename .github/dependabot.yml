@@ -1,0 +1,20 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 99
+  ignore:
+  - dependency-name: time-span
+    versions:
+    - 5.0.0
+  - dependency-name: p-waterfall
+    versions:
+    - 3.0.0
+  - dependency-name: p-reflect
+    versions:
+    - 3.0.0
+  - dependency-name: p-retry
+    versions:
+    - 4.4.0
