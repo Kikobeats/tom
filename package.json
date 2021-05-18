@@ -2,7 +2,7 @@
   "name": "tom-microservice",
   "description": "Tom creates customers, subscriptions plans & send notifications.",
   "homepage": "https://tom.js.org",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "main": "src",
   "bin": {
     "tom": "bin/index.js"
@@ -13,8 +13,14 @@
     "url": "https://github.com/Kikobeats"
   },
   "contributors": [
-    "rubenmoya <rmoyarodriguez@gmail.com>",
-    "Rubén Moya <ruben@acidtango.com>"
+    {
+      "name": "rubenmoya",
+      "email": "rmoyarodriguez@gmail.com"
+    },
+    {
+      "name": "Rubén Moya",
+      "email": "ruben@acidtango.com"
+    }
   ],
   "repository": {
     "type": "git",
@@ -63,8 +69,8 @@
     "pretty-ms": "~7.0.1",
     "req-country": "~1.2.2",
     "request-ip": "~2.1.3",
-    "time-span": "~4.0.0",
     "stripe": "^8.148.0",
+    "time-span": "~4.0.0",
     "to-query": "~1.6.1",
     "twit": "~2.2.11",
     "update-notifier": "~5.1.0"
@@ -89,12 +95,12 @@
     "gulp-cssnano": "latest",
     "gulp-strip-css-comments": "latest",
     "gulp-uglify": "latest",
-    "simple-git-hooks": "latest",
     "imagemin-lint-staged": "latest",
     "lint-staged": "latest",
     "npm-check-updates": "latest",
     "nyc": "latest",
     "prettier-standard": "latest",
+    "simple-git-hooks": "latest",
     "standard": "latest",
     "standard-markdown": "latest",
     "standard-version": "latest",
@@ -140,10 +146,6 @@
       "@commitlint/config-conventional"
     ]
   },
-  "simple-git-hooks": {
-    "commit-msg": "npx commitlint --edit",
-    "pre-commit": "npx lint-staged"
-  },
   "lint-staged": {
     "package.json": [
       "finepack --sort-ignore-object-at ava"
@@ -157,6 +159,10 @@
     "*.{png,jpeg,jpg,gif,svg}": [
       "imagemin-lint-staged"
     ]
+  },
+  "simple-git-hooks": {
+    "commit-msg": "npx commitlint --edit",
+    "pre-commit": "npx lint-staged"
   },
   "standard": {
     "env": [
