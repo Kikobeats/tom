@@ -47,7 +47,7 @@
     "cors": "~2.8.5",
     "cosmiconfig": "~7.0.0",
     "country-vat": "~1.0.0",
-    "emittery": "~0.8.1",
+    "emittery": "~0.9.0",
     "express": "~4.17.1",
     "got": "~11.8.2",
     "helmet": "~4.6.0",
