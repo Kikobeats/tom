@@ -1,6 +1,7 @@
 'use strict'
 
 const test = require('ava')
+
 const {
   repo,
   sha,
