@@ -22,11 +22,19 @@ module.exports = ({ eventName, fn, tom }) => {
       let time = timeSpan()
       const data = await pRetry(run, { retries: 2 })
 
-      const meta = await Promise.all([tom.emit('*', data), tom.emit(eventNamespace(eventName), data), tom.emit(eventName, data)])
+      const meta = await Promise.all([
+        tom.emit('*', data),
+        tom.emit(eventNamespace(eventName), data),
+        tom.emit(eventName, data)
+      ])
 
       time = prettyMs(time())
 
-      const output = reduce(meta, (acc, obj) => ({ ...acc, ...toObject(obj) }), data)
+      const output = reduce(
+        meta,
+        (acc, obj) => ({ ...acc, ...toObject(obj) }),
+        data
+      )
 
       if (!isEmpty(output)) {
         log.debug({ id: await nanoid(), ...omit(output, ['headers']), time })
@@ -34,6 +42,8 @@ module.exports = ({ eventName, fn, tom }) => {
 
       return output
     } catch (err) {
+      console.log('ERROR', err)
+      console.log('ERROR', err.message)
       printError({ log, err })
       throw err
     }

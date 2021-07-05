@@ -5,7 +5,7 @@ const {
   repo,
   sha,
   event = 'push',
-  commit_message: commitMessage = 'Running slack from tests',
+  commit_message: commitMessage,
   branch,
   jobUrl,
   ci = 'local'
@@ -34,7 +34,7 @@ event === 'push' &&
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: commitMessage
+          text: commitMessage || 'Running slack from tests'
         }
       },
       {
@@ -69,7 +69,9 @@ event === 'push' &&
               text: `See on ${capitalize(ci)}`
             },
             style: 'primary',
-            url: jobUrl
+            url:
+              jobUrl ||
+              `https://github.com/Kikobeats/tom/runs/${process.env.GITHUB_RUN_ID}?check_suite_focus=true`
           }
         ]
       }
