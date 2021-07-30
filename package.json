@@ -58,7 +58,7 @@
     "lodash": "~4.17.21",
     "mailgen": "~2.0.15",
     "map-values-deep": "~1.0.2",
-    "meow": "~9.0.0",
+    "meow": "~10.1.1",
     "morgan": "~1.10.0",
     "nanoid": "~3.1.23",
     "nodemailer": "~6.6.3",
