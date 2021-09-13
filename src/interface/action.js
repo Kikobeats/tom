@@ -1,7 +1,7 @@
 'use strict'
 
 const { omit, isEmpty, split, first, reduce } = require('lodash')
-const { nanoid } = require('nanoid/async')
+const { randomUUID } = require('crypto')
 const timeSpan = require('time-span')
 const prettyMs = require('pretty-ms')
 const pRetry = require('p-retry')
@@ -37,7 +37,7 @@ module.exports = ({ eventName, fn, tom }) => {
       )
 
       if (!isEmpty(output)) {
-        log.debug({ id: await nanoid(), ...omit(output, ['headers']), time })
+        log.debug({ id: randomUUID(), ...omit(output, ['headers']), time })
       }
 
       return output
