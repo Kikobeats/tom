@@ -1,30 +1,31 @@
 'use strict'
 
+const colors = require('picocolors')
+
 const logo = require('./logo')
-const chalk = require('chalk')
 
 module.exports = `
-${chalk.dim(logo({ header: 'tom microservice – https://tom.js.org' }))}
+${colors.dim(logo({ header: 'tom microservice – https://tom.js.org' }))}
 
-  ${chalk.dim('Usage')}
+  ${colors.dim('Usage')}
 
     $ tom [<flags>] <command> [<args> ...]
 
-  ${chalk.dim('Options')}
+  ${colors.dim('Options')}
 
     -c, --config        Specify a configuration file path
     -h, --help          Show this usage information
     -p, --port <n>      Port to listen on (defaults to 3000)
     -v, --version       Output the version number
 
-  ${chalk.dim('Examples')}
+  ${colors.dim('Examples')}
 
-  ${chalk.dim('–')} Run microservice on port 1337
+  ${colors.dim('–')} Run microservice on port 1337
 
-    $ tom ${chalk.dim('-p 1337')}
+    $ tom ${colors.dim('-p 1337')}
 
-  ${chalk.dim('–')} Send a email notification from CLI
+  ${colors.dim('–')} Send a email notification from CLI
 
-    $ tom ${chalk.dim(
-    "--command=notification.email --templateId=welcome --to=hello@kikobeats.com --subject='hello world'"
-  )}`
+    $ tom ${colors.dim(
+      "--command=notification.email --templateId=welcome --to=hello@kikobeats.com --subject='hello world'"
+    )}`
