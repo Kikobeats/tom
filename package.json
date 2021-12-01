@@ -44,7 +44,6 @@
     "body-parser": "~1.19.0",
     "compression": "~1.7.4",
     "cors": "~2.8.5",
-    "cosmiconfig": "~7.0.1",
     "country-vat": "~1.0.0",
     "emittery": "~0.10.0",
     "express": "~4.17.1",
@@ -53,6 +52,7 @@
     "import-modules": "~2.1.0",
     "is-buffer": "~2.0.5",
     "is-european": "~1.0.3",
+    "joycon": "~3.1.1",
     "jsendp": "~2.1.0",
     "lodash": "~4.17.21",
     "mailgen": "~2.0.16",
@@ -94,8 +94,7 @@
     "gulp-cssnano": "latest",
     "gulp-strip-css-comments": "latest",
     "gulp-uglify": "latest",
-    "imagemin-lint-staged": "latest",
-    "lint-staged": "latest",
+    "nano-staged": "latest",
     "npm-check-updates": "latest",
     "nyc": "latest",
     "prettier-standard": "latest",
@@ -145,23 +144,20 @@
       "@commitlint/config-conventional"
     ]
   },
-  "lint-staged": {
-    "package.json": [
-      "finepack --sort-ignore-object-at ava"
-    ],
+  "nano-staged": {
     "*.js,!*.min.js": [
       "prettier-standard"
     ],
     "*.md": [
       "standard-markdown"
     ],
-    "*.{png,jpeg,jpg,gif,svg}": [
-      "imagemin-lint-staged"
+    "package.json": [
+      "finepack --sort-ignore-object-at ava"
     ]
   },
   "simple-git-hooks": {
     "commit-msg": "npx commitlint --edit",
-    "pre-commit": "npx lint-staged"
+    "pre-commit": "npx nano-staged"
   },
   "standard": {
     "env": [
