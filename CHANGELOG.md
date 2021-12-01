@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.2.19 (2021-12-01)
+
+
+### Bug Fixes
+
+* pass cwd to joycon ([d46f347](https://github.com/kikobeats/tom-microservice/commit/d46f3477c737b7ceb436cea0a73c9b3a4eff83ed))
+
 ### 3.2.18 (2021-12-01)
 
 ### 3.2.17 (2021-11-22)
