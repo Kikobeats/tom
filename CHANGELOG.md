@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.2.21](https://github.com/kikobeats/tom-microservice/compare/v3.2.20...v3.2.21) (2022-01-21)
+
+
+### Bug Fixes
+
+* fallback empty object ([dc0fb80](https://github.com/kikobeats/tom-microservice/commit/dc0fb80348c85b6445ea63f7e7b3628221268c54))
+
 ### 3.2.20 (2022-01-03)
 
 ### 3.2.19 (2021-12-01)
