@@ -14,6 +14,6 @@ module.exports = async (cwd = process.cwd()) => {
       'tom.config.js'
     ]
   })
-  const { data: config } = await joycon.load()
+  const { data: config = {} } = (await joycon.load()) || {}
   return config
 }
