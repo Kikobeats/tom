@@ -47,7 +47,7 @@
     "country-vat": "~1.0.0",
     "emittery": "~0.10.0",
     "express": "~4.17.2",
-    "got": "~11.8.3",
+    "got": "~12.0.1",
     "helmet": "~5.0.1",
     "import-modules": "~2.1.0",
     "is-buffer": "~2.0.5",
