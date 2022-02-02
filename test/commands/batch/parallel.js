@@ -1,6 +1,6 @@
 'use strict'
 
-const faker = require('@faker-js/faker')
+const { default: faker } = require('@faker-js/faker')
 const test = require('ava')
 
 const { createConfig } = require('../../helpers')
