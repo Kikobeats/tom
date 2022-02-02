@@ -33,6 +33,7 @@ module.exports = ({ config }) => {
     const taxRate = await getTaxRate(metadata)
 
     const session = await stripe.checkout.sessions.create({
+      billing_address_collection: 'required',
       mode: 'subscription',
       payment_method_types: ['card'],
       line_items: [
