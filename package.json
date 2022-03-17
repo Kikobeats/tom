@@ -49,7 +49,7 @@
     "express": "~4.17.2",
     "got": "~11.8.3",
     "helmet": "~5.0.2",
-    "import-modules": "~2.1.0",
+    "import-modules": "~3.1.0",
     "is-buffer": "~2.0.5",
     "is-european": "~1.0.3",
     "joycon": "~3.1.1",
