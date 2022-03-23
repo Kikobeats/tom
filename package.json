@@ -96,7 +96,7 @@
     "gulp-uglify": "latest",
     "nano-staged": "latest",
     "npm-check-updates": "latest",
-    "nyc": "latest",
+    "c8": "latest",
     "prettier-standard": "latest",
     "simple-git-hooks": "latest",
     "standard": "latest",
@@ -116,7 +116,7 @@
   "scripts": {
     "build": "gulp build && untracked > .nowignore",
     "clean": "rm -rf node_modules",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coverage": "c8 report --reporter=text-lcov | coveralls",
     "dev": "svr src/router",
     "dev:docs": "concurrently \"gulp\" \"npm run dev:docs:server\"",
     "dev:docs:server": "browser-sync start --server --files \"index.html, README.md, static/**/*.(css|js)\"",
@@ -128,7 +128,7 @@
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin HEAD:master",
     "start": "tom",
-    "test": "NODE_ENV=test nyc ava",
+    "test": "NODE_ENV=test c8 ava",
     "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"
   },
