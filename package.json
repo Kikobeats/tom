@@ -2,7 +2,7 @@
   "name": "tom-microservice",
   "description": "Tom creates customers, subscriptions plans & send notifications.",
   "homepage": "https://tom.js.org",
-  "version": "3.2.25",
+  "version": "3.2.26",
   "main": "src",
   "bin": {
     "tom": "bin/index.js"
@@ -80,6 +80,7 @@
     "@faker-js/faker": "latest",
     "ava": "latest",
     "browser-sync": "latest",
+    "c8": "latest",
     "ci-env": "latest",
     "ci-publish": "latest",
     "concurrently": "latest",
@@ -96,7 +97,6 @@
     "gulp-uglify": "latest",
     "nano-staged": "latest",
     "npm-check-updates": "latest",
-    "c8": "latest",
     "prettier-standard": "latest",
     "simple-git-hooks": "latest",
     "standard": "latest",
