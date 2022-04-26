@@ -46,7 +46,7 @@
     "cors": "~2.8.5",
     "country-vat": "~1.0.5",
     "emittery": "~0.10.2",
-    "express": "~4.17.3",
+    "express": "~4.18.0",
     "got": "~11.8.3",
     "helmet": "~5.0.2",
     "import-modules": "~2.1.0",
