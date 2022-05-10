@@ -21,7 +21,7 @@ const loadCommand = (cmdName, { config, commands }) => {
   })
 }
 
-module.exports = rawConfig => {
+const createTom = rawConfig => {
   const config = createConfig(rawConfig)
   return reduce(
     COMMANDS,
@@ -33,7 +33,11 @@ module.exports = rawConfig => {
   )
 }
 
-module.exports.listen = require('../bin/listen')
-module.exports.createServer = require('../bin/listen').createServer
+const listen = require('../bin/listen')
+
+module.exports = createTom
+module.exports.createTom = createTom
+module.exports.listen = listen
+module.exports.createServer = listen.createServer
 module.exports.createRoutes = require('./routes')
 module.exports.createConfig = createConfig

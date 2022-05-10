@@ -8,11 +8,7 @@ const test = require('ava')
 const got = require('got')
 
 const { createConfig: createMockConfig } = require('../helpers')
-const { createServer } = require('../../bin/listen')
-const createRoutes = require('../../src/routes')
-const createTom = require('../..')
-
-const { createConfig } = createTom
+const { createTom, createConfig, createServer, createRoutes } = require('../..')
 
 const config = createConfig(createMockConfig())
 const routes = createRoutes(config)

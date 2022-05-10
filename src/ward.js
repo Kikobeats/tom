@@ -19,9 +19,7 @@ const wardCredential = (config, collection) => {
   if (!isNil(cond)) {
     return () => {
       throw new TypeError(
-        `Need to specify a valid 'config.${
-          cond.key
-        }' or environment variable '${cond.env}'`
+        `Need to specify a valid 'config.${cond.key}' or environment variable '${cond.env}'`
       )
     }
   }
