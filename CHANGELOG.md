@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.2.34 (2022-05-10)
+
+
+### Bug Fixes
+
+* warning ([51fbca6](https://github.com/kikobeats/tom-microservice/commit/51fbca63c2be808c1fce27069f602e8714164ca3))
+
 ### 3.2.33 (2022-05-10)
 
 ### 3.2.32 (2022-05-10)
