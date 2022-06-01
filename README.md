@@ -551,7 +551,7 @@ Your [Telegram @BotFather token](https://core.telegram.org/bots#3-how-do-i-creat
 
 ## License
 
-**tom** © [Kiko Beats](https://kikobeats.com), Released under the [MIT](https://github.com/Kikobeats/tom-microservice/blob/master/LICENSE.md) License.<br>
+**tom** © [Kiko Beats](https://kikobeats.com), released under the [MIT](https://github.com/Kikobeats/tom-microservice/blob/master/LICENSE.md) License.<br>
 
 Spaceman logo by [Nook Fulloption](https://thenounproject.com/term/spaceman/854189) from [the Noun Project](https://thenounproject.com/search/?q=dog%20spaceman&i=854189#).
 
