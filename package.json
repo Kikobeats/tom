@@ -72,7 +72,7 @@
     "time-span": "~4.0.0",
     "to-query": "~1.6.9",
     "twit": "~2.2.11",
-    "update-notifier": "~5.1.0"
+    "update-notifier": "~6.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
