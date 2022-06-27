@@ -69,7 +69,7 @@
     "req-country": "~1.2.2",
     "request-ip": "~2.2.0",
     "stripe": "^9.5.0",
-    "time-span": "~4.0.0",
+    "time-span": "~5.1.0",
     "to-query": "~1.6.9",
     "twit": "~2.2.11",
     "update-notifier": "~5.1.0"
