@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0-0](https://github.com/kikobeats/tom-microservice/compare/v3.2.41...v3.3.0-0) (2022-08-12)
+
+
+### Features
+
+* add tax collection ([6f76817](https://github.com/kikobeats/tom-microservice/commit/6f76817c9d0aa4828ebd53b20791533b60928b91))
+
 ### 3.2.41 (2022-08-12)
 
 ### 3.2.40 (2022-08-09)
