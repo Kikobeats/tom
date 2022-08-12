@@ -45,6 +45,9 @@ module.exports = ({ config }) => {
       subscription_data: {
         default_tax_rates: taxRate ? [taxRate.id] : undefined
       },
+      tax_id_collection: {
+        enabled: true
+      },
       success_url: successUrl,
       cancel_url: cancelUrl,
       metadata: { ...metadata, planId }
