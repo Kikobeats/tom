@@ -38,7 +38,6 @@ jobs:
           TOM_TWITTER_CONSUMER_SECRET: ${{ secrets.TOM_TWITTER_CONSUMER_SECRET }}
       - name: Release
         if: ${{ github.ref == 'refs/heads/master' && !startsWith(github.event.head_commit.message, 'chore(release):') && !startsWith(github.event.head_commit.message, 'docs:') }}
-        shell: 'script -q -e -c "bash {0}" > /dev/null'
         env:
           CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
