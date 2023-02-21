@@ -2,20 +2,16 @@
 
 'use strict'
 
-const express = require('express')
+const { createServer } = require('http')
 
 const PORT =
   process.env.PORT || process.env.port || process.env.TOM_PORT || 3000
 
-const createServer = routes =>
-  express()
-    .use(routes)
-    .disable('x-powered-by')
-
 module.exports = async (tomConfig, { port = PORT } = {}) => {
   const routes = require('../src/routes')(tomConfig)
+  const server = createServer(routes)
 
-  createServer(routes).listen(port, () => {
+  server.listen(port, () => {
     console.log(
       require('./logo')({
         header: 'tom is running',
