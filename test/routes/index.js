@@ -3,9 +3,8 @@
 const { reduce, forEach } = require('lodash')
 const listen = require('test-listen')
 const { URL } = require('url')
-const http = require('http')
 const test = require('ava')
-const got = require('got')
+const got = require('got').extend({ retry: 0 })
 
 const { createConfig: createMockConfig } = require('../helpers')
 const { createTom, createConfig, createServer, createRoutes } = require('../..')
@@ -13,10 +12,7 @@ const { createTom, createConfig, createServer, createRoutes } = require('../..')
 const config = createConfig(createMockConfig())
 const routes = createRoutes(config)
 
-const getApiUrl = async () => {
-  const app = await createServer(routes)
-  return listen(http.createServer(app))
-}
+const getApiUrl = async () => listen(await createServer(routes))
 
 const allRoutes = reduce(
   createTom(),
@@ -44,4 +40,14 @@ allRoutes.forEach(pathname => {
     })
     t.is(statusCode, 204)
   })
+})
+
+test('unmatched route', async t => {
+  const apiUrl = await getApiUrl()
+  const { statusCode, body } = await got(new URL('/foo/bar', apiUrl), {
+    throwHttpErrors: false,
+    responseType: 'json'
+  })
+  t.is(statusCode, 405)
+  t.deepEqual(body, { status: 'fail', message: 'HTTP Method Not Allowed' })
 })
