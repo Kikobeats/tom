@@ -53,7 +53,7 @@ const createRouter = () => {
 
   router
     .use(require('helmet')())
-    .use(require('compression')())
+    .use(require('http-compression')())
     .use(
       require('cors')({
         methods: ['GET', 'OPTIONS', 'POST'],
