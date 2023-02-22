@@ -42,7 +42,6 @@ const isWebhook = req => req.path.endsWith('webhook')
 
 const finalhandler = (error, req, res) => {
   const hasError = error !== undefined
-  // if (hasError) console.error(error)
   return hasError
     ? send.error(res, 500, { message: error.mesage || 'Internal Server Error' })
     : send.fail(res, 405, { message: 'HTTP Method Not Allowed' })
