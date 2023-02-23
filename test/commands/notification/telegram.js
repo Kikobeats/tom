@@ -8,6 +8,8 @@ const createTom = require('../../../')
 const { TEST_TELEGRAM_CHAT_ID } = process.env
 
 test('notification:telegram', async t => {
+  t.plan(2)
+
   const config = createConfig(({ config, tom }) => {
     tom.on('notification:telegram', data => {
       t.is(data.text, text)
