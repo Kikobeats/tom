@@ -32,6 +32,8 @@ const getRandomTweetStatus = async () => {
 }
 
 test('tweet', async t => {
+  t.plan(2)
+
   const config = createConfig(({ config, tom }) => {
     tom.on('notification:twitter', ({ text, tweetUrl }) => {
       t.is(typeof tweetUrl, 'string')
@@ -48,6 +50,8 @@ test('tweet', async t => {
 })
 
 test('dm', async t => {
+  t.plan(1)
+
   const config = createConfig(({ config, tom }) => {
     tom.on('notification:twitter', ({ text }) => {
       t.is(typeof text, 'string')

@@ -10,6 +10,8 @@ const createTom = require('../../../')
 const { TOM_STRIPE_KEY } = process.env
 
 test('payment:create', async t => {
+  t.plan(2)
+
   const config = createConfig(({ config, tom }) => {
     tom.on('payment:update', async data => {
       await stripe.customers.del(data.customerId)

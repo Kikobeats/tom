@@ -3,8 +3,10 @@
 const { faker } = require('@faker-js/faker')
 const test = require('ava')
 
-const { createConfig } = require('../../helpers')
+const { authEmailForTesting, createConfig } = require('../../helpers')
 const createTom = require('../../../')
+
+test.before(authEmailForTesting)
 
 test('batch:series', async t => {
   let count = 0
