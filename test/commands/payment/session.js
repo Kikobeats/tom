@@ -11,6 +11,8 @@ const { TOM_STRIPE_KEY } = process.env
 const stripe = createStripe(TOM_STRIPE_KEY)
 
 test('payment:create', async t => {
+  t.plan(2)
+
   const config = createConfig(({ tom }) => {
     tom.on('payment:session', async ({ sessionId }) => {
       t.is(typeof sessionId, 'string')

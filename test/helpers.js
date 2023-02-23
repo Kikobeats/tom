@@ -1,6 +1,19 @@
 'use strict'
 
 const { noop } = require('lodash')
+const got = require('got')
+
+const pkg = require('../package.json')
+
+const authEmailForTesting = async () => {
+  const { body } = await got.post('https://api.nodemailer.com/user', {
+    responseType: 'json',
+    json: { requestor: pkg.name, version: pkg.version }
+  })
+  console.log('DEBUG', body)
+  process.env.TOM_EMAIL_PASSWORD = body.pass
+  process.env.TOM_EMAIL_USER = body.user
+}
 
 const create = () => ({
   company: {
@@ -35,11 +48,14 @@ const create = () => ({
   }
 })
 
-module.exports.createConfig = (decorate = noop) => tom => {
-  const config = create()
-  tom.setConfig(config)
-  decorate({ config, tom })
-  return config
-}
+module.exports.createConfig =
+  (decorate = noop) =>
+    tom => {
+      const config = create()
+      tom.setConfig(config)
+      decorate({ config, tom })
+      return config
+    }
 
 module.exports.create = create
+module.exports.authEmailForTesting = authEmailForTesting

@@ -2,10 +2,14 @@
 
 const test = require('ava')
 
-const { createConfig } = require('../../helpers')
+const { authEmailForTesting, createConfig } = require('../../helpers')
 const createTom = require('../../../')
 
+test.before(authEmailForTesting)
+
 test('notification:email', async t => {
+  t.plan(4)
+
   const config = createConfig(({ config, tom }) => {
     tom.on('notification:email', data => {
       t.is(data.to, to)

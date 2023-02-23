@@ -21,6 +21,8 @@ const { TEST_SLACK_WEBHOOK } = process.env
 
 event === 'push' &&
   test('notification:slack', async t => {
+    t.plan(1)
+
     const config = createConfig(({ config, tom }) => {
       tom.on('notification:slack', data => {
         t.is(data.status, 'ok')
