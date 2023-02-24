@@ -81,9 +81,13 @@ const createRouter = () => {
       const apiKey = get(req, 'headers.x-api-key')
       return eq(apiKey, TOM_API_KEY)
         ? next()
-        : send.fail(res, 401, {
-          message: 'Invalid API token in x-api-key header.'
-        })
+        : send.fail(
+          res,
+          {
+            message: 'Invalid API token in x-api-key header.'
+          },
+          401
+        )
     })
   }
 
