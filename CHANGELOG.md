@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.4.6 (2023-02-24)
+
+
+### Bug Fixes
+
+* status code as last parameter ([b2adc0e](https://github.com/kikobeats/tom-microservice/commit/b2adc0e2aa28b1fa365dd02796598c5936f7d857))
+
 ### 3.4.5 (2023-02-24)
 
 
