@@ -3,10 +3,12 @@
 const { isArray, pick } = require('lodash')
 const isBuffer = require('is-buffer')
 
+const send = require('../send')
+
 module.exports =
-  ({ fn, tom }) =>
+  ({ fn }) =>
     async (req, res) => {
-      let status
+      let status = 'success'
       const payload = {}
 
       try {
@@ -19,11 +21,10 @@ module.exports =
 
         const res = await fn(opts)
         payload.data = res
-        status = 200
-      } catch (err) {
-        payload.message = err.message || err
-        status = 400
+      } catch (error) {
+        payload.message = error.message || error
+        status = 'fail'
       }
 
-      return res.status(status).send({ status, ...payload })
+      return send[status](res, payload)
     }
