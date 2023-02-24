@@ -5,28 +5,7 @@ const bodyParser = require('body-parser')
 const requestIp = require('request-ip')
 const toQuery = require('to-query')()
 const Router = require('router-http')
-const send = require('send-http')
-
-send.fail = (res, code = 400, data) => {
-  send(res, code, {
-    status: 'fail',
-    ...data
-  })
-}
-
-send.error = (res, code = 500, data) => {
-  send(res, code, {
-    status: 'error',
-    ...data
-  })
-}
-
-send.success = (res, code = 200, data) => {
-  send(res, code, {
-    status: 'success',
-    ...data
-  })
-}
+const send = require('./send')
 
 const withRoute = require('./interface/route')
 const createTom = require('.')
@@ -43,8 +22,12 @@ const isWebhook = req => req.path.endsWith('webhook')
 const finalhandler = (error, req, res) => {
   const hasError = error !== undefined
   return hasError
-    ? send.error(res, 500, { message: error.mesage || 'Internal Server Error' })
-    : send.fail(res, 405, { message: 'HTTP Method Not Allowed' })
+    ? send.error(
+      res,
+      { message: error.mesage || 'Internal Server Error' },
+      error.statusCode
+    )
+    : send.fail(res, { message: 'HTTP Method Not Allowed' }, 405)
 }
 
 const createRouter = () => {
