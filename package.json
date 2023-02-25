@@ -66,7 +66,7 @@
     "pretty-ms": "~7.0.1",
     "req-country": "~1.2.6",
     "request-ip": "~3.3.0",
-    "router-http": "0.2.0",
+    "router-http": "~1.0.0",
     "send-http": "~1.0.2",
     "stripe": "11",
     "time-span": "~4.0.0",
