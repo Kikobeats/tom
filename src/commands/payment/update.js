@@ -16,32 +16,28 @@ module.exports = ({ config }) => {
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
 
-  const update = async ({ token, customerId, ipAddress, headers }) => {
-    ward(token, {
-      label: 'token',
-      test: is.object.is(token => !!token.id),
-      message:
-        'Need to provide a Stripe token object: https://stripe.com/docs/api/tokens/object.'
-    })
-
+  const update = async ({ customerId, ipAddress, headers }) => {
     ward(customerId, { label: 'customerId', test: is.string.nonEmpty })
 
-    const { id: source, client_ip: clientIp } = token
-
-    const [newMetadata, { metadata: oldMetadata, email }] = await Promise.all([
-      getMetadata({ ipAddress: clientIp || ipAddress, headers }),
-      stripe.customers.retrieve(customerId)
+    const [
+      newMetadata,
+      { metadata: oldMetadata, email },
+      { data: paymentMethods }
+    ] = await Promise.all([
+      getMetadata({ ipAddress, headers }),
+      stripe.customers.retrieve(customerId),
+      stripe.paymentMethods.list({
+        customer: customerId,
+        type: 'card'
+      })
     ])
 
-    await stripe.customers.update(customerId, {
-      source,
-      metadata: { ...oldMetadata, ...newMetadata }
-    })
+    const paymentMethod = paymentMethods[0].id
 
     await stripe.customers.update(customerId, {
-      invoice_settings: {
-        default_payment_method: token.card.id
-      }
+      metadata: { ...oldMetadata, ...newMetadata },
+      default_source: paymentMethod,
+      invoice_settings: { default_payment_method: paymentMethod }
     })
 
     ward(email, {
