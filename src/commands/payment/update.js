@@ -36,7 +36,6 @@ module.exports = ({ config }) => {
 
     await stripe.customers.update(customerId, {
       metadata: { ...oldMetadata, ...newMetadata },
-      default_source: paymentMethod,
       invoice_settings: { default_payment_method: paymentMethod }
     })
 
