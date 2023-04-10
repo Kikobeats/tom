@@ -46,7 +46,7 @@
     "country-vat": "~1.0.8",
     "emittery": "~0.13.1",
     "got": "~11.8.6",
-    "helmet": "~6.0.1",
+    "helmet": "~6.1.2",
     "http-compression": "~1.0.5",
     "import-modules": "~2.1.0",
     "is-buffer": "~2.0.5",
