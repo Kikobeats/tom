@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.5.0 (2023-04-10)
+
+
+### Features
+
+* **payment/update:** use 3d secure flow ([#242](https://github.com/kikobeats/tom-microservice/issues/242)) ([66deb9e](https://github.com/kikobeats/tom-microservice/commit/66deb9ec7a1b93bdad5221503eb2cb1ac099e88b))
+
 ### 3.4.9 (2023-04-10)
 
 ### 3.4.8 (2023-04-07)
