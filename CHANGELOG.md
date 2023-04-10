@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.5.1 (2023-04-10)
+
+
+### Bug Fixes
+
+* don't setup default_source ([#243](https://github.com/kikobeats/tom-microservice/issues/243)) ([04f7e91](https://github.com/kikobeats/tom-microservice/commit/04f7e91df426c3405ce54efa8ce2d0ce1d20c45f))
+
 ## 3.5.0 (2023-04-10)
 
 
