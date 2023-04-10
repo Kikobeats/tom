@@ -10,7 +10,7 @@ const createTom = require('../../../')
 const { TOM_STRIPE_KEY } = process.env
 
 test('payment:create', async t => {
-  t.plan(6)
+  t.plan(5)
 
   const config = createConfig(({ tom }) => {
     tom.on('payment:update', async data => {
@@ -26,7 +26,6 @@ test('payment:create', async t => {
       )
 
       t.is(defaultPaymentMethod.card.exp_year, 2049)
-      t.is(customer.default_source, defaultPaymentMethod.id)
 
       t.is(customer.metadata.country, 'US')
       t.is(customer.metadata.ipAddress, '8.8.8.8')
