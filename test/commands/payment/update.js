@@ -10,11 +10,27 @@ const createTom = require('../../../')
 const { TOM_STRIPE_KEY } = process.env
 
 test('payment:create', async t => {
-  t.plan(2)
+  t.plan(6)
 
-  const config = createConfig(({ config, tom }) => {
+  const config = createConfig(({ tom }) => {
     tom.on('payment:update', async data => {
+      const [customer, { data: cards }] = await Promise.all([
+        stripe.customers.retrieve(data.customerId),
+        stripe.paymentMethods.list({ customer: customerId, type: 'card' })
+      ])
+
       await stripe.customers.del(data.customerId)
+
+      const defaultPaymentMethod = cards.find(
+        card => card.id === customer.invoice_settings.default_payment_method
+      )
+
+      t.is(defaultPaymentMethod.card.exp_year, 2049)
+      t.is(customer.default_source, defaultPaymentMethod.id)
+
+      t.is(customer.metadata.country, 'US')
+      t.is(customer.metadata.ipAddress, '8.8.8.8')
+
       t.is(data.email, email)
       t.is(data.customerId, customerId)
     })
@@ -25,14 +41,41 @@ test('payment:create', async t => {
   const email = `test_${faker.internet.exampleEmail()}`
   const { id: customerId } = await stripe.customers.create({ email })
 
-  const token = await stripe.tokens.create({
-    card: {
-      number: '4242424242424242',
-      exp_month: 12,
-      exp_year: 2049,
-      cvc: '123'
-    }
+  const tokens = await Promise.all([
+    stripe.tokens.create({
+      card: {
+        number: '4242424242424242',
+        exp_month: 12,
+        exp_year: 2048,
+        cvc: '123'
+      }
+    }),
+    stripe.tokens.create({
+      card: {
+        number: '5555555555554444',
+        exp_month: 12,
+        exp_year: 2049,
+        cvc: '123'
+      }
+    })
+  ])
+
+  const cardOne = await stripe.customers.createSource(customerId, {
+    source: tokens[0].id
+  })
+  const cardTwo = await stripe.customers.createSource(customerId, {
+    source: tokens[1].id
   })
 
-  await tom.payment.update({ customerId, token })
+  await Promise.all(
+    [cardOne, cardTwo].map(card =>
+      stripe.setupIntents.create({
+        payment_method: card.id,
+        customer: customerId,
+        confirm: true
+      })
+    )
+  )
+
+  await tom.payment.update({ customerId, ipAddress: '8.8.8.8' })
 })
