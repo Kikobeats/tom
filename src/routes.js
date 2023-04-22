@@ -1,8 +1,8 @@
 'use strict'
 
 const { get, eq, forEach } = require('lodash')
-const bodyParser = require('body-parser')
 const requestIp = require('request-ip')
+const { text } = require('http-body')
 const toQuery = require('to-query')()
 const Router = require('router-http')
 const send = require('./send')
@@ -12,7 +12,6 @@ const createTom = require('.')
 
 const { TOM_API_KEY, TOM_ALLOWED_ORIGIN, NODE_ENV } = process.env
 
-const isTest = NODE_ENV === 'test'
 const UNAUTHENTICATED_PATHS = [
   '/',
   '/robots.txt',
@@ -30,9 +29,7 @@ const getBody = async req => {
   }
 }
 
-const jsonBodyParser = bodyParser.json()
-const urlEncodedBodyParser = bodyParser.urlencoded({ extended: true })
-const rawBodyParser = bodyParser.raw({ type: 'application/json' })
+const isTest = NODE_ENV === 'test'
 
 const finalhandler = (error, req, res) => {
   const hasError = error !== undefined
@@ -67,18 +64,10 @@ const createRouter = () => {
         ]
       })
     )
-    .use((req, res, next) =>
-      isWebhook(req) ? rawBodyParser(req, res, next) : next()
-    )
-    .use((req, res, next) =>
-      isWebhook(req) ? next() : urlEncodedBodyParser(req, res, next)
-    )
-    .use((req, res, next) =>
-      isWebhook(req) ? next() : jsonBodyParser(req, res, next)
-    )
-    .use((req, res, next) => {
+    .use(async (req, res, next) => {
       req.query = toQuery(req.url)
       req.ipAddress = requestIp.getClientIp(req)
+      req.body = await getBody(req)
       next()
     })
 
