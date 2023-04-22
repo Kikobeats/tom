@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.5.3 (2023-04-22)
+
+
+### Bug Fixes
+
+* body as buffer when for stripe webhook ([#245](https://github.com/kikobeats/tom-microservice/issues/245)) ([1c59e6b](https://github.com/kikobeats/tom-microservice/commit/1c59e6bfb6782cb549b08253c57f2a5c04a7aacd))
+
 ### 3.5.2 (2023-04-22)
 
 
