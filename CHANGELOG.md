@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.5.2 (2023-04-22)
+
+
+### Bug Fixes
+
+* exclude some paths to be authenticated ([#244](https://github.com/kikobeats/tom-microservice/issues/244)) ([78a976d](https://github.com/kikobeats/tom-microservice/commit/78a976d6d1b049bcc7d6cfaaf47061d8af81d003))
+
 ### 3.5.1 (2023-04-10)
 
 
