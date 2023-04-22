@@ -13,11 +13,26 @@ const createTom = require('.')
 const { TOM_API_KEY, TOM_ALLOWED_ORIGIN, NODE_ENV } = process.env
 
 const isTest = NODE_ENV === 'test'
+const UNAUTHENTICATED_PATHS = [
+  '/',
+  '/robots.txt',
+  '/favicon.ico',
+  '/ping',
+  '/payment/webhook'
+]
+
+const getBody = async req => {
+  const string = await text(req)
+  try {
+    return JSON.parse(string)
+  } catch (_) {
+    return string
+  }
+}
 
 const jsonBodyParser = bodyParser.json()
 const urlEncodedBodyParser = bodyParser.urlencoded({ extended: true })
 const rawBodyParser = bodyParser.raw({ type: 'application/json' })
-const isWebhook = req => req.path.endsWith('webhook')
 
 const finalhandler = (error, req, res) => {
   const hasError = error !== undefined
@@ -69,15 +84,9 @@ const createRouter = () => {
 
   if (!isTest) router.use(require('morgan')('tiny'))
 
-  router
-    .get('/', (req, res) => send(res, 204))
-    .get('/robots.txt', (req, res) => send(res, 204))
-    .get('/favicon.ico', (req, res) => send(res, 204))
-    .get('/ping', (req, res) => send(res, 200, 'pong'))
-
   if (TOM_API_KEY) {
     router.use((req, res, next) => {
-      if (req.path.endsWith('webhook')) return next()
+      if (UNAUTHENTICATED_PATHS.includes(req.path)) return next()
       const apiKey = get(req, 'headers.x-api-key')
       return eq(apiKey, TOM_API_KEY)
         ? next()
@@ -90,6 +99,12 @@ const createRouter = () => {
         )
     })
   }
+
+  router
+    .get('/', (req, res) => send(res, 204))
+    .get('/robots.txt', (req, res) => send(res, 204))
+    .get('/favicon.ico', (req, res) => send(res, 204))
+    .get('/ping', (req, res) => send(res, 200, 'pong'))
 
   return router
 }
