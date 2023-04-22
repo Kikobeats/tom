@@ -1,8 +1,8 @@
 'use strict'
 
 const { get, eq, forEach } = require('lodash')
+const { buffer, text } = require('http-body')
 const requestIp = require('request-ip')
-const { text } = require('http-body')
 const toQuery = require('to-query')()
 const Router = require('router-http')
 const send = require('./send')
@@ -21,11 +21,13 @@ const UNAUTHENTICATED_PATHS = [
 ]
 
 const getBody = async req => {
-  const string = await text(req)
+  if (req.path === '/payment/webhook') return buffer(req)
+  const body = await text(req)
+  if (body === '') return body
   try {
-    return JSON.parse(string)
+    return JSON.parse(body)
   } catch (_) {
-    return string
+    return body
   }
 }
 
