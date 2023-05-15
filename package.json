@@ -78,6 +78,7 @@
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "@faker-js/faker": "latest",
+    "async-listen": "latest",
     "ava": "latest",
     "browser-sync": "latest",
     "c8": "latest",
@@ -103,7 +104,6 @@
     "standard-markdown": "latest",
     "standard-version": "latest",
     "svr": "latest",
-    "test-listen": "latest",
     "untracked": "latest"
   },
   "engines": {
