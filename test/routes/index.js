@@ -1,7 +1,7 @@
 'use strict'
 
 const { reduce, forEach } = require('lodash')
-const listen = require('test-listen')
+const { listen } = require('async-listen')
 const { URL } = require('url')
 const test = require('ava')
 const got = require('got').extend({ retry: 0 })
