@@ -16,23 +16,19 @@ module.exports = ({ config }) => {
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
 
-  const update = async ({ customerId, ipAddress, headers }) => {
+  const update = async ({ setupIntentId, customerId, ipAddress, headers }) => {
     ward(customerId, { label: 'customerId', test: is.string.nonEmpty })
+    ward(setupIntentId, { label: 'setupIntentId', test: is.string.nonEmpty })
 
     const [
       newMetadata,
       { metadata: oldMetadata, email },
-      { data: paymentMethods }
+      { payment_method: paymentMethod }
     ] = await Promise.all([
       getMetadata({ ipAddress, headers }),
       stripe.customers.retrieve(customerId),
-      stripe.paymentMethods.list({
-        customer: customerId,
-        type: 'card'
-      })
+      stripe.setupIntents.retrieve(setupIntentId)
     ])
-
-    const paymentMethod = paymentMethods[0].id
 
     await stripe.customers.update(customerId, {
       metadata: { ...oldMetadata, ...newMetadata },

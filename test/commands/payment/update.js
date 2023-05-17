@@ -25,7 +25,7 @@ test('payment:create', async t => {
         card => card.id === customer.invoice_settings.default_payment_method
       )
 
-      t.is(defaultPaymentMethod.card.exp_year, 2049)
+      t.is(defaultPaymentMethod.card.exp_year, 2048)
 
       t.is(customer.metadata.country, 'US')
       t.is(customer.metadata.ipAddress, '8.8.8.8')
@@ -59,22 +59,19 @@ test('payment:create', async t => {
     })
   ])
 
-  const cardOne = await stripe.customers.createSource(customerId, {
+  const card = await stripe.customers.createSource(customerId, {
     source: tokens[0].id
   })
-  const cardTwo = await stripe.customers.createSource(customerId, {
-    source: tokens[1].id
+
+  const setupIntent = await stripe.setupIntents.create({
+    payment_method: card.id,
+    customer: customerId,
+    confirm: true
   })
 
-  await Promise.all(
-    [cardOne, cardTwo].map(card =>
-      stripe.setupIntents.create({
-        payment_method: card.id,
-        customer: customerId,
-        confirm: true
-      })
-    )
-  )
-
-  await tom.payment.update({ customerId, ipAddress: '8.8.8.8' })
+  await tom.payment.update({
+    setupIntentId: setupIntent.id,
+    customerId,
+    ipAddress: '8.8.8.8'
+  })
 })
