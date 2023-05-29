@@ -43,7 +43,7 @@
     "beauty-error": "~1.2.15",
     "cors": "~2.8.5",
     "country-vat": "~1.0.8",
-    "got": "~11.8.6",
+    "got": "~13.0.0",
     "helmet": "~7.0.0",
     "http-body": "~1.0.4",
     "http-compression": "~1.0.5",
