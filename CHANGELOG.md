@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.7.0 (2023-08-19)
+
+
+### Features
+
+* upgrade stripe ([#255](https://github.com/kikobeats/tom-microservice/issues/255)) ([6ff3038](https://github.com/kikobeats/tom-microservice/commit/6ff3038b4046a9c814823b9d0eecff29438931ba))
+
 ## 3.6.0 (2023-08-19)
 
 
