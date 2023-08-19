@@ -30,10 +30,22 @@ module.exports = ({ config }) => {
       stripe.setupIntents.retrieve(setupIntentId)
     ])
 
-    await stripe.customers.update(customerId, {
-      metadata: { ...oldMetadata, ...newMetadata },
-      invoice_settings: { default_payment_method: paymentMethod }
-    })
+    await Promise.all([
+      stripe.customers.update(customerId, {
+        metadata: { ...oldMetadata, ...newMetadata },
+        invoice_settings: { default_payment_method: paymentMethod }
+      }),
+      Promise.all(
+        (
+          await stripe.paymentMethods
+            .list({ customer: customerId, type: 'card' })
+            .then(({ data }) => data)
+        )
+          .map(({ id }) => id)
+          .filter(id => id !== paymentMethod)
+          .map(id => stripe.paymentMethods.detach(id))
+      )
+    ])
 
     ward(email, {
       label: 'email',
