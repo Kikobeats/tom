@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.7.1 (2023-08-19)
+
+
+### Bug Fixes
+
+* **stripe:** remove old cards ([#256](https://github.com/kikobeats/tom-microservice/issues/256)) ([44fc314](https://github.com/kikobeats/tom-microservice/commit/44fc31458347d4bbb401e6ab4ad18b45c46d8a4e))
+
 ## 3.7.0 (2023-08-19)
 
 
