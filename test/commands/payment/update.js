@@ -66,7 +66,11 @@ test('payment:create', async t => {
   const setupIntent = await stripe.setupIntents.create({
     payment_method: card.id,
     customer: customerId,
-    confirm: true
+    confirm: true,
+    automatic_payment_methods: {
+      enabled: true,
+      allow_redirects: 'never'
+    }
   })
 
   await tom.payment.update({
