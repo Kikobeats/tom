@@ -13,7 +13,7 @@
 **tom** 🐶 is a backoffice for your projects, oriented for doing things like:
 
 - Handle [payments](#payment) workflow (  create customers, subscribe to plans) using Stripe.
-- Send notifications ([email](notificationemail)/[Slack](notificationslack)/[Twitter](notificationtwitter)/[Telegram](notificationtelegram)), even based on a template.
+- Send notifications ([email](notificationemail)/[Slack](notificationslack)/[Telegram](notificationtelegram)), even based on a template.
 - Easy to extend & customize using [Event System](#event-system).
 - Chainable actions, running them on [series](batchseries) or [parallel](batchparallel).
 - Expose it over [HTTP](as-microservice) or as [CLI](from-cli).
@@ -349,44 +349,6 @@ type: `string`
 
 The message that will be sent.
 
-#### notification:twitter
-
-<small>`POST`</small>
-
-It sends a notification using Twitter as provider.
-
-##### Data Parameters
-
-###### templateId
-
-type: `string`
-
-If it is present, it will be generate `text` using the template.
-
-###### text
-
-*Required*</br>
-type: `string`
-
-The text of the message.
-
-###### type
-
-*Required*</br>
-type: `string`
-
-Choose one of the different ways the message can be send.
-
-The types availables are `tweet` or `dm`.
-
-###### recipientId
-
-type: `string`
-
-It defines the user that will be receive the message.
-
-It is only necessary on `dm` mode.
-
 ### batch
 
 It runs more than one command in the same action.
@@ -511,34 +473,6 @@ Type: `string` </br>
 Default: `config.email.transporter.auth.password`
 
 Your SMTP authentication password credential.
-
-#### TOM_TWITTER_CONSUMER_KEY
-
-Type: `string` </br>
-Default: `config.twitter.consumer_key`
-
-Your consumer secret key from [Twitter authentication credentials](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html).
-
-#### TOM_TWITTER_CONSUMER_SECRET
-
-Type: `string` </br>
-Default: `config.twitter.consumer_secret`
-
-Your consumer secret [Twitter authentication credentials](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html).
-
-#### TOM_TWITTER_ACCESS_TOKEN_SECRET
-
-Type: `string` </br>
-Default: `config.twitter.access_token_secret`
-
-Your access token secret from [Twitter authentication credentials](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html).
-
-#### TOM_TWITTER_ACCESS_TOKEN
-
-Type: `string` </br>
-Default: `config.twitter.access_token`
-
-Your access token from [Twitter authentication credentials](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html).
 
 #### TOM_TELEGRAM_KEY
 

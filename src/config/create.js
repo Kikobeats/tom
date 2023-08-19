@@ -38,14 +38,5 @@ module.exports = fn => {
   setEnv(config, 'email.transporter.auth.pass', 'TOM_EMAIL_PASSWORD')
   setEnv(config, 'telegram.token', 'TOM_TELEGRAM_KEY')
 
-  setEnv(config, 'twitter.consumer_key', 'TOM_TWITTER_CONSUMER_KEY')
-  setEnv(config, 'twitter.consumer_secret', 'TOM_TWITTER_CONSUMER_SECRET')
-  setEnv(config, 'twitter.access_token', 'TOM_TWITTER_ACCESS_TOKEN')
-  setEnv(
-    config,
-    'twitter.access_token_secret',
-    'TOM_TWITTER_ACCESS_TOKEN_SECRET'
-  )
-
   return { ...config, on, emit }
 }

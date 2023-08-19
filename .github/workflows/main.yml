@@ -28,13 +28,8 @@ jobs:
         env:
           TEST_TELEGRAM_CHAT_ID: ${{ secrets.TEST_TELEGRAM_CHAT_ID }}
           TEST_SLACK_WEBHOOK: ${{ secrets.TEST_SLACK_WEBHOOK }}
-          TEST_TWITTER_USER_ID: ${{ secrets.TEST_TWITTER_USER_ID }}
           TOM_STRIPE_KEY: ${{ secrets.TOM_STRIPE_KEY }}
           TOM_TELEGRAM_KEY: ${{ secrets.TOM_TELEGRAM_KEY }}
-          TOM_TWITTER_ACCESS_TOKEN: ${{ secrets.TOM_TWITTER_ACCESS_TOKEN }}
-          TOM_TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TOM_TWITTER_ACCESS_TOKEN_SECRET }}
-          TOM_TWITTER_CONSUMER_KEY: ${{ secrets.TOM_TWITTER_CONSUMER_KEY }}
-          TOM_TWITTER_CONSUMER_SECRET: ${{ secrets.TOM_TWITTER_CONSUMER_SECRET }}
       - name: Release
         if: ${{ github.ref == 'refs/heads/master' && !startsWith(github.event.head_commit.message, 'chore(release):') && !startsWith(github.event.head_commit.message, 'docs:') }}
         env:

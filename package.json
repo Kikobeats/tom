@@ -71,7 +71,6 @@
     "stripe": "12",
     "time-span": "~4.0.0",
     "to-query": "~1.6.12",
-    "twit": "~2.2.11",
     "update-notifier": "~5.1.0"
   },
   "devDependencies": {
