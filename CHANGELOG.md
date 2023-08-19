@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.6.0 (2023-08-19)
+
+
+### Features
+
+* remove Twitter integration ([#254](https://github.com/kikobeats/tom-microservice/issues/254)) ([423aa40](https://github.com/kikobeats/tom-microservice/commit/423aa40a5836abe56049c2d01682d1d53edae47b))
+
 ### 3.5.7 (2023-05-17)
 
 ### 3.5.6 (2023-05-15)
