@@ -60,7 +60,7 @@
     "nodemailer": "~6.9.1",
     "ow": "~0.28.2",
     "p-reflect": "~2.1.0",
-    "p-retry": "~4.6.1",
+    "p-retry": "~6.0.0",
     "p-waterfall": "~2.1.1",
     "picocolors": "~1.0.0",
     "pretty-ms": "~7.0.1",
