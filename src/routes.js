@@ -1,6 +1,6 @@
 'use strict'
 
-const { get, eq, forEach, noop } = require('lodash')
+const { eq, forEach, noop } = require('lodash')
 const { buffer, text } = require('http-body')
 const requestIp = require('request-ip')
 const toQuery = require('to-query')()
@@ -78,7 +78,8 @@ const createRouter = () => {
   if (TOM_API_KEY) {
     router.use((req, res, next) => {
       if (UNAUTHENTICATED_PATHS.includes(req.path)) return next()
-      const apiKey = get(req, 'headers.x-api-key')
+      const apiKey = req.headers['x-api-key'] ?? req.query.apiKey
+
       return eq(apiKey, TOM_API_KEY)
         ? next()
         : send.fail(
