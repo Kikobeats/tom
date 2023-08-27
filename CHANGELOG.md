@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.8.0 (2023-08-27)
+
+
+### Features
+
+* be possible to extend router ([#258](https://github.com/kikobeats/tom-microservice/issues/258)) ([dded20b](https://github.com/kikobeats/tom-microservice/commit/dded20bef1794d2527e1713af5b7e23769eadabb))
+
 ### 3.7.1 (2023-08-19)
 
 
