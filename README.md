@@ -62,6 +62,10 @@ To view details for a command at any time use `tom --help`
 
 ### from Node.js
 
+#### as process
+
+You can interact with **tom** 🐶 from Node.js user code:
+
 ```js
 // First of all you need to declare a configuration file.
 const config = {/* See configuration section */}
@@ -71,6 +75,37 @@ const tom = require('tom-microservice')(config)
 
 // Now you can access `tom` commands
 const { payment, email } = tom
+```
+
+#### as HTTP router
+
+Additionally, you can get the **tom** 🐶 HTTP router in standalone way:
+
+```js
+const { createRoutes } = require('tom-microservice')
+const config = {/* See configuration section */}
+
+const router = createRoutes(config, ({ tom, router, send }) => {
+  router
+    .get('/ping', (req, res) => send(res, 200, 'healthy'))
+})
+```
+
+#### as HTTP server
+
+You can also intialize **tom** 🐶 HTTP server from code:
+
+```js
+const { listen, createRoutes } = require('tom-microservice')
+
+const config = {/* See configuration section */}
+
+const router = createRoutes(config, ({ tom, router, send }) => {
+  router
+    .get('/ping', (req, res) => send(res, 200, 'healthy'))
+})
+
+listen(config, { routes })
 ```
 
 ## Configuration

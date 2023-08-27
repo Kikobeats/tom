@@ -7,8 +7,9 @@ const { createServer } = require('http')
 const PORT =
   process.env.PORT || process.env.port || process.env.TOM_PORT || 3000
 
-module.exports = async (tomConfig, { port = PORT } = {}) => {
-  const routes = require('../src/routes')(tomConfig)
+module.exports = async (tomConfig, { port = PORT, routes } = {}) => {
+  if (!routes) routes = require('../src/routes')(tomConfig)
+
   const server = createServer(routes)
 
   server.listen(port, () => {
