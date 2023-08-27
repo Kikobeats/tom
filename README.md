@@ -466,7 +466,7 @@ See [cors](https://github.com/expressjs/cors#configuration-options) for more inf
 Type: `string` </br>
 Default: `undefined`
 
-When you provide it, all request to **tom** 🐶 needs to be authenticated using `x-api-key` header and the value provided.
+When you provide it, all request to **tom** 🐶 needs to be authenticated using `req.headers[`x-api-key`] or `req.query.apiKey` and the value provided.
 
 You can use [randomkeygen.com](https://randomkeygen.com) for that.
 
