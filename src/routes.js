@@ -1,6 +1,6 @@
 'use strict'
 
-const { get, eq, forEach } = require('lodash')
+const { get, eq, forEach, noop } = require('lodash')
 const { buffer, text } = require('http-body')
 const requestIp = require('request-ip')
 const toQuery = require('to-query')()
@@ -92,15 +92,15 @@ const createRouter = () => {
   }
 
   router
-    .get('/', (req, res) => send(res, 204))
-    .get('/robots.txt', (req, res) => send(res, 204))
-    .get('/favicon.ico', (req, res) => send(res, 204))
-    .get('/ping', (req, res) => send(res, 200, 'pong'))
+    .get('/', (_, res) => send(res, 204))
+    .get('/robots.txt', (_, res) => send(res, 204))
+    .get('/favicon.ico', (_, res) => send(res, 204))
+    .get('/ping', (_, res) => send(res, 200, 'pong'))
 
   return router
 }
 
-module.exports = tomConfig => {
+module.exports = (tomConfig, fn = noop) => {
   if (!tomConfig) throw TypeError('You need to provide tom configuration file.')
 
   const router = createRouter()
@@ -115,6 +115,8 @@ module.exports = tomConfig => {
       )
     })
   })
+
+  fn({ tom, router, send })
 
   return router
 }
