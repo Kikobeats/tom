@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.9.0 (2023-08-27)
+
+
+### Features
+
+* accept apiKey as query parameter ([#259](https://github.com/kikobeats/tom-microservice/issues/259)) ([7783616](https://github.com/kikobeats/tom-microservice/commit/778361630bdd697f666d82c69cd39e203c841e07))
+
 ## 3.8.0 (2023-08-27)
 
 
