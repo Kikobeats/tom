@@ -1,9 +1,10 @@
 'use strict'
 
+const timeSpan = require('@kikobeats/time-span')({
+  format: require('pretty-ms')
+})
 const { omit, isEmpty, split, first, reduce } = require('lodash')
 const { randomUUID } = require('crypto')
-const timeSpan = require('time-span')
-const prettyMs = require('pretty-ms')
 const pRetry = require('p-retry')
 
 const printError = require('../log/print-error')
@@ -28,7 +29,7 @@ module.exports = ({ eventName, fn, tom }) => {
         tom.emit(eventName, data)
       ])
 
-      time = prettyMs(time())
+      time = time()
 
       const output = reduce(
         meta,
