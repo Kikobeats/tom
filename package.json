@@ -70,7 +70,6 @@
     "router-http": "~1.0.1",
     "send-http": "~1.0.3",
     "stripe": "13",
-    "time-span": "~4.0.0",
     "to-query": "~1.6.12",
     "update-notifier": "~5.1.0"
   },
