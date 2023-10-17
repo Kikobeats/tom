@@ -8,7 +8,7 @@
 [![Coverage Status](https://img.shields.io/coveralls/Kikobeats/tom-microservice.svg?style=flat-square)](https://coveralls.io/github/Kikobeats/tom-microservice)
 [![NPM Status](https://img.shields.io/npm/dm/tom-microservice.svg?style=flat-square)](https://www.npmjs.org/package/tom-microservice)
 
-> Stripe API version: [2023-08-16](https://stripe.com/docs/upgrades#2023-08-16)
+> Stripe API version: [2023-10-16](https://stripe.com/docs/upgrades#2023-10-16)
 
 **tom** 🐶 is a backoffice for your projects, oriented for doing things like:
 
