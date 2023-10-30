@@ -71,7 +71,7 @@
     "send-http": "~1.0.3",
     "stripe": "14",
     "to-query": "~1.6.12",
-    "update-notifier": "~5.1.0"
+    "update-notifier": "~7.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
