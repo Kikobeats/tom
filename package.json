@@ -113,7 +113,7 @@
     "src"
   ],
   "scripts": {
-    "build": "gulp build && untracked > .nowignore",
+    "build": "gulp build && untracked > .vercelignore",
     "clean": "rm -rf node_modules",
     "coverage": "c8 report --reporter=text-lcov | coveralls",
     "dev": "svr src/router",
@@ -151,7 +151,7 @@
       "standard-markdown"
     ],
     "package.json": [
-      "finepack --sort-ignore-object-at ava"
+      "finepack"
     ]
   },
   "simple-git-hooks": {

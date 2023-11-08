@@ -1,11 +1,11 @@
 'use strict'
 
-const strip = require('gulp-strip-css-comments')
-const prefix = require('gulp-autoprefixer')
-const cssnano = require('gulp-cssnano')
-const uglify = require('gulp-uglify')
-const concat = require('gulp-concat')
-const gulp = require('gulp')
+import strip from 'gulp-strip-css-comments'
+import prefix from 'gulp-autoprefixer'
+import cssnano from 'gulp-cssnano'
+import uglify from 'gulp-uglify'
+import concat from 'gulp-concat'
+import gulp from 'gulp'
 
 const src = {
   css: ['static/src/css/style.css'],
@@ -20,7 +20,7 @@ const dist = {
   }
 }
 
-const css = () =>
+export const css = () =>
   gulp
     .src(src.css)
     .pipe(concat(`${dist.name.css}.min.css`))
@@ -29,22 +29,18 @@ const css = () =>
     .pipe(cssnano())
     .pipe(gulp.dest(dist.path))
 
-const js = () =>
+export const js = () =>
   gulp
     .src(src.js)
     .pipe(concat(`${dist.name.js}.min.js`))
     .pipe(uglify())
     .pipe(gulp.dest(dist.path))
 
-const build = gulp.parallel(css, js)
+export const build = gulp.parallel(css, js)
 
-const watch = () => {
+export const watch = () => {
   gulp.watch(src.css, css)
   gulp.watch(src.js, js)
 }
 
-exports.build = build
-exports.css = css
-exports.js = js
-exports.watch = watch
-exports.default = gulp.series(build, watch)
+export default gulp.series(build, watch)
