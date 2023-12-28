@@ -51,12 +51,12 @@ const create = () => ({
 
 module.exports.createConfig =
   (decorate = noop) =>
-    tom => {
-      const config = create()
-      tom.setConfig(config)
-      decorate({ config, tom })
-      return config
-    }
+  tom => {
+    const config = create()
+    decorate({ config, tom })
+    tom.setConfig(config)
+    return config
+  }
 
 module.exports.create = create
 module.exports.authEmailForTesting = authEmailForTesting
