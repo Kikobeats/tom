@@ -1,11 +1,12 @@
 'use strict'
 
-const timeSpan = require('@kikobeats/time-span')({
-  format: require('pretty-ms')
-})
 const { omit, isEmpty, split, first, reduce } = require('lodash')
 const { randomUUID } = require('crypto')
 const pRetry = require('p-retry')
+
+const timeSpan = require('@kikobeats/time-span')({
+  format: require('@lukeed/ms').format
+})
 
 const printError = require('../log/print-error')
 const createLog = require('../log/create-log')
@@ -42,11 +43,9 @@ module.exports = ({ eventName, fn, tom }) => {
       }
 
       return output
-    } catch (err) {
-      console.log('ERROR', err)
-      console.log('ERROR', err.message)
-      printError({ log, err })
-      throw err
+    } catch (error) {
+      printError({ log, error })
+      throw error
     }
   }
 }
