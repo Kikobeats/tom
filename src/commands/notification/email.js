@@ -3,6 +3,7 @@
 const { pick, isNil, get } = require('lodash')
 const nodemailer = require('nodemailer')
 const Mailgen = require('mailgen')
+const pupa = require('pupa')
 
 const { wardCredential, ward, is } = require('../../ward')
 const compile = require('../../compile')
@@ -25,7 +26,10 @@ module.exports = ({ config }) => {
       name: get(config, 'company.site'),
       link: get(config, 'company.link'),
       logo: get(config, 'company.logo'),
-      copyright: get(config, 'company.copyright')
+      copyright: pupa(get(config, 'company.copyright'), {
+        company: get(config, 'company'),
+        year: new Date().getFullYear()
+      })
     }
   })
 

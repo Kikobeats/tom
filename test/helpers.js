@@ -23,7 +23,7 @@ const create = () => ({
     link: 'https://tom.js.org',
     logo: 'https://tom.js.org/static/logo-mono.png',
     email: 'hello@microlink.io',
-    copyright: 'Copyright © 2018 Tom. All rights reserved.'
+    copyright: 'Copyright © {year} {company.name}. All rights reserved.'
   },
   email: {
     theme: 'salted',
@@ -51,12 +51,12 @@ const create = () => ({
 
 module.exports.createConfig =
   (decorate = noop) =>
-  tom => {
-    const config = create()
-    decorate({ config, tom })
-    tom.setConfig(config)
-    return config
-  }
+    tom => {
+      const config = create()
+      decorate({ config, tom })
+      tom.setConfig(config)
+      return config
+    }
 
 module.exports.create = create
 module.exports.authEmailForTesting = authEmailForTesting
