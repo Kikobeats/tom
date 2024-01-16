@@ -80,7 +80,7 @@
     "@faker-js/faker": "latest",
     "@ksmithut/prettier-standard": "latest",
     "async-listen": "latest",
-    "ava": "5",
+    "ava": "6",
     "browser-sync": "latest",
     "c8": "latest",
     "ci-env": "latest",
