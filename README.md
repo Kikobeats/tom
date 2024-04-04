@@ -8,7 +8,7 @@
 [![Coverage Status](https://img.shields.io/coveralls/Kikobeats/tom-microservice.svg?style=flat-square)](https://coveralls.io/github/Kikobeats/tom-microservice)
 [![NPM Status](https://img.shields.io/npm/dm/tom-microservice.svg?style=flat-square)](https://www.npmjs.org/package/tom-microservice)
 
-> Stripe API version: [2023-10-16](https://stripe.com/docs/upgrades#2023-10-16)
+> Stripe API version: [2023-10-16](https://stripe.com/docs/upgrades#2023-10-16).
 
 **tom** 🐶 is a backoffice for your projects, oriented for doing things like:
 
@@ -214,7 +214,7 @@ In addition, **tom** 🐶 will fill useful customer metadata inforomation whetev
 
 <small>`POST`</small>
 
-It validates a Stripe [`session`](https://stripe.com/docs/api/checkout/sessions/object) previously created via [Stripe Checkout](https://stripe.com/docs/payments/checkout).
+It validates a Stripe [session](https://stripe.com/docs/api/checkout/sessions/object) previously created via [Stripe Checkout](https://stripe.com/docs/payments/checkout).
 
 ##### Data Parameters
 
@@ -223,7 +223,7 @@ It validates a Stripe [`session`](https://stripe.com/docs/api/checkout/sessions/
 *Required*</br>
 type: `string`
 
-The Stripe [`session`](https://stripe.com/docs/api/checkout/sessions/create) identifier.
+The Stripe [session](https://stripe.com/docs/api/checkout/sessions/create) identifier.
 
 #### payment:webhook
 
