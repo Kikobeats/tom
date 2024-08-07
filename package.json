@@ -116,6 +116,7 @@
   "scripts": {
     "build": "gulp build && untracked > .vercelignore",
     "clean": "rm -rf node_modules",
+    "contributors": "(npx git-authors-cli && npx finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "coverage": "c8 report --reporter=text-lcov | coveralls",
     "dev": "svr src/router",
     "dev:docs": "concurrently \"gulp\" \"npm run dev:docs:server\"",
