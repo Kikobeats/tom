@@ -1,10 +1,10 @@
 'use strict'
 
 const createStripe = require('stripe')
+
 const { get } = require('lodash')
 
 const { wardCredential, ward, is } = require('../../ward')
-const createGetTaxRate = require('../../get-tax-rate')
 const getMetadata = require('../../get-metadata')
 
 module.exports = ({ config }) => {
@@ -15,7 +15,6 @@ module.exports = ({ config }) => {
   if (errFn) return errFn
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
-  const getTaxRate = createGetTaxRate({ config, stripe })
 
   const session = async ({
     ipAddress,
@@ -30,7 +29,6 @@ module.exports = ({ config }) => {
     })
 
     const metadata = await getMetadata({ ipAddress, headers })
-    const taxRate = await getTaxRate(metadata)
 
     const session = await stripe.checkout.sessions.create({
       billing_address_collection: 'required',
@@ -38,14 +36,13 @@ module.exports = ({ config }) => {
       line_items: [
         {
           price: planId,
-          quantity: 1,
-          tax_rates: taxRate ? [taxRate.id] : undefined
+          quantity: 1
         }
       ],
-      subscription_data: {
-        default_tax_rates: taxRate ? [taxRate.id] : undefined
-      },
       tax_id_collection: {
+        enabled: true
+      },
+      automatic_tax: {
         enabled: true
       },
       success_url: successUrl,
