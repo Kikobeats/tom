@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.9.19 (2024-08-07)
+
+
+### Bug Fixes
+
+* add contributors script ([c1f56e7](https://github.com/kikobeats/tom-microservice/commit/c1f56e77966ba340548adb8b7e56b5121574f64a))
+
 ### 3.9.18 (2024-08-07)
 
 ### 3.9.17 (2024-08-06)
