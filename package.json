@@ -96,7 +96,6 @@
     "gulp-postcss": "latest",
     "gulp-uglify": "latest",
     "nano-staged": "latest",
-    "npm-check-updates": "latest",
     "postcss": "latest",
     "postcss-focus": "latest",
     "simple-git-hooks": "latest",
@@ -123,15 +122,12 @@
     "dev:docs:server": "browser-sync start --server --files \"index.html, README.md, static/**/*.(css|js)\"",
     "lint": "standard-markdown README.md && standard",
     "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
-    "prerelease": "npm run update:check",
     "pretest": "npm run lint",
     "release": "git-authors-cli && git add package.json && standard-version -a",
     "release:github": "github-generate-release",
     "release:tags": "git push --follow-tags origin HEAD:master",
     "start": "tom",
-    "test": "NODE_ENV=test c8 ava",
-    "update": "ncu -i",
-    "update:check": "ncu -- --error-level 2"
+    "test": "NODE_ENV=test c8 ava"
   },
   "license": "MIT",
   "ava": {
