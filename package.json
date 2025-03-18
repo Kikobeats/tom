@@ -36,7 +36,7 @@
     "beauty-error": "~1.2.15",
     "cors": "~2.8.5",
     "got": "~11.8.6",
-    "helmet": "~8.0.0",
+    "helmet": "~8.1.0",
     "http-body": "~1.0.4",
     "http-compression": "~1.1.1",
     "import-modules": "~2.1.0",
