@@ -1,14 +1,23 @@
 'use strict'
 
-const { template: compileTemplate, isNil } = require('lodash')
+const { template: compileTemplate, isNil, get } = require('lodash')
 const mapValuesDeep = require('map-values-deep')
 
 const REGEX_HANDLEBARS_INTERPOLATE = /{([\s\S]+?)}/g
 
 const compile = (template, opts) =>
-  mapValuesDeep(template, str =>
-    compileTemplate(str, { interpolate: REGEX_HANDLEBARS_INTERPOLATE })(opts)
-  )
+  mapValuesDeep(template, value => {
+    const simplePropertyMatch = value.match(/^{([^}]+)}$/)
+
+    if (simplePropertyMatch) {
+      const propertyPath = simplePropertyMatch[1].trim()
+      return get(opts, propertyPath)
+    }
+
+    return compileTemplate(value, {
+      interpolate: REGEX_HANDLEBARS_INTERPOLATE
+    })(opts)
+  })
 
 module.exports = (template, { config, opts }) => {
   const tpl = isNil(template)
