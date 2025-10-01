@@ -100,7 +100,6 @@
     "postcss-focus": "latest",
     "simple-git-hooks": "latest",
     "standard": "latest",
-    "standard-markdown": "latest",
     "standard-version": "latest",
     "svr": "latest",
     "untracked": "latest"
@@ -120,7 +119,7 @@
     "dev": "svr src/router",
     "dev:docs": "concurrently \"gulp\" \"npm run dev:docs:server\"",
     "dev:docs:server": "browser-sync start --server --files \"index.html, README.md, static/**/*.(css|js)\"",
-    "lint": "standard-markdown README.md && standard",
+    "lint": "standard",
     "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
     "pretest": "npm run lint",
     "release": "git-authors-cli && git add package.json && standard-version -a",
@@ -149,9 +148,6 @@
   "nano-staged": {
     "*.js": [
       "prettier-standard"
-    ],
-    "*.md": [
-      "standard-markdown"
     ],
     "package.json": [
       "finepack"
