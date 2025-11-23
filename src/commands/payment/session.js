@@ -50,7 +50,7 @@ module.exports = ({ config }) => {
       metadata: { ...metadata, planId }
     })
 
-    return { sessionId: session.id }
+    return { url: session.url, sessionId: session.id }
   }
 
   return session
