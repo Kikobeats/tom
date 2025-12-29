@@ -57,7 +57,7 @@
     "pupa": "~2.1.1",
     "req-country": "~1.2.14",
     "request-ip": "~3.3.0",
-    "router-http": "~1.0.11",
+    "router-http": "~2.0.1",
     "send-http": "~1.0.6",
     "stripe": "20",
     "to-query": "~1.6.20",
