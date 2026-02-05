@@ -25,7 +25,7 @@ test('payment:create', async t => {
         card => card.id === customer.invoice_settings.default_payment_method
       )
 
-      t.is(defaultPaymentMethod.card.exp_year, 2049)
+      t.is(defaultPaymentMethod.card.brand, 'mastercard')
 
       t.is(customer.metadata.country, 'US')
       t.is(customer.metadata.ipAddress, '8.8.8.8')
@@ -40,29 +40,13 @@ test('payment:create', async t => {
   const email = `test_${faker.internet.exampleEmail()}`
   const { id: customerId } = await stripe.customers.create({ email })
 
-  const tokens = await Promise.all([
-    stripe.tokens.create({
-      card: {
-        number: '4242424242424242',
-        exp_month: 12,
-        exp_year: 2048,
-        cvc: '123'
-      }
-    }),
-    stripe.tokens.create({
-      card: {
-        number: '5555555555554444',
-        exp_month: 12,
-        exp_year: 2049,
-        cvc: '123'
-      }
-    })
-  ])
+  // Attach first payment method to customer
+  const paymentMethod1 = await stripe.paymentMethods.attach('pm_card_visa', {
+    customer: customerId
+  })
 
   await stripe.setupIntents.create({
-    payment_method: (
-      await stripe.customers.createSource(customerId, { source: tokens[0].id })
-    ).id,
+    payment_method: paymentMethod1.id,
     customer: customerId,
     confirm: true,
     automatic_payment_methods: {
@@ -71,10 +55,16 @@ test('payment:create', async t => {
     }
   })
 
+  // Attach second payment method to customer
+  const paymentMethod2 = await stripe.paymentMethods.attach(
+    'pm_card_mastercard',
+    {
+      customer: customerId
+    }
+  )
+
   const setupIntent = await stripe.setupIntents.create({
-    payment_method: (
-      await stripe.customers.createSource(customerId, { source: tokens[1].id })
-    ).id,
+    payment_method: paymentMethod2.id,
     customer: customerId,
     confirm: true,
     automatic_payment_methods: {
