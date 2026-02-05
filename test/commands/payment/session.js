@@ -21,7 +21,7 @@ test('payment:create', async t => {
   })
 
   const tom = createTom(config)
-  const planId = 'pro-1k-v2'
+  const planId = 'price_1SxP2pKverDflymFUxwHuGJI'
 
   const { url, sessionId } = await tom.payment.session({
     planId,
