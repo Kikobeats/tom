@@ -52,7 +52,7 @@
     "ow": "~0.28.2",
     "p-reflect": "~2.1.0",
     "p-retry": "~4.6.1",
-    "p-waterfall": "~2.1.1",
+    "p-waterfall": "~3.0.0",
     "picocolors": "~1.1.1",
     "pupa": "~2.1.1",
     "req-country": "~1.2.14",
