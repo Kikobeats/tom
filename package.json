@@ -35,7 +35,7 @@
     "acho": "~4.0.6",
     "beauty-error": "~1.2.21",
     "cors": "~2.8.5",
-    "got": "~11.8.6",
+    "got": "~15.0.0",
     "helmet": "~8.1.0",
     "http-body": "~1.0.17",
     "http-compression": "~1.1.2",
