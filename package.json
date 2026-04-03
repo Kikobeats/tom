@@ -59,7 +59,7 @@
     "request-ip": "~3.3.0",
     "router-http": "~2.0.1",
     "send-http": "~1.0.6",
-    "stripe": "21",
+    "stripe": "22",
     "to-query": "~1.6.20",
     "update-notifier": "~5.1.0"
   },
