@@ -67,7 +67,6 @@
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "@faker-js/faker": "latest",
-    "@ksmithut/prettier-standard": "latest",
     "async-listen": "latest",
     "ava": "5",
     "browser-sync": "latest",
