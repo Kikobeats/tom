@@ -39,6 +39,9 @@ module.exports = ({ config }) => {
           quantity: 1
         }
       ],
+      adaptive_pricing: {
+        enabled: true
+      },
       tax_id_collection: {
         enabled: true
       },

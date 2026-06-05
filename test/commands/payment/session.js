@@ -32,3 +32,18 @@ test('payment:create', async t => {
   t.is(typeof url, 'string')
   t.is(typeof sessionId, 'string')
 })
+
+test('payment:create has adaptive pricing enabled', async t => {
+  const config = createConfig()
+  const tom = createTom(config)
+  const planId = 'price_1SxP2pKverDflymFUxwHuGJI'
+
+  const { sessionId } = await tom.payment.session({
+    planId,
+    successUrl: 'https://example.com/success',
+    cancelUrl: 'https://example.com/cancel'
+  })
+
+  const session = await stripe.checkout.sessions.retrieve(sessionId)
+  t.is(session.adaptive_pricing.enabled, true)
+})
