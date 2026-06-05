@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.10.2 (2026-06-05)
+
+
+### Bug Fixes
+
+* **test:** use teardown to close servers in route tests ([b8884ed](https://github.com/kikobeats/tom-microservice/commit/b8884ed5902431fe5134a0ad437a67f5cbf5b1c7))
+
 ### 3.10.1 (2026-06-05)
 
 
