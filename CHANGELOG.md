@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.10.0 (2026-06-05)
+
+
+### Features
+
+* enable adaptive pricing ([#327](https://github.com/kikobeats/tom-microservice/issues/327)) ([b46142e](https://github.com/kikobeats/tom-microservice/commit/b46142e2f3a3130b99e2772c400ff875ec3f9a53))
+
 ### 3.9.50 (2026-05-22)
 
 ### 3.9.49 (2026-05-22)
