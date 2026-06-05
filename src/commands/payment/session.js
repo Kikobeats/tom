@@ -37,7 +37,7 @@ module.exports = ({ config }) => {
         .then(({ data }) => {
           if (!data.length) {
             throw new TypeError(
-                `The lookup key '${planId}' doesn't match any active Stripe price`
+              `The lookup key '${planId}' doesn't match any active Stripe price`
             )
           }
           return data[0].id

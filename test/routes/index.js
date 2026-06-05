@@ -12,7 +12,12 @@ const { createTom, createConfig, createServer, createRoutes } = require('../..')
 const config = createConfig(createMockConfig())
 const routes = createRoutes(config)
 
-const getApiUrl = async () => listen(await createServer(routes))
+const getApiUrl = async t => {
+  const server = await createServer(routes)
+  const url = await listen(server)
+  t.teardown(() => server.close())
+  return url
+}
 
 const allRoutes = reduce(
   createTom(),
@@ -26,7 +31,7 @@ const allRoutes = reduce(
 )
 ;['/', '/robots.txt', '/favicon.ico'].forEach(pathname => {
   test(pathname, async t => {
-    const apiUrl = await getApiUrl()
+    const apiUrl = await getApiUrl(t)
     const { statusCode } = await got(new URL(pathname, apiUrl))
     t.is(statusCode, 204)
   })
@@ -34,7 +39,7 @@ const allRoutes = reduce(
 
 allRoutes.forEach(pathname => {
   test(`OPTIONS ${pathname}`, async t => {
-    const apiUrl = await getApiUrl()
+    const apiUrl = await getApiUrl(t)
     const { statusCode } = await got(new URL(pathname, apiUrl), {
       method: 'OPTIONS'
     })
@@ -43,7 +48,7 @@ allRoutes.forEach(pathname => {
 })
 
 test('unmatched route', async t => {
-  const apiUrl = await getApiUrl()
+  const apiUrl = await getApiUrl(t)
   const { statusCode, body } = await got(new URL('/foo/bar', apiUrl), {
     throwHttpErrors: false,
     responseType: 'json'

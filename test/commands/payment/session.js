@@ -61,7 +61,7 @@ test('payment:create resolves lookup key to price ID', async t => {
 
   t.teardown(async () => {
     await stripe.prices.update(price.id, { active: false })
-    await stripe.products.del(product.id)
+    await stripe.products.update(product.id, { active: false })
   })
 
   const config = createConfig()
