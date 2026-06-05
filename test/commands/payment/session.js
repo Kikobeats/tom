@@ -49,26 +49,11 @@ test('payment:create has adaptive pricing enabled', async t => {
 })
 
 test('payment:create resolves lookup key to price ID', async t => {
-  const product = await stripe.products.create({ name: 'Test Lookup Key' })
-  const price = await stripe.prices.create({
-    product: product.id,
-    unit_amount: 1000,
-    currency: 'eur',
-    recurring: { interval: 'month' },
-    lookup_key: 'test-lookup-key',
-    transfer_lookup_key: true
-  })
-
-  t.teardown(async () => {
-    await stripe.prices.update(price.id, { active: false })
-    await stripe.products.update(product.id, { active: false })
-  })
-
   const config = createConfig()
   const tom = createTom(config)
 
   const { url, sessionId } = await tom.payment.session({
-    planId: 'test-lookup-key',
+    planId: 'tom-test-lookup-key',
     successUrl: 'https://example.com/success',
     cancelUrl: 'https://example.com/cancel'
   })
