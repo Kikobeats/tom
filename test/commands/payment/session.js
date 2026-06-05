@@ -72,7 +72,7 @@ test('payment:create resolves lookup key to price ID', async t => {
   t.is(typeof sessionId, 'string')
 
   await stripe.prices.update(price.id, { active: false })
-  await stripe.products.update(product.id, { active: false })
+  await stripe.products.del(product.id)
 })
 
 test('payment:create throws for unknown lookup key', async t => {
