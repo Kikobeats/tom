@@ -19,8 +19,6 @@ test('payment:create', async t => {
         stripe.paymentMethods.list({ customer: customerId, type: 'card' })
       ])
 
-      await stripe.customers.del(data.customerId)
-
       const defaultPaymentMethod = cards.find(
         card => card.id === customer.invoice_settings.default_payment_method
       )
@@ -39,6 +37,8 @@ test('payment:create', async t => {
   const stripe = createStripe(TOM_STRIPE_KEY)
   const email = `test_${faker.internet.exampleEmail()}`
   const { id: customerId } = await stripe.customers.create({ email })
+
+  t.teardown(() => stripe.customers.del(customerId))
 
   // Attach first payment method to customer
   const paymentMethod1 = await stripe.paymentMethods.attach('pm_card_visa', {
