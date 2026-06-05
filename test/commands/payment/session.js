@@ -59,6 +59,11 @@ test('payment:create resolves lookup key to price ID', async t => {
     transfer_lookup_key: true
   })
 
+  t.teardown(async () => {
+    await stripe.prices.update(price.id, { active: false })
+    await stripe.products.del(product.id)
+  })
+
   const config = createConfig()
   const tom = createTom(config)
 
@@ -70,9 +75,6 @@ test('payment:create resolves lookup key to price ID', async t => {
 
   t.is(typeof url, 'string')
   t.is(typeof sessionId, 'string')
-
-  await stripe.prices.update(price.id, { active: false })
-  await stripe.products.del(product.id)
 })
 
 test('payment:create throws for unknown lookup key', async t => {
