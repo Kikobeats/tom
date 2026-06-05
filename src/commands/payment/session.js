@@ -30,12 +30,25 @@ module.exports = ({ config }) => {
 
     const metadata = await getMetadata({ ipAddress, headers })
 
+    const priceId = planId.startsWith('price_')
+      ? planId
+      : await stripe.prices
+        .list({ lookup_keys: [planId], limit: 1 })
+        .then(({ data }) => {
+          if (!data.length) {
+            throw new TypeError(
+                `The lookup key '${planId}' doesn't match any active Stripe price`
+            )
+          }
+          return data[0].id
+        })
+
     const session = await stripe.checkout.sessions.create({
       billing_address_collection: 'required',
       mode: 'subscription',
       line_items: [
         {
-          price: planId,
+          price: priceId,
           quantity: 1
         }
       ],

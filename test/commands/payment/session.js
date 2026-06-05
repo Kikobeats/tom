@@ -47,3 +47,44 @@ test('payment:create has adaptive pricing enabled', async t => {
   const session = await stripe.checkout.sessions.retrieve(sessionId)
   t.is(session.adaptive_pricing.enabled, true)
 })
+
+test('payment:create resolves lookup key to price ID', async t => {
+  const product = await stripe.products.create({ name: 'Test Lookup Key' })
+  const price = await stripe.prices.create({
+    product: product.id,
+    unit_amount: 1000,
+    currency: 'eur',
+    recurring: { interval: 'month' },
+    lookup_key: 'test-lookup-key'
+  })
+
+  const config = createConfig()
+  const tom = createTom(config)
+
+  const { url, sessionId } = await tom.payment.session({
+    planId: 'test-lookup-key',
+    successUrl: 'https://example.com/success',
+    cancelUrl: 'https://example.com/cancel'
+  })
+
+  t.is(typeof url, 'string')
+  t.is(typeof sessionId, 'string')
+
+  await stripe.prices.update(price.id, { active: false })
+  await stripe.products.update(product.id, { active: false })
+})
+
+test('payment:create throws for unknown lookup key', async t => {
+  const config = createConfig()
+  const tom = createTom(config)
+
+  await t.throwsAsync(
+    () =>
+      tom.payment.session({
+        planId: 'nonexistent-key',
+        successUrl: 'https://example.com/success',
+        cancelUrl: 'https://example.com/cancel'
+      }),
+    { instanceOf: TypeError, message: /doesn't match any active Stripe price/ }
+  )
+})
