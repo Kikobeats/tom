@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 3.10.1 (2026-06-05)
+
+
+### Bug Fixes
+
+* **test:** delete test product after lookup key test ([de7ccb0](https://github.com/kikobeats/tom-microservice/commit/de7ccb01b54aea9cfecfbf4104108bbd66cc94de))
+* **test:** transfer lookup key to avoid collision on repeated CI runs ([3db27ec](https://github.com/kikobeats/tom-microservice/commit/3db27ecf72eeefffa695e587e15e2f5cdf0541c3))
+
 ## 3.10.0 (2026-06-05)
 
 
