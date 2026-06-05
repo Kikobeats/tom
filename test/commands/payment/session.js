@@ -55,7 +55,8 @@ test('payment:create resolves lookup key to price ID', async t => {
     unit_amount: 1000,
     currency: 'eur',
     recurring: { interval: 'month' },
-    lookup_key: 'test-lookup-key'
+    lookup_key: 'test-lookup-key',
+    transfer_lookup_key: true
   })
 
   const config = createConfig()
