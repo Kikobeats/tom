@@ -1,6 +1,6 @@
 {
   "name": "tom-microservice",
-  "description": "Tom creates customers, subscriptions plans & send notifications.",
+  "description": "Tom microservice toolkit for Stripe customers, subscription plans, email, and notifications.",
   "homepage": "https://tom.js.org",
   "version": "3.10.8",
   "main": "src",
@@ -22,12 +22,15 @@
   },
   "keywords": [
     "backoffice",
+    "billing",
     "email",
     "microservice",
-    "notification",
-    "payment",
+    "notifications",
+    "payments",
+    "saas",
     "stripe",
-    "subscriptions"
+    "subscriptions",
+    "tom"
   ],
   "dependencies": {
     "@kikobeats/time-span": "~1.0.11",
