@@ -21,7 +21,7 @@ test('payment:create', async t => {
   })
 
   const tom = createTom(config)
-  const planId = 'price_1SxP2pKverDflymFUxwHuGJI'
+  const planId = 'price_1UCLFrKMH11OK4cfIVbIz7sA'
 
   const { url, sessionId } = await tom.payment.session({
     planId,
@@ -36,7 +36,7 @@ test('payment:create', async t => {
 test('payment:create has adaptive pricing enabled', async t => {
   const config = createConfig()
   const tom = createTom(config)
-  const planId = 'price_1SxP2pKverDflymFUxwHuGJI'
+  const planId = 'price_1UCLFrKMH11OK4cfIVbIz7sA'
 
   const { sessionId } = await tom.payment.session({
     planId,
