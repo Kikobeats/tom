@@ -4,9 +4,9 @@
   <br>
 </p>
 
-![Last version](https://img.shields.io/github/tag/Kikobeats/tom-microservice.svg?style=flat-square)
-[![Coverage Status](https://img.shields.io/coveralls/Kikobeats/tom-microservice.svg?style=flat-square)](https://coveralls.io/github/Kikobeats/tom-microservice)
-[![NPM Status](https://img.shields.io/npm/dm/tom-microservice.svg?style=flat-square)](https://www.npmjs.org/package/tom-microservice)
+[![Last version](https://img.shields.io/github/v/tag/Kikobeats/tom?style=flat-square)](https://github.com/Kikobeats/tom/releases)
+[![Coverage Status](https://img.shields.io/coverallsCoverage/github/Kikobeats/tom?style=flat-square)](https://coveralls.io/github/Kikobeats/tom)
+[![NPM Status](https://img.shields.io/npm/dm/tom-microservice?style=flat-square)](https://www.npmjs.com/package/tom-microservice)
 
 > Stripe API version: [2026-03-25.dahlia](https://docs.stripe.com/changelog#2026-03-25.dahlia).
 
@@ -503,10 +503,10 @@ Your [Telegram @BotFather token](https://core.telegram.org/bots#3-how-do-i-creat
 
 ## License
 
-**tom** © [Kiko Beats](https://kikobeats.com), released under the [MIT](https://github.com/Kikobeats/tom-microservice/blob/master/LICENSE.md) License.<br>
+**tom** © [Kiko Beats](https://kikobeats.com), released under the [MIT](https://github.com/Kikobeats/tom/blob/master/LICENSE) License.<br>
 
 Spaceman logo by [Nook Fulloption](https://thenounproject.com/term/spaceman/854189) from [the Noun Project](https://thenounproject.com/search/?q=dog%20spaceman&i=854189#).
 
-Authored and maintained by Kiko Beats with help from [contributors](https://github.com/Kikobeats/tom-microservice/contributors).
+Authored and maintained by Kiko Beats with help from [contributors](https://github.com/Kikobeats/tom/contributors).
 
 > [kikobeats.com](https://kikobeats.com) · GitHub [@Kiko Beats](https://github.com/Kikobeats) · X [@Kikobeats](https://x.com/Kikobeats)
