@@ -4,7 +4,7 @@ const { reduce, forEach } = require('lodash')
 const { listen } = require('async-listen')
 const { URL } = require('url')
 const test = require('ava')
-const got = require('got').extend({ retry: 0 })
+const got = require('@kikobeats/got').extend({ retry: 0 })
 
 const { createConfig: createMockConfig } = require('../helpers')
 const { createTom, createConfig, createServer, createRoutes } = require('../..')
