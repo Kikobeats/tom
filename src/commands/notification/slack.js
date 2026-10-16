@@ -1,7 +1,7 @@
 'use strict'
 
 const { has, isNil, get } = require('lodash')
-const got = require('got')
+const got = require('@kikobeats/got')
 
 const { ward, is } = require('../../ward')
 const compile = require('../../compile')

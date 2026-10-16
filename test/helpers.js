@@ -1,7 +1,7 @@
 'use strict'
 
 const { noop } = require('lodash')
-const got = require('got')
+const got = require('@kikobeats/got')
 
 const pkg = require('../package.json')
 
