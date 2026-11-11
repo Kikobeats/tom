@@ -2,10 +2,10 @@
 
 const { eq, forEach, noop } = require('lodash')
 const { buffer, text } = require('http-body')
-const requestIp = require('request-ip')
 const toQuery = require('to-query')()
 const Router = require('router-http')
 const send = require('./send')
+const clientIp = require('./client-ip')
 
 const withRoute = require('./interface/route')
 const createTom = require('.')
@@ -68,7 +68,7 @@ const createRouter = () => {
     )
     .use(async (req, res, next) => {
       req.query = toQuery(req.url)
-      req.ipAddress = requestIp.getClientIp(req)
+      req.ipAddress = clientIp(req)
       req.body = await getBody(req)
       next()
     })
