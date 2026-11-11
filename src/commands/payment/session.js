@@ -5,7 +5,6 @@ const createStripe = require('stripe')
 const { get } = require('lodash')
 
 const { wardCredential, ward, is } = require('../../ward')
-const getMetadata = require('../../get-metadata')
 
 module.exports = ({ config }) => {
   const errFn = wardCredential(config, [
@@ -16,19 +15,11 @@ module.exports = ({ config }) => {
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
 
-  const session = async ({
-    ipAddress,
-    headers,
-    planId,
-    successUrl,
-    cancelUrl
-  }) => {
+  const session = async ({ planId, successUrl, cancelUrl }) => {
     ward(planId, {
       label: 'planId',
       test: is.string.nonEmpty
     })
-
-    const metadata = await getMetadata({ ipAddress, headers })
 
     const priceId = planId.startsWith('price_')
       ? planId
@@ -63,7 +54,7 @@ module.exports = ({ config }) => {
       },
       success_url: successUrl,
       cancel_url: cancelUrl,
-      metadata: { ...metadata, planId }
+      metadata: { planId }
     })
 
     return { url: session.url, sessionId: session.id }

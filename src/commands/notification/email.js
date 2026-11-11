@@ -35,7 +35,7 @@ module.exports = ({ config }) => {
 
   const templates = get(config, 'email.template')
 
-  const email = async ({ headers, ipAddress, ...opts }) => {
+  const email = async ({ headers, ...opts }) => {
     if (opts.templateId) {
       ward(opts.templateId, {
         label: 'templateId',

@@ -13,7 +13,7 @@ module.exports =
 
       try {
         const body = isBuffer(req.body) ? { body: req.body } : req.body
-        const props = pick(req, ['ipAddress', 'headers'])
+        const props = pick(req, ['headers'])
 
         const opts = isArray(body)
           ? { commands: body, ...props }

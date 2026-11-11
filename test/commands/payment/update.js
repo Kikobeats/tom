@@ -25,9 +25,6 @@ test('payment:create', async t => {
 
       t.is(defaultPaymentMethod.card.brand, 'mastercard')
 
-      t.is(customer.metadata.country, 'US')
-      t.is(customer.metadata.ipAddress, undefined)
-
       t.is(data.email, email)
       t.is(data.customerId, customerId)
     })
@@ -75,7 +72,6 @@ test('payment:create', async t => {
 
   await tom.payment.update({
     setupIntentId: setupIntent.id,
-    customerId,
-    ipAddress: '8.8.8.8'
+    customerId
   })
 })
