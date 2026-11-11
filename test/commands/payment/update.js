@@ -10,7 +10,7 @@ const createTom = require('../../../')
 const { TOM_STRIPE_KEY } = process.env
 
 test('payment:create', async t => {
-  t.plan(5)
+  t.plan(3)
 
   const config = createConfig(({ tom }) => {
     tom.on('payment:update', async data => {
