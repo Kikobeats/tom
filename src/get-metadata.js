@@ -2,7 +2,6 @@
 
 const reqCountry = require('req-country')
 
-module.exports = async ({ ipAddress, headers }) => {
-  const country = await reqCountry({ ipAddress, headers })
-  return { ipAddress, country }
-}
+module.exports = async ({ ipAddress, headers }) => ({
+  country: await reqCountry({ ipAddress, headers })
+})

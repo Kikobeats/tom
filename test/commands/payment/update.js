@@ -26,7 +26,7 @@ test('payment:create', async t => {
       t.is(defaultPaymentMethod.card.brand, 'mastercard')
 
       t.is(customer.metadata.country, 'US')
-      t.is(customer.metadata.ipAddress, '8.8.8.8')
+      t.is(customer.metadata.ipAddress, undefined)
 
       t.is(data.email, email)
       t.is(data.customerId, customerId)
