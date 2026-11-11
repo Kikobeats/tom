@@ -10,7 +10,7 @@ const createTom = require('../../../')
 const { TOM_STRIPE_KEY } = process.env
 
 test('payment:create', async t => {
-  t.plan(5)
+  t.plan(4)
 
   const config = createConfig(({ tom }) => {
     tom.on('payment:update', async data => {
@@ -24,9 +24,7 @@ test('payment:create', async t => {
       )
 
       t.is(defaultPaymentMethod.card.brand, 'mastercard')
-
-      t.is(customer.metadata.country, 'US')
-      t.is(customer.metadata.ipAddress, '8.8.8.8')
+      t.deepEqual(customer.metadata, existingMetadata)
 
       t.is(data.email, email)
       t.is(data.customerId, customerId)
@@ -36,7 +34,11 @@ test('payment:create', async t => {
   const tom = createTom(config)
   const stripe = createStripe(TOM_STRIPE_KEY)
   const email = `test_${faker.internet.exampleEmail()}`
-  const { id: customerId } = await stripe.customers.create({ email })
+  const existingMetadata = { source: 'test' }
+  const { id: customerId } = await stripe.customers.create({
+    email,
+    metadata: existingMetadata
+  })
 
   t.teardown(() => stripe.customers.del(customerId))
 

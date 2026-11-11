@@ -4,7 +4,6 @@ const createStripe = require('stripe')
 const { get } = require('lodash')
 
 const { wardCredential, ward, is } = require('../../ward')
-const getMetadata = require('../../get-metadata')
 
 module.exports = ({ config }) => {
   const errFn = wardCredential(config, {
@@ -16,23 +15,17 @@ module.exports = ({ config }) => {
 
   const stripe = createStripe(get(config, 'payment.stripe_key'))
 
-  const update = async ({ setupIntentId, customerId, ipAddress, headers }) => {
+  const update = async ({ setupIntentId, customerId }) => {
     ward(customerId, { label: 'customerId', test: is.string.nonEmpty })
     ward(setupIntentId, { label: 'setupIntentId', test: is.string.nonEmpty })
 
-    const [
-      newMetadata,
-      { metadata: oldMetadata, email },
-      { payment_method: paymentMethod }
-    ] = await Promise.all([
-      getMetadata({ ipAddress, headers }),
+    const [{ email }, { payment_method: paymentMethod }] = await Promise.all([
       stripe.customers.retrieve(customerId),
       stripe.setupIntents.retrieve(setupIntentId)
     ])
 
     await Promise.all([
       stripe.customers.update(customerId, {
-        metadata: { ...oldMetadata, ...newMetadata },
         invoice_settings: { default_payment_method: paymentMethod }
       }),
       Promise.all(

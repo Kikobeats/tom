@@ -33,6 +33,22 @@ test('payment:create', async t => {
   t.is(typeof sessionId, 'string')
 })
 
+test('payment:create stores only the plan in the session metadata', async t => {
+  const config = createConfig()
+  const tom = createTom(config)
+  const planId = 'price_1UCLFrKMH11OK4cfIVbIz7sA'
+
+  const { sessionId } = await tom.payment.session({
+    planId,
+    ipAddress: '8.8.8.8',
+    successUrl: 'https://example.com/success',
+    cancelUrl: 'https://example.com/cancel'
+  })
+
+  const session = await stripe.checkout.sessions.retrieve(sessionId)
+  t.deepEqual(session.metadata, { planId })
+})
+
 test('payment:create has adaptive pricing enabled', async t => {
   const config = createConfig()
   const tom = createTom(config)
