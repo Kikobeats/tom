@@ -41,7 +41,7 @@
     "cors": "~2.8.5",
     "helmet": "~8.3.0",
     "http-body": "~1.0.17",
-    "http-compression": "~1.1.2",
+    "http-compression": "~1.2.0",
     "import-modules": "~2.1.0",
     "is-buffer": "~2.0.5",
     "joycon": "~3.1.1",
