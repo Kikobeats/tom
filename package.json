@@ -12,7 +12,16 @@
     "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
   },
-  "contributors": [],
+  "contributors": [
+    {
+      "name": "rubenmoya",
+      "email": "rmoyarodriguez@gmail.com"
+    },
+    {
+      "name": "Rubén Moya",
+      "email": "ruben@acidtango.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kikobeats/tom-microservice.git"
